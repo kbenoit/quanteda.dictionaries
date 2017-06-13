@@ -19,6 +19,8 @@ An R package consisting of dictionaries for text analysis and associated utiliti
 
 * [Lexicoder](http://www.lexicoder.com)
 
+* [Moral Foundations Dictionary](http://www.moralfoundations.org/othermaterials)
+
 ## Formats
 
 * quanteda
