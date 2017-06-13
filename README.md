@@ -21,9 +21,20 @@ An R package consisting of dictionaries for text analysis and associated utiliti
 
 * [Moral Foundations Dictionary](http://www.moralfoundations.org/othermaterials)
 
+* [Regressive Imagery Dictionary](http://www.kovcomp.co.uk/wordstat/RID.html)
+
+* [Loughran and McDonald Financial Sentiment](http://www3.nd.edu/~mcdonald/Word_Lists.html) See also [here](http://sraf.nd.edu/textual-analysis/resources/).
+
+* [Harvard IV-4 dictionaries](http://www.wjh.harvard.edu/~inquirer/homecat.htm)
+
+
 ## Formats
 
 * quanteda
+
+## Languages
+
+Some dictionaries are available in multiple languages - the package should have a way to retrieve that.  Maybe a `summary()` method for the dictionaries that indicates the languages available?
 
 ## Utility functions
 
