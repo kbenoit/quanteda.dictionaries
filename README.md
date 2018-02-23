@@ -21,6 +21,42 @@ but can be used more generally with any text analytic package (e.g.
 devtools::install_github("quanteda/quanteda") 
 ```
 
+## Demonstration
+
+``` r
+library("quanteda.dictionaries")
+
+txt <- c(uk = "endeavour to prioritise honour over esthetics",
+         us = "endeavor to prioritize honor over aesthetics")
+toks <- quanteda::tokens(txt)
+
+# homogenize to US English
+quanteda::tokens_replace(toks, data_dictionary_uk2us)
+```
+
+    ## tokens from 2 documents.
+    ## uk :
+    ## [1] "endeavor"   "to"         "prioritize" "honor"      "over"      
+    ## [6] "esthetics" 
+    ## 
+    ## us :
+    ## [1] "endeavor"   "to"         "prioritize" "honor"      "over"      
+    ## [6] "esthetics"
+
+``` r
+# homogenise to British English
+quanteda::tokens_replace(toks, data_dictionary_us2uk)
+```
+
+    ## tokens from 2 documents.
+    ## uk :
+    ## [1] "endeavour"  "to"         "prioritise" "honour"     "over"      
+    ## [6] "aesthetics"
+    ## 
+    ## us :
+    ## [1] "endeavour"  "to"         "prioritise" "honour"     "over"      
+    ## [6] "aesthetics"
+
 ## Formats
 
 ### Current
