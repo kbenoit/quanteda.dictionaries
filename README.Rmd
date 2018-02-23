@@ -22,7 +22,23 @@ devtools::install_github("quanteda/quanteda")
 ```
 
 
-## Sources
+## Formats
+
+### Current
+
+* quanteda
+
+### Planned
+
+* `as.yaml()`  
+* `as.list()`  
+* `c.dictionary()`
+* something to convert to the **tidytext** dictionary format
+
+
+## Future development plans
+
+### Adding more dictionaries
 
 * [AFINN](http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010)
 
@@ -36,8 +52,6 @@ devtools::install_github("quanteda/quanteda")
 
 * [Other dictionaries at the Provalis page](https://provalisresearch.com/products/content-analysis-software/wordstat-dictionary/)
 
-* [Lexicoder](http://www.lexicoder.com)
-
 * [Moral Foundations Dictionary](http://www.moralfoundations.org/othermaterials)
 
 * [Regressive Imagery Dictionary](http://www.kovcomp.co.uk/wordstat/RID.html)
@@ -46,25 +60,15 @@ devtools::install_github("quanteda/quanteda")
 
 * [Harvard IV-4 dictionaries](http://www.wjh.harvard.edu/~inquirer/homecat.htm)
 
+### Copyright information
 
-## Formats
+Probably need to list the (c) from each dictionary here.
 
-* quanteda
 
-## Languages
+### Multi-lingual support
 
 Some dictionaries are available in multiple languages - the package should have a way to retrieve that.  Maybe a `summary()` method for the dictionaries that indicates the languages available?
 
-## Utility functions
-
-* `as.yaml()`  
-* `as.list()`  
-* `c.dictionary()`
-* something to convert to the **tidytext** dictionary format
-
-## Copyright information
-
-Probably need to list the (c) from each dictionary here.
 
 ## Code of Conduct
 
