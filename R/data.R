@@ -6,7 +6,7 @@
 #' @details
 #' These dictionaries provide the ability to homogenize (or homogenise!) the
 #' spellings of English by converting the spelling variants of one language to
-#' the other.  To make all English spellings British, for instance, apply the
+#' the other. To make all English spellings British, for instance, apply the
 #' \code{data_dictionary_us2uk} dictionary. To make all English spellings
 #' American, apply \code{data_dictionary_uk2us}.
 #'

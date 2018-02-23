@@ -12,13 +12,13 @@ knitr::opts_chunk$set(echo = TRUE)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/kbenoit/quanteda.dictionaries?branch=master&svg=true)](https://ci.appveyor.com/project/kbenoit/quanteda.dictionaries) 
 [![Coverage Status](https://img.shields.io/codecov/c/github/kbenoit/quanteda.dictionaries/master.svg)](https://codecov.io/github/kbenoit/quanteda.dictionaries?branch=master)
 
-An R package consisting of dictionaries for text analysis and associated utilities.  Designed to be used with [**quanteda**](http://quanteda.io) but can be used more generally with any text analytic package (e.g. **tidytext**, **tm**, etc.).
+An R package consisting of dictionaries for text analysis and associated utilities. Designed to be used with [**quanteda**](http://quanteda.io) but can be used more generally with any text analytic package (e.g. **tidytext**, **tm**, etc.).
 
 ## Installing
 
 ```{r eval = FALSE}
 # the devtools package needs to be installed for this to work
-devtools::install_github("quanteda/quanteda") 
+devtools::install_github("kbenoit/quanteda.dictionaries") 
 ```
 
 ## Demonstration
@@ -35,6 +35,14 @@ quanteda::tokens_replace(toks, data_dictionary_uk2us)
 
 # homogenise to British English
 quanteda::tokens_replace(toks, data_dictionary_us2uk)
+
+# compare dfm based on original tokens with homogenized tokens object
+
+# original dfm
+quanteda::dfm(toks)
+
+# homogenized dfm
+quanteda::dfm(quanteda::tokens_replace(toks, data_dictionary_uk2us))
 ```
 
 
@@ -49,7 +57,7 @@ quanteda::tokens_replace(toks, data_dictionary_us2uk)
 * `as.yaml()`  
 * `as.list()`  
 * `c.dictionary()`
-* something to convert to the **tidytext** dictionary format
+* `data.frame` in long format with `word` and `sentiment` columns to use dictionaries in **tidytext**
 
 
 ## Future development plans
@@ -75,6 +83,8 @@ quanteda::tokens_replace(toks, data_dictionary_us2uk)
 * [Loughran and McDonald Financial Sentiment](http://www3.nd.edu/~mcdonald/Word_Lists.html) See also [here](http://sraf.nd.edu/textual-analysis/resources/).
 
 * [Harvard IV-4 dictionaries](http://www.wjh.harvard.edu/~inquirer/homecat.htm)
+
+* [SentiWS Sentiment Dictionary (German)](http://wortschatz.uni-leipzig.de/en/download/)
 
 ### Copyright information
 
