@@ -8,6 +8,8 @@ Authors@R: c( person("Kenneth", "Benoit", email = "kbenoit@lse.ac.uk", role =
 Description: Provides text analysis dictionaries and additional functionality 
     for their use in text analysis frameworks, especially quanteda.
 License: MIT + file LICENSE
+Depends:
+    R (>= 3.1.0)
 Imports:
     quanteda
 Suggests:
@@ -17,3 +19,4 @@ Suggests:
     covr
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.0.1
