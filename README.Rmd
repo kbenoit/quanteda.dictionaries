@@ -35,13 +35,14 @@ quanteda::tokens_replace(toks, data_dictionary_uk2us)
 
 # homogenise to British English
 quanteda::tokens_replace(toks, data_dictionary_us2uk)
+```
 
-# compare dfm based on original tokens with homogenized tokens object
-
+We can see the difference that this makes when converting the texts to a document-feature matrix:
+```{r}
 # original dfm
 quanteda::dfm(toks)
 
-# homogenized dfm
+# homogeni[zs]ed dfm
 quanteda::dfm(quanteda::tokens_replace(toks, data_dictionary_uk2us))
 ```
 
@@ -66,23 +67,15 @@ quanteda::dfm(quanteda::tokens_replace(toks, data_dictionary_uk2us))
 
 * [AFINN](http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010)
 
-* [NRC Word-Emotion Association Lexicon, also called EmoLex](http://saifmohammad.com/WebPages/lexicons.html)
-
 * [Affective Norms for English Words (ANEW)](http://csea.phhp.ufl.edu/media/anewmessage.html)
 
 * [vaderSentiment](https://github.com/cjhutto/vaderSentiment)
-
-* [Bing and Liu](https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html)
 
 * [Other dictionaries at the Provalis page](https://provalisresearch.com/products/content-analysis-software/wordstat-dictionary/)
 
 * [Moral Foundations Dictionary](http://www.moralfoundations.org/othermaterials)
 
-* [Regressive Imagery Dictionary](http://www.kovcomp.co.uk/wordstat/RID.html)
-
 * [Loughran and McDonald Financial Sentiment](http://www3.nd.edu/~mcdonald/Word_Lists.html) See also [here](http://sraf.nd.edu/textual-analysis/resources/).
-
-* [Harvard IV-4 dictionaries](http://www.wjh.harvard.edu/~inquirer/homecat.htm)
 
 * [SentiWS Sentiment Dictionary (German)](http://wortschatz.uni-leipzig.de/en/download/)
 
