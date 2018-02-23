@@ -6,8 +6,8 @@ quanteda.dictionaries
 Status](https://travis-ci.org/kbenoit/quanteda.dictionaries.svg?branch=master)](https://travis-ci.org/kbenoit/quanteda.dictionaries)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/kbenoit/quanteda.dictionaries?branch=master&svg=true)](https://ci.appveyor.com/project/kbenoit/quanteda.dictionaries)
-![Coverage
-Status](https://img.shields.io/codecov/c/github/kbenoit/quanteda.dictionaries/master.svg)\](<https://codecov.io/github/kbenoit/quanteda.dictionaries?branch=master>)
+[![Coverage
+Status](https://img.shields.io/codecov/c/github/kbenoit/quanteda.dictionaries/master.svg)](https://codecov.io/github/kbenoit/quanteda.dictionaries?branch=master)
 
 An R package consisting of dictionaries for text analysis and associated
 utilities. Designed to be used with [**quanteda**](http://quanteda.io)
