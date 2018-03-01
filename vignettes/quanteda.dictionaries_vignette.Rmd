@@ -1,0 +1,194 @@
+---
+title: "Sentiment Analysis with quanteda.dictionaries"
+author: "Stefan Müller and Kenneth Benoit"
+output: 
+  rmarkdown::html_vignette:
+    css: mystyle.css
+    toc: yes
+vignette: >
+  %\VignetteIndexEntry{liwcalike}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, 
+                      comment = "##")
+```
+
+## 1. Introduction
+
+Built on the [**quanteda**](http://www.quanteda.io) package for text analysis, **quanteda.dictionaries** consists of dictionaries for text analysis and associated utilities. In this vignette, we show how to replicate the main features of the [LIWC software](https://liwc.wpengine.com/compare-versions/) with packages provided by the Quanteda Initiative. If you prefer to have a complete, stand-alone user interface, then you should purchase and use the [LIWC standalone software](http://liwc.wpengine.com).
+
+```{r eval=TRUE, message = FALSE}
+# load required packages
+library(quanteda)
+library(readtext)
+library(quanteda.dictionaries)
+library(quanteda.corpora)
+library(ggplot2)
+
+# set ggplot2 theme
+ggplot2::theme_set(theme_bw())
+```
+
+## 2. Read in multiple files
+
+We can use the **readtext** package to read in more than one file. Currently, **readtext** supports plain text files (.txt), data in some form of JavaScript Object Notation (.json), comma-or tab-separated values (.csv, .tab, .tsv), XML documents (.xml), as well as PDF and Microsoft Word formatted files (.pdf, .doc, .docx).
+
+**readtext** also handles multiple files and file types using for instance a "glob" expression, files from a URL or an archive file (.zip, .tar, .tar.gz, .tar.bz). Usually, you do not have to determine the format of the files explicitly - **readtext** takes this information from the file ending.
+
+In the first example, we show that the **readtext** can curse through subdirectories and combine all files in a `data.frame`. 
+
+```{r}
+# get the data directory from readtext
+DATA_DIR <- system.file("extdata/", package = "readtext")
+
+# recurse through subdirectories
+movie_reviews <- readtext(paste0(DATA_DIR, "/txt/movie_reviews/*"))
+```
+
+To analyse the text data, we need to transform our raw text to a **quanteda** corpus.
+
+```{r}
+corpus_movie_reviews <- corpus(movie_reviews)
+
+summary(corpus_movie_reviews)
+```
+
+## 3. Analyze sentiment
+
+Next, we analyze sentiment of text. If you have purchased the LIWC dictionary, you can load it as a **quanteda**-formatted dictionary in the following way. 
+
+```{r, eval=FALSE}
+liwc2007dict <- dictionary(file = "~/Dropbox/QUANTESS/dictionaries/LIWC/LIWC2007.cat", 
+                           format = "wordstat")
+tail(liwc2007dict, 1)
+# Dictionary object with 1 primary key entry and 2 nested levels.
+# - [SPOKEN CATEGORIES]:
+#   - [ASSENT]:
+#     - absolutely, agree, ah, alright*, aok, aw, awesome, cool, duh, ha, hah, haha*, heh*, hm*, huh, lol, mm*, oh, ok, okay, okey*, rofl, uhhu*, uhuh, yah, yay, yea, yeah, yep*, yes, yup
+#   - [NON-FLUENCIES]:
+#     - er, hm*, sigh, uh, um, umm*, well, zz*
+#   - [FILLERS]:
+#     - blah, idon'tknow, idontknow, imean, ohwell, oranything*, orsomething*, orwhatever*, rr*, yakn*, ykn*, youknow*
+```
+
+While you can use the LIWC dictionary which you need to purchase, in this example we use the Lexicoder Sentiment Dictionary (Young and Soroka 2012) which comes with the **quanteda** package. The `liwcalike()` function from **quanteda.dictionaries** gives similar output as the LIWC stand-alone software. We use a collection of 2000 movie reviews classified as "positive" or "negative", a corpus with comes with **quanteda.corpora**.
+
+```{r}
+output_lsd <- liwcalike(data_corpus_movies, data_dictionary_LSD2015)
+
+head(output_lsd)
+```
+
+Next, we can use the `negative` and `positive` columns to estimate the net sentiment for each text by subtracting negative from positive words.
+
+```{r fig.width=8, fig.height=6}
+output_lsd$net_positive <- as.numeric(output_lsd$positive) - as.numeric(output_lsd$negative)
+
+output_lsd$sentiment <- docvars(data_corpus_movies, "Sentiment")
+
+ggplot(output_lsd, aes(x = sentiment, y = net_positive)) +
+    geom_boxplot() +
+    labs(x = "Classified sentiment", 
+         y = "Net positive sentiment",
+         main = "Lexicoder Sentiment Dictionary")
+```
+
+We see that the median of the net positive sentiment from our dictionary analysis is higher for reviews that have been classified as being positive. To check whether the choice of dictionary had an impact on this result, we can rerun the analysis with a the NRC Word-Emotion Association Lexicon, an alternative sentiment dictionary provided in **quanteda.corpora**.
+
+```{r fig.width=8, fig.height=6}
+output_nrc <- liwcalike(data_corpus_movies, data_dictionary_NRC)
+
+names(output_nrc)
+
+output_nrc$net_positive <- as.numeric(output_nrc$positive) - as.numeric(output_nrc$negative)
+
+output_nrc$sentiment <- docvars(data_corpus_movies, "Sentiment")
+
+ggplot(output_nrc, aes(x = sentiment, y = net_positive)) +
+    geom_boxplot() +
+    labs(x = "Classified sentiment", 
+         y = "Net positive sentiment", 
+         main = "NRC Word-Emotion Association Lexicon")
+```
+
+We can also check the correlation of the estimated net positive sentiment for both the NRC Word-Emotion Association Lexicon and the Lexicoder Sentiment Dictionary. 
+
+```{r fig.width=8, fig.height=6}
+cor.test(output_lsd$net_positive, output_nrc$net_positive)
+
+cor_dictionaries <- data.frame(
+    lsd = output_lsd$net_positive,
+    nrc = output_nrc$net_positive
+)
+
+ggplot(data = cor_dictionaries, aes(x = lsd, y = nrc)) + 
+    geom_point(alpha = 0.2) +
+    geom_smooth() + 
+    labs(x = "Lexicoder Sentiment Dictionary",
+         y = "NRC Word-Emotion Association Lexicon",
+         main = "Correlation for Net Positive Sentiment in Movie Reviews")
+```
+
+The correlation between both scores on the level of documents is reasonably high with 0.72.
+
+## 4. User-created dictionaries
+
+The LIWC software allows to build custom dictionaries created for specific research questions. With **quanteda**'s `dictionary()` function we can do the same. 
+
+```{r}
+mydict <- dictionary(list(positive = c("great", "phantastic", "wonderful"),
+                          negative = c("bad", "horrible", "terrible")))
+
+output_custom_dict <- liwcalike(data_corpus_movies, mydict)
+
+head(output_custom_dict)
+```
+
+## 5. Apply dictionary to segmented text
+
+LIWC provides easy segmentation, through a GUI. With functions from the **quanteda** package, you can segment the texts yourself using `corpus_reshape()` or `corpus_segment()`. In the following example, we divide up the inaugural speeches by paragraphs and apply a sentiment dictionary.
+
+```{r}
+ndoc(data_corpus_inaugural)
+```
+
+The initial inaugural corpus consists of 58 documents (one document per speech).
+
+```{r}
+inaug_corpus_paragraphs <- corpus_reshape(data_corpus_inaugural, to = "paragraphs")
+
+ndoc(inaug_corpus_paragraphs)
+```
+
+When we divide the corpus into paragraphs, the number of documents increases to 1513. Next, we can apply the `liwcalike()` function to the reshaped corpus using the Lexicoder Sentiment Dictionary. 
+
+```{r}
+output_paragraphs <- liwcalike(inaug_corpus_paragraphs, data_dictionary_LSD2015)
+
+head(output_custom_dict)
+```
+
+## 6. Export output to a spreadsheet
+
+The LIWC software allows you to export the output from the dictionary analysis to a spreadsheet. We can also do this with **write.csv** or use packages such as **haven** or **rio** to save the `data.frame` in a custom file format.
+
+```{r, eval=FALSE}
+# save as csv file
+write.csv(output_custom_dict, file = "output_dictionary.csv",
+         fileEncoding = "utf-8")
+
+# save as Excel file (xlsx)
+library(rio)
+rio::export(output_custom_dict, file = "output_dictionary.xlsx")
+```
+
+## References
+
+Pennebaker, J.W., Chung, C.K., Ireland, M., Gonzales, A., & Booth, R.J. (2007). _The development and psychometric properties of LIWC2007_. [Software manual]. Austin, TX (www.liwc.net).
+
+Saif Mohammad and Peter Turney (2013). "Crowdsourcing a Word-Emotion Association Lexicon." _Computational Intelligence_ 29(3), 436-465.
+
+Young, Lori and Stuart Soroka. 2012. "Affective News: The Automated Coding of Sentiment in Political Texts." _Political Communication_ 29(2): 205-231.
