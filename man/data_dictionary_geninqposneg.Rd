@@ -3,7 +3,7 @@
 \docType{data}
 \name{data_dictionary_geninqposneg}
 \alias{data_dictionary_geninqposneg}
-\title{augmented General Inquirer \emph{Positiv} and \emph{Negativ} dictionary}
+\title{Augmented General Inquirer \emph{Positiv} and \emph{Negativ} dictionary}
 \format{An object of class \code{dictionary2} of length 2.}
 \source{
 \url{http://www.wjh.harvard.edu/~inquirer/spreadsheet_guide.htm}

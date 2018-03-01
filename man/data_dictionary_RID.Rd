@@ -13,7 +13,7 @@ data_dictionary_RID
 The English Regressive Imagery Dictionary (RID) consists of about 3,150 words
 and roots assigned to 29 categories of primary process cognition, 7
 categories of secondary process cognition, and 7 categories of emotions,
-designed by Martindale (1975,1990) to measure primordial vs. conceptual
+designed by Martindale (1975, 1990) to measure primordial vs. conceptual
 thinking.
 }
 \references{

@@ -38,8 +38,7 @@
 #' Available in 40 different languages.
 #' @references
 #'   Saif Mohammad and Peter Turney (2013). "Crowdsourcing a
-#'   Word-Emotion Association Lexicon."  \emph{Computational Intelligence} 29
-#'   (3), 436-465.
+#'   Word-Emotion Association Lexicon." \emph{Computational Intelligence} 29(3), 436-465.
 #'
 #'   Saif Mohammad and Peter Turney (2010). "Emotions Evoked by Common Words and
 #'   Phrases: Using Mechanical Turk to Create an Emotion Lexicon." In
@@ -51,7 +50,7 @@
 #' @keywords data
 "data_dictionary_NRC"
 
-#' positive and negative words from Hu and Liu (2004)
+#' Positive and negative words from Hu and Liu (2004)
 #'
 #' A \pkg{quanteda} \link[quanteda]{dictionary} object containing the positive
 #' and negative words from Hu and Liu (2004, 2005).
@@ -62,14 +61,12 @@
 #'
 #'   Bing Liu, Minqing Hu and Junsheng Cheng. "Opinion Observer: Analyzing and
 #'   Comparing Opinions on the Web." Proceedings of the 14th International World
-#'   Wide Web conference (WWW-2005), May 10-14, 2005, Chiba, Japan. Young, L.
-#'   and Soroka, S. 2012. \emph{Lexicoder Sentiment Dictionary}. Available at
-#'   \url{http://lexicoder.com}.
+#'   Wide Web conference (WWW-2005), May 10-14, 2005, Chiba, Japan.
 #' @source \url{http://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html}
 #' @keywords data
 "data_dictionary_HuLiu"
 
-#' augmented General Inquirer \emph{Positiv} and \emph{Negativ} dictionary
+#' Augmented General Inquirer \emph{Positiv} and \emph{Negativ} dictionary
 #'
 #' A \pkg{quanteda} \link[quanteda]{dictionary} object containing the
 #' \emph{Positiv} and \emph{Negativ} dictionary entries from the augmented
@@ -89,7 +86,7 @@
 #' The English Regressive Imagery Dictionary (RID) consists of about 3,150 words
 #' and roots assigned to 29 categories of primary process cognition, 7
 #' categories of secondary process cognition, and 7 categories of emotions,
-#' designed by Martindale (1975,1990) to measure primordial vs. conceptual
+#' designed by Martindale (1975, 1990) to measure primordial vs. conceptual
 #' thinking.
 #'
 #' @format The dictionary has three levels of nesting, and forms 43 keys in
