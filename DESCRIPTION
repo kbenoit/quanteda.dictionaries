@@ -11,7 +11,8 @@ License: MIT + file LICENSE
 Depends:
     R (>= 3.1.0)
 Imports:
-    quanteda
+    quanteda,
+    stringi
 Suggests:
     knitr,
     rmarkdown,
@@ -19,4 +20,5 @@ Suggests:
     covr
 Encoding: UTF-8
 LazyData: true
+VignetteBuilder: knitr
 RoxygenNote: 6.0.1
