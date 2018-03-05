@@ -12,10 +12,11 @@ Depends:
     R (>= 3.1.0)
 Imports:
     quanteda,
-    stringi
 Suggests:
     knitr,
     rmarkdown,
+    readtext,
+    stringi,
     testthat,
     covr
 Encoding: UTF-8

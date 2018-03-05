@@ -20,7 +20,7 @@ knitr::opts_chunk$set(collapse = TRUE,
 
 Built on the [**quanteda**](http://www.quanteda.io) package for text analysis, **quanteda.dictionaries** consists of dictionaries for text analysis and associated utilities. In this vignette, we show how to replicate the main features of the [LIWC software](https://liwc.wpengine.com/compare-versions/) with packages provided by the Quanteda Initiative. If you prefer to have a complete, stand-alone user interface, then you should purchase and use the [LIWC standalone software](http://liwc.wpengine.com).
 
-```{r eval=TRUE, message = FALSE}
+```{r eval=TRUE, message=FALSE}
 # load required packages
 library(quanteda)
 library(readtext)
