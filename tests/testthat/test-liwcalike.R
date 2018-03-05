@@ -10,8 +10,8 @@ test_that("test dictionary count etc.", {
                               mwe = "out of"))
     myCount <- liwcalike(txt, myDict, what = "word")
     
-    toks <- tokens(txt[1], remove_hyphens = TRUE)
-    num_words_txt1 <- ntoken(toks)
+    toks <- quanteda::tokens(txt[1], remove_hyphens = TRUE)
+    num_words_txt1 <- quanteda::ntoken(toks)
     
     # dictionary count
     num_people <- sum(toks$text1 == "lawyer") + sum(toks$text1 == "boyfriend")
