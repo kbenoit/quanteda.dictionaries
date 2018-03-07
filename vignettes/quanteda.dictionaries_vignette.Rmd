@@ -26,7 +26,7 @@ library(quanteda.dictionaries)
 
 ## 2. Accessing texts
 
-To access texts for scoring sentiment, we will use the movie reviews corpus from Pang, Lee, and Vaithyanathan (2002), found in the [**quanteda.corpora**](http://github.com/quanteda/quanteda.corpora) package. This requires that you have installed that package. If you want to use your own texts, we recommend the [**readtext**](https://github.com/quanteda/readtext) package.
+To access texts for scoring sentiment, we will use the movie reviews corpus from Pang, Lee, and Vaithyanathan (2002), found in the [**quanteda.corpora**](http://github.com/quanteda/quanteda.corpora) package. This requires that you have installed that package.  (If you want to use your own texts, we recommend the [**readtext**](https://github.com/quanteda/readtext) package for reading in your texts.)
 
 ```{r}
 data(data_corpus_movies, package = "quanteda.corpora")
@@ -73,7 +73,7 @@ ggplot(output_nrc, aes(x = sentiment, y = net_positive)) +
          main = "NRC Sentiment Dictionary")
 ```
 
-We see that the median of the net positive sentiment from our dictionary analysis is higher for reviews that have been classified as being positive. To check whether the choice of dictionary had an impact on this result, we can rerun the analysis with a the General Inquirer _Positiv_ and _Negativ_ dictionary, an alternative sentiment dictionary provided in **quanteda.dictionaries**.
+We see that the median of the net positive sentiment from our dictionary analysis is higher for reviews that have been classified as being positive. To check whether the choice of dictionary had an impact on this result, we can rerun the analysis with a the General Inquirer _Positive_ and _Negative_ dictionary, an alternative sentiment dictionary provided in **quanteda.dictionaries**.
 
 ```{r fig.width=7, fig.height=6}
 output_geninq <- liwcalike(data_corpus_movies, data_dictionary_geninqposneg)
