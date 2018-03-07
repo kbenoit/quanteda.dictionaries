@@ -75,8 +75,8 @@
 #' terms from the \href{http://www.wjh.harvard.edu/~inquirer/Yes.html}{yes} and
 #' \href{http://www.wjh.harvard.edu/~inquirer/No.html}{no} dictionary entries.
 #' @references Stone, Philip J., Dexter C. Dunphy, and Marshall S. Smith. 1966.
-#'   "The general inquirer: A computer approach to content analysis." Cambridge,
-#'   MA: MIT Press.
+#'   \emph{The General Inquirer: A computer approach to content analysis.}
+#'   Cambridge, MA: MIT Press.
 #' @source \url{http://www.wjh.harvard.edu/~inquirer/spreadsheet_guide.htm}
 #' @keywords data
 "data_dictionary_geninqposneg"
@@ -101,7 +101,7 @@
 
 
 #' Sample short documents for testing
-#' 
+#'
 #' Some sample short documents in plain text format for testing
 #'   with \code{\link{liwcalike}}.
 #' @examples

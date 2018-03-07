@@ -21,7 +21,7 @@ terms from the \href{http://www.wjh.harvard.edu/~inquirer/Yes.html}{yes} and
 }
 \references{
 Stone, Philip J., Dexter C. Dunphy, and Marshall S. Smith. 1966.
-  "The general inquirer: A computer approach to content analysis." Cambridge,
-  MA: MIT Press.
+  \emph{The General Inquirer: A computer approach to content analysis.}
+  Cambridge, MA: MIT Press.
 }
 \keyword{data}
