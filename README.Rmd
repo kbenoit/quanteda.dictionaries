@@ -27,41 +27,15 @@ devtools::install_github("kbenoit/quanteda.dictionaries")
 
 With the `liwcalike()` function from the **quanteda.dictionaries** package, you can easily analyze text corpora using exising or custom dictionaries. Here we show how to apply the Lexicoder Sentiment Dictionary (Young and Soroka 2012) to a corpus consting of 2000 movie reviews (from the **quanteda.corpora** package).
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 library(quanteda)
 library(quanteda.dictionaries)
 library(quanteda.corpora)
 
-output_lsd <- liwcalike(quanteda.corpora::data_corpus_movies, quanteda::data_dictionary_LSD2015)
+output_lsd <- liwcalike(quanteda.corpora::data_corpus_movies, data_dictionary_NRC)
 
 head(output_lsd)
 ```
-
-### 2. Homogeni[zs]e British and US English
-
-```{r}
-library("quanteda.dictionaries")
-
-txt <- c(uk = "endeavour to prioritise honour over esthetics",
-         us = "endeavor to prioritize honor over aesthetics")
-toks <- quanteda::tokens(txt)
-
-# homogenize to US English
-quanteda::tokens_replace(toks, data_dictionary_uk2us)
-
-# homogenise to British English
-quanteda::tokens_replace(toks, data_dictionary_us2uk)
-```
-
-We can see the difference that this makes when converting the texts to a document-feature matrix:
-```{r}
-# original dfm
-quanteda::dfm(toks)
-
-# homogeni[zs]ed dfm
-quanteda::dfm(quanteda::tokens_replace(toks, data_dictionary_uk2us))
-```
-
 
 ## Formats
 
