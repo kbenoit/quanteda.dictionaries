@@ -23,6 +23,22 @@ devtools::install_github("kbenoit/quanteda.dictionaries")
 
 ## Demonstration
 
+### 1. Apply Dictionaries to a Corpus
+
+With the `liwcalike()` function from the **quanteda.dictionaries** package, you can easily analyze text corpora using exising or custom dictionaries. Here we show how to apply the Lexicoder Sentiment Dictionary (Young and Soroka 2012) to a corpus consting of 2000 movie reviews (from the **quanteda.corpora** package).
+
+```{r}
+library(quanteda)
+library(quanteda.dictionaries)
+library(quanteda.corpora)
+
+output_lsd <- liwcalike(quanteda.corpora::data_corpus_movies, quanteda::data_dictionary_LSD2015)
+
+head(output_lsd)
+```
+
+### 2. Homogeni[zs]e British and US English
+
 ```{r}
 library("quanteda.dictionaries")
 
