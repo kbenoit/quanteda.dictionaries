@@ -16,7 +16,6 @@ Imports:
 Suggests:
     knitr,
     rmarkdown,
-    readtext,
     testthat,
     covr,
     ggplot2,
