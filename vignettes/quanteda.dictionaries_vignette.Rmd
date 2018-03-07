@@ -26,7 +26,8 @@ library(quanteda.dictionaries)
 
 ## 2. Accessing texts
 
-To access texts for scoring sentiment, we will use the movie reviews corpus from Pang, Lee, and Vaithyanathan (2002), found in the [**quanteda.corpora**](http://github.com/quanteda/quanteda.corpora) package.  This requires that you have installed that package.
+To access texts for scoring sentiment, we will use the movie reviews corpus from Pang, Lee, and Vaithyanathan (2002), found in the [**quanteda.corpora**](http://github.com/quanteda/quanteda.corpora) package. This requires that you have installed that package. If you want to use your own texts, we recommend the [**readtext**](https://github.com/quanteda/readtext) package.
+
 ```{r}
 data(data_corpus_movies, package = "quanteda.corpora")
 ```
@@ -49,7 +50,7 @@ tail(liwc2007dict, 1)
 #     - blah, idon'tknow, idontknow, imean, ohwell, oranything*, orsomething*, orwhatever*, rr*, yakn*, ykn*, youknow*
 ```
 
-While you can use the LIWC dictionary which you need to purchase, in this example we use the NRC sentiument dictionary object `data_dictionary_NRD`. The `liwcalike()` function from **quanteda.dictionaries** gives similar output to that from the LIWC stand-alone software.  We use a collection of 2000 movie reviews classified as "positive" or "negative", a corpus with comes with **quanteda.corpora**.
+While you can use the LIWC dictionary which you need to purchase, in this example we use the NRC sentiument dictionary object `data_dictionary_NRC`. The `liwcalike()` function from **quanteda.dictionaries** gives similar output to that from the LIWC stand-alone software.  We use a collection of 2000 movie reviews classified as "positive" or "negative", a corpus which comes with **quanteda.corpora**.
 
 ```{r}
 output_nrc <- liwcalike(data_corpus_movies, data_dictionary_NRC)
@@ -58,8 +59,8 @@ head(output_nrc)
 
 Next, we can use the `negative` and `positive` columns to estimate the net sentiment for each text by subtracting negative from positive words.
 
-```{r fig.width=8, fig.height=6}
-output_nrc$net_positive <- as.numeric(output_nrc$positive) - as.numeric(output_nrc$negative)
+```{r fig.width=7, fig.height=6}
+output_nrc$net_positive <- output_nrc$positive - output_nrc$negative
 output_nrc$sentiment <- docvars(data_corpus_movies, "Sentiment")
 
 library(ggplot2)
@@ -72,13 +73,13 @@ ggplot(output_nrc, aes(x = sentiment, y = net_positive)) +
          main = "NRC Sentiment Dictionary")
 ```
 
-We see that the median of the net positive sentiment from our dictionary analysis is higher for reviews that have been classified as being positive. To check whether the choice of dictionary had an impact on this result, we can rerun the analysis with a the NRC Word-Emotion Association Lexicon, an alternative sentiment dictionary provided in **quanteda.corpora**.
+We see that the median of the net positive sentiment from our dictionary analysis is higher for reviews that have been classified as being positive. To check whether the choice of dictionary had an impact on this result, we can rerun the analysis with a the General Inquirer _Positiv_ and _Negativ_ dictionary, an alternative sentiment dictionary provided in **quanteda.dictionaries**.
 
-```{r fig.width=8, fig.height=6}
+```{r fig.width=7, fig.height=6}
 output_geninq <- liwcalike(data_corpus_movies, data_dictionary_geninqposneg)
 names(output_geninq)
 
-output_geninq$net_positive <- as.numeric(output_geninq$positive) - as.numeric(output_geninq$negative)
+output_geninq$net_positive <- output_geninq$positive - output_geninq$negative
 output_geninq$sentiment <- docvars(data_corpus_movies, "Sentiment")
 
 ggplot(output_geninq, aes(x = sentiment, y = net_positive)) +
@@ -88,9 +89,9 @@ ggplot(output_geninq, aes(x = sentiment, y = net_positive)) +
          main = "General Inquirer Sentiment Association")
 ```
 
-We can also check the correlation of the estimated net positive sentiment for both the NRC Word-Emotion Association Lexicon and the Lexicoder Sentiment Dictionary. 
+We can also check the correlation of the estimated net positive sentiment for both the NRC Word-Emotion Association Lexicon and the General Inquirer Sentiment Association. 
 
-```{r fig.width=8, fig.height=6}
+```{r fig.width=7, fig.height=6}
 cor.test(output_nrc$net_positive, output_geninq$net_positive)
 
 cor_dictionaries <- data.frame(
@@ -105,8 +106,6 @@ ggplot(data = cor_dictionaries, aes(x = nrc, y = geninq)) +
          y = "General Inquirer Net Positive Sentiment",
          main = "Correlation for Net Positive Sentiment in Movie Reviews")
 ```
-
-The correlation between both scores on the level of documents is reasonably high with 0.72.
 
 ## 4. User-created dictionaries
 
@@ -136,10 +135,10 @@ inaug_corpus_paragraphs <- corpus_reshape(data_corpus_inaugural, to = "paragraph
 ndoc(inaug_corpus_paragraphs)
 ```
 
-When we divide the corpus into paragraphs, the number of documents increases to 1513. Next, we can apply the `liwcalike()` function to the reshaped corpus using the Lexicoder Sentiment Dictionary. 
+When we divide the corpus into paragraphs, the number of documents increases to 1513. Next, we can apply the `liwcalike()` function to the reshaped corpus using the NRC Word-Emotion Association Lexicon. 
 
 ```{r}
-output_paragraphs <- liwcalike(inaug_corpus_paragraphs, data_dictionary_LSD2015)
+output_paragraphs <- liwcalike(inaug_corpus_paragraphs, data_dictionary_NRC)
 head(output_custom_dict)
 ```
 
