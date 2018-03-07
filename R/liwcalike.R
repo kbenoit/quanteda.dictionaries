@@ -18,14 +18,14 @@
 #'   segmenting the text.  While this function does not supply segmentation
 #'   options, you can easily achieve the same effect by converting the input
 #'   object into a corpus (if it is not already a corpus) and using
-#'   \code{\link[quanteda]{corpus_reshape}} or \code{\link[quanteda]{corpus_segment}} 
-#'   to split the input texts into smaller units based on user-supplied tags, 
+#'   \code{\link[quanteda]{corpus_reshape}} or \code{\link[quanteda]{corpus_segment}}
+#'   to split the input texts into smaller units based on user-supplied tags,
 #'   sentence, or paragraph boundaries.
 #' @examples
 #' liwcalike(data_char_testphrases)
 #'
 #' # examples for comparison
-#' txt <- c("The red-shirted lawyer gave her yellow-haired, red nose ex-boyfriend $300 
+#' txt <- c("The red-shirted lawyer gave her yellow-haired, red nose ex-boyfriend $300
 #'             out of pity:(.")
 #' myDict <- quanteda::dictionary(list(people = c("lawyer", "boyfriend"),
 #'                           colorFixed = "red",
@@ -66,101 +66,100 @@ liwcalike.corpus <- function(x, ...) {
 #' @rdname liwcalike
 #' @export
 liwcalike.character <- function(x, dictionary = NULL, tolower = TRUE, verbose = TRUE, ...) {
-    
+
     ## initialize results data.frame
     ## similar to "Filename" and Segment
     result <-
         data.frame(docname = if (is.null(names(x))) paste0("text", 1:length(x)) else names(x),
                    Segment = 1:length(x), row.names = NULL, stringsAsFactors = FALSE)
-    
+
     ## get readability before lowercasing
     WPS <- quanteda::textstat_readability(x, "meanSentenceLength") #, ...)
-    
-    
-    # ## if a dictionary is supplied, apply it to the dfm
-    # # first pre-process the text for multi-word dictionary values
-    # if (!is.null(dictionary)) {
-    #     x <- tokens_compound(x, dictionary, case_insensitive = tolower)
-    #     if (dictionary@concatenator != "_")
-    #         dictionary <- lapply(dictionary, stringi::stri_replace_all_fixed, dictionary@concatenator, "_")
-    # }
-    
+
     ## tokenize and form the dfm
     toks <- quanteda::tokens(x, remove_hyphens = TRUE)
-    
+
     ## lower case the texts if required
-    if (tolower) 
+    if (tolower)
         toks <- quanteda::tokens_tolower(toks)
-    
+
     ## form the dfm
     dfmDict <- quanteda::dfm(toks, dictionary = dictionary, verbose = FALSE)
-    
+
     ## WC
     result[["WC"]] <- quanteda::ntoken(toks)
     # maybe this should be ntoken(dfmAll) - does LIWC count punctuation??
-    
+
     ## no implementation for: Analytic	Clout	Authentic	Tone
-    
+
     ## WPS (mean words per sentence)
     result[["WPS"]] <- WPS
-    
+
     ## Sixltr
-    result[["Sixltr"]] <- sapply(toks, function(y) sum(stringi::stri_length(y) > 6)) / result[["WC"]] * 100
-    
+    result[["Sixltr"]] <-
+        sapply(toks, function(y) sum(stringi::stri_length(y) > 6)) / result[["WC"]] * 100
+
     ## Dic (percentage of words in the dictionary)
     comp_toks <- tokens_compound(toks, dictionary)
     comp_match <- tokens_select(comp_toks, dictionary)
     result[["Dic"]] <- if (!is.null(dictionary)) ntoken(comp_match) / ntoken(comp_toks) * 100 else NA
-    
+
     ## add the dictionary counts, transformed to percentages of total words
     if (!is.null(dictionary))
         result <- cbind(result,
                         as.data.frame(as.matrix(dfmDict) / matrix(rep(result[["WC"]], each = nfeat(dfmDict)), ncol = nfeat(dfmDict), byrow = TRUE),
                                       row.names = 1:nrow(result)) * 100)
-    
+
     ## punctuation counts
     # AllPunc
-    result[["AllPunc"]] <- stringi::stri_count_charclass(x, "\\p{P}") / result[["WC"]] * 100
-    
+    result[["AllPunc"]] <- stringi::stri_count_charclass(x, "\\p{P}") /
+        result[["WC"]] * 100
+
     # Period
     result[["Period"]] <- stringi::stri_count_fixed(x, ".") / result[["WC"]] * 100
-    
+
     # Comma
     result[["Comma"]] <- stringi::stri_count_fixed(x, ",") / result[["WC"]] * 100
-    
+
     # Colon
     result[["Colon"]] <- stringi::stri_count_fixed(x, ":") / result[["WC"]] * 100
-    
+
     # SemiC
     result[["SemiC"]] <- stringi::stri_count_fixed(x, ";") / result[["WC"]] * 100
-    
+
     # QMark
     result[["QMark"]] <- stringi::stri_count_fixed(x, "?") / result[["WC"]] * 100
-    
+
     # Exclam
-    result[["Exclam"]] <- stringi::stri_count_fixed(x, "!") / result[["WC"]] * 100
-    
+    result[["Exclam"]] <-
+        stringi::stri_count_fixed(x, "!") / result[["WC"]] * 100
+
     # Dash
-    result[["Dash"]] <- stringi::stri_count_charclass(x, "\\p{Pd}") / result[["WC"]] * 100
-    
+    result[["Dash"]] <-
+        stringi::stri_count_charclass(x, "\\p{Pd}") / result[["WC"]] * 100
+
     # Quote
-    result[["Quote"]] <- stringi::stri_count_charclass(x, "[:QUOTATION_MARK:]")/ result[["WC"]] * 100
-    
+    result[["Quote"]] <-
+        stringi::stri_count_charclass(x, "[:QUOTATION_MARK:]") /
+        result[["WC"]] * 100
+
     # Apostro
-    result[["Apostro"]] <- stringi::stri_count_charclass(x, "['\\u2019]") / result[["WC"]] * 100
-    
+    result[["Apostro"]] <-
+        stringi::stri_count_charclass(x, "['\\u2019]") / result[["WC"]] * 100
+
     # Parenth -- note this is specified as "pairs of parentheses"
-    result[["Parenth"]] <- min(c(stringi::stri_count_fixed(x, "("),
-                                 stringi::stri_count_fixed(x, ")"))) / result[["WC"]] * 100
-    
+    result[["Parenth"]] <-
+        min(c(stringi::stri_count_fixed(x, "("),
+              stringi::stri_count_fixed(x, ")"))) / result[["WC"]] * 100
+
     # OtherP
-    result[["OtherP"]] <- stringi::stri_count_charclass(x, "\\p{Po}") / result[["WC"]] * 100
-    
+    result[["OtherP"]] <-
+        stringi::stri_count_charclass(x, "\\p{Po}") / result[["WC"]] * 100
+
     # format the result
-    result[, which(names(result)=="Sixltr") : ncol(result)] <-
-        format(result[, which(names(result)=="Sixltr") : ncol(result)],
+    result[, which(names(result) == "Sixltr") : ncol(result)] <-
+        format(result[, which(names(result) == "Sixltr") : ncol(result)],
                digits = 4, trim = TRUE)
-    
+
     result
 }
-

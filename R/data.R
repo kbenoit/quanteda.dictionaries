@@ -110,4 +110,3 @@
 
 # save(testphrases, file = "data/testphrases.RData")
 # writeLines(testphrases, "inst/extdata/testphrases.txt")
-

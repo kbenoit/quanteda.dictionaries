@@ -42,8 +42,8 @@ Linguistic Inquiry and Word Count standalone software distributed at
   segmenting the text.  While this function does not supply segmentation
   options, you can easily achieve the same effect by converting the input
   object into a corpus (if it is not already a corpus) and using
-  \code{\link[quanteda]{corpus_reshape}} or \code{\link[quanteda]{corpus_segment}} 
-  to split the input texts into smaller units based on user-supplied tags, 
+  \code{\link[quanteda]{corpus_reshape}} or \code{\link[quanteda]{corpus_segment}}
+  to split the input texts into smaller units based on user-supplied tags,
   sentence, or paragraph boundaries.
 }
 
@@ -51,7 +51,7 @@ Linguistic Inquiry and Word Count standalone software distributed at
 liwcalike(data_char_testphrases)
 
 # examples for comparison
-txt <- c("The red-shirted lawyer gave her yellow-haired, red nose ex-boyfriend $300 
+txt <- c("The red-shirted lawyer gave her yellow-haired, red nose ex-boyfriend $300
             out of pity:(.")
 myDict <- quanteda::dictionary(list(people = c("lawyer", "boyfriend"),
                           colorFixed = "red",
