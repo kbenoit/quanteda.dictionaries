@@ -10,6 +10,7 @@
 #'   supplied for analysis
 #' @param tolower convert to common (lowser) case before tokenizing
 #' @param verbose if \code{TRUE} print status messages during processing
+#' @param digits how many significant digits to print for percentage quantities
 #' @param ... options passed to \code{\link[quanteda]{tokens}} offering
 #'   finer-grained control over how "words" are defined
 #' @return a data.frame object containing the analytic results, one row per
@@ -65,52 +66,55 @@ liwcalike.corpus <- function(x, ...) {
 
 #' @rdname liwcalike
 #' @export
-liwcalike.character <- function(x, dictionary = NULL, tolower = TRUE, verbose = TRUE, ...) {
+liwcalike.character <- function(x, dictionary = NULL, tolower = TRUE, verbose = TRUE, digits = 2, ...) {
 
-    ## initialize results data.frame
-    ## similar to "Filename" and Segment
+    # initialize results data.frame: similar to "Filename" and "Segment"
     result <-
         data.frame(docname = if (is.null(names(x))) paste0("text", 1:length(x)) else names(x),
                    Segment = 1:length(x), row.names = NULL, stringsAsFactors = FALSE)
 
-    ## get readability before lowercasing
-    WPS <- quanteda::textstat_readability(x, "meanSentenceLength") #, ...)
+    # get readability before lowercasing
+    WPS <- quanteda::textstat_readability(x, "meanSentenceLength")[["meanSentenceLength"]]
 
-    ## tokenize and form the dfm
+    # tokenize
     toks <- quanteda::tokens(x, remove_hyphens = TRUE)
 
-    ## lower case the texts if required
+    # lower case the texts if required
     if (tolower)
         toks <- quanteda::tokens_tolower(toks)
 
-    ## form the dfm
-    dfmDict <- quanteda::dfm(toks, dictionary = dictionary, verbose = FALSE)
-
-    ## WC
+    # WC
     result[["WC"]] <- quanteda::ntoken(toks)
-    # maybe this should be ntoken(dfmAll) - does LIWC count punctuation??
 
-    ## no implementation for: Analytic	Clout	Authentic	Tone
+    # apply the dictionary, if supplied
+    if (!is.null(dictionary)) toks <- tokens_lookup(toks, dictionary)
 
-    ## WPS (mean words per sentence)
+    # no implementation for: Analytic	Clout	Authentic	Tone
+
+    # WPS (mean words per sentence)
     result[["WPS"]] <- WPS
 
-    ## Sixltr
+    # Sixltr
     result[["Sixltr"]] <-
         sapply(toks, function(y) sum(stringi::stri_length(y) > 6)) / result[["WC"]] * 100
 
-    ## Dic (percentage of words in the dictionary)
-    comp_toks <- tokens_compound(toks, dictionary)
-    comp_match <- tokens_select(comp_toks, dictionary)
-    result[["Dic"]] <- if (!is.null(dictionary)) ntoken(comp_match) / ntoken(comp_toks) * 100 else NA
+    # Dic (percentage of words in the dictionary)
+    result[["Dic"]] <- if (!is.null(dictionary)) {
+        ntoken(toks) / result[["WC"]] * 100
+    } else {
+        as.numeric(NA)
+    }
 
     ## add the dictionary counts, transformed to percentages of total words
-    if (!is.null(dictionary))
+    # form the dfm
+    if (!is.null(dictionary)) {
+        dfmdict <- quanteda::dfm(toks, verbose = FALSE)
         result <- cbind(result,
-                        as.data.frame(as.matrix(dfmDict) / matrix(rep(result[["WC"]], each = nfeat(dfmDict)), ncol = nfeat(dfmDict), byrow = TRUE),
-                                      row.names = 1:nrow(result)) * 100)
+                        as.data.frame(as.matrix(dfmdict) / matrix(rep(result[["WC"]], each = nfeat(dfmdict)), ncol = nfeat(dfmdict), byrow = TRUE),
+                                      row.names = seq_len(nrow(result))) * 100)
+    }
 
-    ## punctuation counts
+    # --- punctuation counts
     # AllPunc
     result[["AllPunc"]] <- stringi::stri_count_charclass(x, "\\p{P}") /
         result[["WC"]] * 100
@@ -157,9 +161,10 @@ liwcalike.character <- function(x, dictionary = NULL, tolower = TRUE, verbose = 
         stringi::stri_count_charclass(x, "\\p{Po}") / result[["WC"]] * 100
 
     # format the result
-    result[, which(names(result) == "Sixltr") : ncol(result)] <-
-        format(result[, which(names(result) == "Sixltr") : ncol(result)],
-               digits = 4, trim = TRUE)
+    round_index <- which(names(result) == "Sixltr") : ncol(result)
+    if (is.null(dictionary))
+        round_index <- setdiff(round_index, which(names(result) == "Dic"))
+    result[, round_index] <- round(result[, round_index], digits = digits)
 
     result
 }

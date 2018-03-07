@@ -23,3 +23,19 @@ test_that("test dictionary count etc.", {
     expect_equivalent(round(as.numeric(myCount$Period[1]), 2),
                       round(num_Period, 2))
 })
+
+test_that("object class types are data.frame", {
+    txt <- c("The red-shirted lawyer gave her ex-boyfriend $300 out of pity :(.",
+             "The green-shirted lawyer gave her $300 out of pity :(.")
+    dict <- quanteda::dictionary(list(people = c("lawyer", "boyfriend"),
+                                        stopwords = c("out", "of", "the")))
+    liwcout <- liwcalike(txt, dictionary = dict)
+    expect_true(
+        all(apply(liwcout[, which(names(liwcout) == "WC") : ncol(liwcout)], 2, is.numeric))
+    )
+    liwcout <- liwcalike(txt, dictionary = NULL)
+    expect_true(all(is.na(liwcout$Dic)))
+
+    expect_true(all(is.integer(liwcout$Segment)))
+    expect_true(all(is.integer(liwcout$WC)))
+})

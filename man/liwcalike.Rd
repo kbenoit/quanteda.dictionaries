@@ -11,7 +11,7 @@ liwcalike(x, ...)
 \method{liwcalike}{corpus}(x, ...)
 
 \method{liwcalike}{character}(x, dictionary = NULL, tolower = TRUE,
-  verbose = TRUE, ...)
+  verbose = TRUE, digits = 2, ...)
 }
 \arguments{
 \item{x}{input object, a \pkg{quanteda} \link[quanteda]{corpus} or character
@@ -26,6 +26,8 @@ supplied for analysis}
 \item{tolower}{convert to common (lowser) case before tokenizing}
 
 \item{verbose}{if \code{TRUE} print status messages during processing}
+
+\item{digits}{how many significant digits to print for percentage quantities}
 }
 \value{
 a data.frame object containing the analytic results, one row per
