@@ -25,8 +25,8 @@ data(data_corpus_movies, package = "quanteda.corpora")
 output_nrc <- liwcalike(data_corpus_movies, data_dictionary_NRC)
 head(output_nrc)
 
-## ----fig.width=8, fig.height=6-------------------------------------------
-output_nrc$net_positive <- as.numeric(output_nrc$positive) - as.numeric(output_nrc$negative)
+## ----fig.width=7, fig.height=6-------------------------------------------
+output_nrc$net_positive <- output_nrc$positive - output_nrc$negative
 output_nrc$sentiment <- docvars(data_corpus_movies, "Sentiment")
 
 library(ggplot2)
@@ -38,11 +38,11 @@ ggplot(output_nrc, aes(x = sentiment, y = net_positive)) +
          y = "Net positive sentiment",
          main = "NRC Sentiment Dictionary")
 
-## ----fig.width=8, fig.height=6-------------------------------------------
+## ----fig.width=7, fig.height=6-------------------------------------------
 output_geninq <- liwcalike(data_corpus_movies, data_dictionary_geninqposneg)
 names(output_geninq)
 
-output_geninq$net_positive <- as.numeric(output_geninq$positive) - as.numeric(output_geninq$negative)
+output_geninq$net_positive <- output_geninq$positive - output_geninq$negative
 output_geninq$sentiment <- docvars(data_corpus_movies, "Sentiment")
 
 ggplot(output_geninq, aes(x = sentiment, y = net_positive)) +
@@ -51,7 +51,7 @@ ggplot(output_geninq, aes(x = sentiment, y = net_positive)) +
          y = "Net positive sentiment", 
          main = "General Inquirer Sentiment Association")
 
-## ----fig.width=8, fig.height=6-------------------------------------------
+## ----fig.width=7, fig.height=6-------------------------------------------
 cor.test(output_nrc$net_positive, output_geninq$net_positive)
 
 cor_dictionaries <- data.frame(
@@ -82,7 +82,7 @@ inaug_corpus_paragraphs <- corpus_reshape(data_corpus_inaugural, to = "paragraph
 ndoc(inaug_corpus_paragraphs)
 
 ## ------------------------------------------------------------------------
-output_paragraphs <- liwcalike(inaug_corpus_paragraphs, data_dictionary_LSD2015)
+output_paragraphs <- liwcalike(inaug_corpus_paragraphs, data_dictionary_NRC)
 head(output_custom_dict)
 
 ## ---- eval=FALSE---------------------------------------------------------
