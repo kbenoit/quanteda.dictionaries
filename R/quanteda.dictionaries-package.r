@@ -5,4 +5,3 @@
 #' @name quanteda.dictionaries
 #' @docType package
 NULL
-

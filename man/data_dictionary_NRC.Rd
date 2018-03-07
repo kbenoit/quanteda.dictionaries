@@ -18,8 +18,7 @@ Available in 40 different languages.
 }
 \references{
 Saif Mohammad and Peter Turney (2013). "Crowdsourcing a
-  Word-Emotion Association Lexicon."  \emph{Computational Intelligence} 29
-  (3), 436-465.
+  Word-Emotion Association Lexicon." \emph{Computational Intelligence} 29(3), 436-465.
 
   Saif Mohammad and Peter Turney (2010). "Emotions Evoked by Common Words and
   Phrases: Using Mechanical Turk to Create an Emotion Lexicon." In

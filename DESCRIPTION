@@ -11,12 +11,18 @@ License: MIT + file LICENSE
 Depends:
     R (>= 3.1.0)
 Imports:
-    quanteda
+    quanteda (>= 0.99),
+    stringi
 Suggests:
     knitr,
     rmarkdown,
     testthat,
-    covr
+    covr,
+    ggplot2,
+    quanteda.corpora
+Remotes:
+    quanteda/quanteda.corpora
 Encoding: UTF-8
 LazyData: true
+VignetteBuilder: knitr
 RoxygenNote: 6.0.1

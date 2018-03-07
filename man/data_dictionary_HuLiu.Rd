@@ -3,7 +3,7 @@
 \docType{data}
 \name{data_dictionary_HuLiu}
 \alias{data_dictionary_HuLiu}
-\title{positive and negative words from Hu and Liu (2004)}
+\title{Positive and negative words from Hu and Liu (2004)}
 \format{An object of class \code{dictionary2} of length 2.}
 \source{
 \url{http://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html}
@@ -23,8 +23,6 @@ Minqing Hu and Bing Liu. "Mining and Summarizing Customer
 
   Bing Liu, Minqing Hu and Junsheng Cheng. "Opinion Observer: Analyzing and
   Comparing Opinions on the Web." Proceedings of the 14th International World
-  Wide Web conference (WWW-2005), May 10-14, 2005, Chiba, Japan. Young, L.
-  and Soroka, S. 2012. \emph{Lexicoder Sentiment Dictionary}. Available at
-  \url{http://lexicoder.com}.
+  Wide Web conference (WWW-2005), May 10-14, 2005, Chiba, Japan.
 }
 \keyword{data}
