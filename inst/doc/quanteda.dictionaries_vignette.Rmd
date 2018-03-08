@@ -1,10 +1,10 @@
 ---
-title: "Using dictionaries with quanteda"
+title: "Dictionary-based text analysis and UK-US spelling conversion with quanteda"
 author: "Stefan Müller and Kenneth Benoit"
 output: 
   rmarkdown::html_vignette:
 vignette: >
-  %\VignetteIndexEntry{Using dictionaries with quanteda}
+  %\VignetteIndexEntry{Dictionary-based text analysis and UK-US spelling conversion with quanteda}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,16 +15,18 @@ knitr::opts_chunk$set(collapse = TRUE,
                       comment = "##")
 ```
 
-## 1. Introduction
+# 1. Introduction
 
-Built on the [**quanteda**](http://www.quanteda.io) package for text analysis, **quanteda.dictionaries** consists of dictionaries for text analysis and associated utilities. In this vignette, we show how to replicate the main features of the [LIWC software](https://liwc.wpengine.com/compare-versions/) with packages provided by the Quanteda Initiative. If you prefer to have a complete, stand-alone user interface, then you should purchase and use the [LIWC standalone software](http://liwc.wpengine.com).
+Built on the [**quanteda**](http://www.quanteda.io) package for text analysis, **quanteda.dictionaries** consists of dictionaries for text analysis and associated utilities. In this vignette, we show how to replicate the main features of the [LIWC software](https://liwc.wpengine.com/compare-versions/) with packages provided by the Quanteda Initiative. If you prefer to have a complete, stand-alone user interface, then you should purchase and use the [LIWC standalone software](http://liwc.wpengine.com). Moreover, the package contains dictionaries to homogenize (or homogenise!) the spellings of US and British English.
 
-```{r eval = TRUE, message = FALSE}
+# 2. Using dictionaries with quanteda
+
+```{r eval=TRUE, warning=FALSE, message=FALSE}
 library(quanteda)
 library(quanteda.dictionaries)
 ```
 
-## 2. Accessing texts
+## 2.1 Accessing texts
 
 To access texts for scoring sentiment, we will use the movie reviews corpus from Pang, Lee, and Vaithyanathan (2002), found in the [**quanteda.corpora**](http://github.com/quanteda/quanteda.corpora) package. This requires that you have installed that package.  (If you want to use your own texts, we recommend the [**readtext**](https://github.com/quanteda/readtext) package for reading in your texts.)
 
@@ -33,7 +35,7 @@ data(data_corpus_movies, package = "quanteda.corpora")
 ```
 
 
-## 3. Analyze sentiment
+## 2.2 Analyze sentiment
 
 Next, we analyze sentiment of text.  If you have purchased the LIWC dictionary, you can load it as a **quanteda**-formatted dictionary in the following way. 
 
@@ -107,7 +109,7 @@ ggplot(data = cor_dictionaries, aes(x = nrc, y = geninq)) +
          main = "Correlation for Net Positive Sentiment in Movie Reviews")
 ```
 
-## 4. User-created dictionaries
+## 2.3 User-created dictionaries
 
 The LIWC software allows to build custom dictionaries created for specific research questions. With **quanteda**'s `dictionary()` function we can do the same. 
 
@@ -120,7 +122,7 @@ output_custom_dict <- liwcalike(data_corpus_movies, mydict)
 head(output_custom_dict)
 ```
 
-## 5. Apply dictionary to segmented text
+## 2.4 Apply dictionary to segmented text
 
 LIWC provides easy segmentation, through a GUI. With functions from the **quanteda** package, you can segment the texts yourself using `corpus_reshape()` or `corpus_segment()`. In the following example, we divide up the inaugural speeches by paragraphs and apply a sentiment dictionary.
 
@@ -142,7 +144,7 @@ output_paragraphs <- liwcalike(inaug_corpus_paragraphs, data_dictionary_NRC)
 head(output_custom_dict)
 ```
 
-## 6. Export output to a spreadsheet
+## 2.5 Export output to a spreadsheet
 
 The LIWC software allows you to export the output from the dictionary analysis to a spreadsheet. We can also do this with **write.csv** or use packages such as **haven** or **rio** to save the `data.frame` in a custom file format.
 
@@ -155,6 +157,41 @@ write.csv(output_custom_dict, file = "output_dictionary.csv",
 library(rio)
 rio::export(output_custom_dict, file = "output_dictionary.xlsx")
 ```
+
+
+# 3. Homogeni[zs]e British and US English
+
+**quanteda.dictionaries** contains a English UK-US spelling conversion dictionary which provide the ability to homogeni[zs]e the spellings of English by converting the spelling variants of one language to the other. The dictionary contains 1,800 roots and derivitives which are accessible [online](http://www.tysto.com/uk-us-spelling-list.html).
+
+
+```{r}
+txt <- c(uk = "endeavour to prioritise honour over esthetics",
+         us = "endeavor to prioritize honor over aesthetics")
+toks <- quanteda::tokens(txt)
+```
+
+If we want to change words from British English to US English we can use `tokens_replace()` from the **quanteda** package in combination with `data_dictionary_uk2us`.
+
+```{r}
+quanteda::tokens_replace(toks, data_dictionary_uk2us)
+```
+
+To make all speelings British, we use `data_dictionary_us2uk` instead.
+
+```{r}
+quanteda::tokens_replace(toks, data_dictionary_us2uk)
+```
+
+We can see the difference that this makes when converting the texts to a document-feature matrix:
+
+```{r}
+# original dfm
+quanteda::dfm(toks)
+
+# homogeni[zs]ed dfm
+quanteda::dfm(quanteda::tokens_replace(toks, data_dictionary_uk2us))
+```
+
 
 ## References
 
