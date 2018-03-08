@@ -1,7 +1,10 @@
 quanteda.dictionaries
 ================
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/quanteda.dictionaries)](https://cran.r-project.org/package=quanteda.dictionaries) [![Travis-CI Build Status](https://travis-ci.org/kbenoit/quanteda.dictionaries.svg?branch=master)](https://travis-ci.org/kbenoit/quanteda.dictionaries) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/kbenoit/quanteda.dictionaries?branch=master&svg=true)](https://ci.appveyor.com/project/kbenoit/quanteda.dictionaries) [![Coverage Status](https://img.shields.io/codecov/c/github/kbenoit/quanteda.dictionaries/master.svg)](https://codecov.io/github/kbenoit/quanteda.dictionaries?branch=master)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/quanteda.dictionaries)](https://cran.r-project.org/package=quanteda.dictionaries)
+[![Travis-CI Build Status](https://travis-ci.org/kbenoit/quanteda.dictionaries.svg?branch=master)](https://travis-ci.org/kbenoit/quanteda.dictionaries)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/kbenoit/quanteda.dictionaries?branch=master&svg=true)](https://ci.appveyor.com/project/kbenoit/quanteda.dictionaries) 
+[![Coverage Status](https://img.shields.io/codecov/c/github/kbenoit/quanteda.dictionaries/master.svg)](https://codecov.io/github/kbenoit/quanteda.dictionaries?branch=master)
 
 An R package consisting of dictionaries for text analysis and associated utilities. Designed to be used with [**quanteda**](http://quanteda.io) but can be used more generally with any text analytic package (e.g. **tidytext**, **tm**, etc.).
 
@@ -16,16 +19,13 @@ devtools::install_github("kbenoit/quanteda.dictionaries")
 Demonstration
 -------------
 
-### 1. Apply Dictionaries to a Corpus
-
 With the `liwcalike()` function from the **quanteda.dictionaries** package, you can easily analyze text corpora using exising or custom dictionaries. Here we show how to apply the Lexicoder Sentiment Dictionary (Young and Soroka 2012) to a corpus consting of 2000 movie reviews (from the **quanteda.corpora** package).
 
 ``` r
-library(quanteda)
-library(quanteda.dictionaries)
-library(quanteda.corpora)
+library("quanteda.dictionaries")
 
-output_lsd <- liwcalike(quanteda.corpora::data_corpus_movies, data_dictionary_NRC)
+output_lsd <- liwcalike(quanteda.corpora::data_corpus_movies, 
+                        dictionary = data_dictionary_NRC)
 
 head(output_lsd)
 ```
@@ -51,47 +51,6 @@ head(output_lsd)
     ## 4   3.37  4.38  0.00  0.00  0.51   0.00 4.71  7.58    4.21       0  15.82
     ## 5   4.24  6.19  0.69  0.23  0.11   0.00 1.95  2.18    1.72       0  13.65
     ## 6   4.65  3.98  0.13  0.00  0.00   0.00 0.53  0.93    0.40       0   9.69
-
-Formats
--------
-
-### Current
-
--   quanteda
-
-### Planned
-
--   `as.yaml()`
--   `as.list()`
--   `c.dictionary()`
--   `data.frame` in long format with `word` and `sentiment` columns to use dictionaries in **tidytext**
-
-Future development plans
-------------------------
-
-### Adding more dictionaries
-
--   [AFINN](http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010)
-
--   [Affective Norms for English Words (ANEW)](http://csea.phhp.ufl.edu/media/anewmessage.html)
-
--   [vaderSentiment](https://github.com/cjhutto/vaderSentiment)
-
--   [Other dictionaries at the Provalis page](https://provalisresearch.com/products/content-analysis-software/wordstat-dictionary/)
-
--   [Moral Foundations Dictionary](http://www.moralfoundations.org/othermaterials)
-
--   [Loughran and McDonald Financial Sentiment](http://www3.nd.edu/~mcdonald/Word_Lists.html) See also [here](http://sraf.nd.edu/textual-analysis/resources/).
-
--   [SentiWS Sentiment Dictionary (German)](http://wortschatz.uni-leipzig.de/en/download/)
-
-### Copyright information
-
-Probably need to list the (c) from each dictionary here.
-
-### Multi-lingual support
-
-Some dictionaries are available in multiple languages - the package should have a way to retrieve that. Maybe a `summary()` method for the dictionaries that indicates the languages available?
 
 Code of Conduct
 ---------------
