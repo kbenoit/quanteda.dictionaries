@@ -2,7 +2,7 @@
 knitr::opts_chunk$set(collapse = TRUE, 
                       comment = "##")
 
-## ----eval = TRUE, message = FALSE----------------------------------------
+## ----eval=TRUE, warning=FALSE, message=FALSE-----------------------------
 library(quanteda)
 library(quanteda.dictionaries)
 
@@ -93,4 +93,22 @@ head(output_custom_dict)
 #  # save as Excel file (xlsx)
 #  library(rio)
 #  rio::export(output_custom_dict, file = "output_dictionary.xlsx")
+
+## ------------------------------------------------------------------------
+txt <- c(uk = "endeavour to prioritise honour over esthetics",
+         us = "endeavor to prioritize honor over aesthetics")
+toks <- quanteda::tokens(txt)
+
+## ------------------------------------------------------------------------
+quanteda::tokens_replace(toks, data_dictionary_uk2us)
+
+## ------------------------------------------------------------------------
+quanteda::tokens_replace(toks, data_dictionary_us2uk)
+
+## ------------------------------------------------------------------------
+# original dfm
+quanteda::dfm(toks)
+
+# homogeni[zs]ed dfm
+quanteda::dfm(quanteda::tokens_replace(toks, data_dictionary_uk2us))
 
