@@ -99,6 +99,26 @@
 #' @keywords data
 "data_dictionary_RID"
 
+#' SentimentWortschatz (SentiWS)
+#'
+#' A \pkg{quanteda} \link[quanteda]{dictionary} object containing 
+#' SentimentWortschatz (SentiWS), a publicly available German-language resource 
+#' for sentiment analysis. The current version of SentiWS contains 1,650 positive 
+#' and 1,818 negative words, which sum up to 15,649 positive and 15,632 negative 
+#' word forms incl. their inflections. It not only contains adjectives and adverbs 
+#' explicitly expressing a sentiment, but also nouns and verbs implicitly containing one. 
+#' The original dictionary weigths within the interval of -1 to 1. 
+#' Note that the version implemented in \pkg{quanteda.dictionaries} uses a binary classification into 
+#' positive (weigth >0) and negative (weigth <0) features.  
+#' 
+#' @references
+#'   Remus, R., Quasthoff U., and Heyer, G. (2010). "SentiWS - a Publicly Available 
+#'   German-language Resource for Sentiment Analysis." In \emph{Proceedings of 
+#'   the 7th International Language Ressources and Evaluation (LREC'10)}: 1168-1171.
+#'
+#'   SentiWS webpage: \url{http://wortschatz.uni-leipzig.de/en/download/}
+#' @keywords data
+"data_dictionary_sentiws"
 
 #' Sample short documents for testing
 #'
