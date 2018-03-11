@@ -1,4 +1,4 @@
-%		
+%
 01                    HarmVirtue
 02                    HarmVice
 03                    FairnessVirtue
@@ -10,31 +10,30 @@
 09                    PurityVirtue
 10                    PurityVice
 11                    MoralityGeneral
-%		
-		
+%
 safe*			01
 peace*			01
-compassion*		01	
+compassion*		01
 empath*			01
-sympath*		01	
+sympath*		01
 care			01
 caring			01
-protect*		01	
+protect*		01
 shield			01
 shelter			01
 amity			01
-secur*			01     
-benefit*        	01           
-defen*			01 
+secur*			01
+benefit*        	01
+defen*			01
 guard*			01
-preserve		01 07 09         
-		
+preserve		01 07 09
+
 harm*			02
 suffer*			02
-war			02        
-wars			02        
-warl*			02        
-warring			02        
+war			02
+wars			02
+warl*			02
+warring			02
 fight*			02
 violen*			02
 hurt*			02
@@ -43,14 +42,14 @@ kills			02
 killer*			02
 killed			02
 killing			02
-endanger*		02	
+endanger*		02
 cruel*			02
 brutal*			02
 abuse*			02
 damag*			02
 ruin*			02 10
 ravage			02
-detriment*		02            
+detriment*		02
 crush*			02
 attack*			02
 annihilate*		02
@@ -58,13 +57,13 @@ destroy			02
 stomp			02
 abandon*		02 06
 spurn			02
-impair			02             
-exploit			02 10            
+impair			02
+exploit			02 10
 exploits		02 10
 exploited		02 10
 exploiting		02 10
 wound*			02
-		
+
 fair			03
 fairly			03
 fairness		03
@@ -75,25 +74,25 @@ equal*			03
 justice			03
 justness		03
 justifi*		03
-reciproc*		03	
-impartial*		03	
-egalitar*		03	
-rights			03         
+reciproc*		03
+impartial*		03
+egalitar*		03
+rights			03
 equity			03
 evenness		03
-equivalent		03	
+equivalent		03
 unbias*			03
 tolerant		03
 equable			03
-balance*		03           
+balance*		03
 homologous		03
 unprejudice*		03
 reasonable		03
 constant		03
 honest*			03 11
-		
+
 unfair*			04
-unequal*		04	
+unequal*		04
 bias*			04
 unjust*			04
 injust*			04
@@ -109,17 +108,16 @@ preference		04
 favoritism		04
 segregat*		04 05
 exclusion		04
-exclud*			04         
-		
-together		05	
+exclud*			04
+together		05
 nation*			05
-homeland*		05	
+homeland*		05
 family			05
 families		05
 familial		05
 group			05
 loyal*			05 07
-patriot*		05	
+patriot*		05
 communal		05
 commune*		05
 communit*		05
@@ -139,15 +137,14 @@ cliqu*			05
 cohort			05
 ally			05
 insider			05
-		
-foreign*		06	
+foreign*		06
 enem*			06
 betray*			06 08
-treason*		06 08	
-traitor*		06 08	
-treacher*		06 08	
-disloyal*		06 08	
-individual*		06	
+treason*		06 08
+traitor*		06 08
+treacher*		06 08
+disloyal*		06 08
+individual*		06
 apostasy		06 08 10
 apostate		06 08 10
 deserted		06 08
@@ -161,9 +158,7 @@ spy			06
 sequester		06
 renegade		06
 terroris*		06
-immigra*		06		
-
-
+immigra*		06
 obey*			07
 obedien*		07
 duty			07
@@ -172,7 +167,7 @@ lawful*			07 11
 legal*			07 11
 duti*			07
 honor*			07
-respect			07	
+respect			07
 respectful*		07
 respected		07
 respects		07
@@ -182,11 +177,11 @@ mother			07
 motherl*		07
 mothering		07
 mothers			07
-tradition*		07	
-hierarch*		07	
-authorit*		07	
+tradition*		07
+hierarch*		07
+authorit*		07
 permit			07
-permission		07	
+permission		07
 status*			07
 rank*			07
 leader*			07
@@ -207,12 +202,11 @@ defer			07
 revere*			07
 venerat*		07
 comply			07
-		
 defian*			08
 rebel*			08
-dissent*		08	
+dissent*		08
 subver*			08
-disrespect*		08	
+disrespect*		08
 disobe*			08
 sediti*			08
 agitat*			08
@@ -235,7 +229,6 @@ denounce		08
 remonstrate		08
 riot*			08
 obstruct		08
-		
 piety			09 11
 pious			09 11
 purity			09
@@ -245,9 +238,9 @@ steril*			09
 sacred*			09
 chast*			09
 holy			09
-holiness		09	
+holiness		09
 saint*			09
-wholesome*		09 11	
+wholesome*		09 11
 celiba*			09
 abstention		09
 virgin			09
@@ -270,15 +263,14 @@ immaculate		09
 innocent		09
 pristine		09
 church*			09
-		
-disgust*		10	
+disgust*		10
 deprav*			10
-disease*		10	
-unclean*		10	
+disease*		10
+unclean*		10
 contagio*		10
-indecen*		10 11	
+indecen*		10 11
 sin			10
-sinful*			10 
+sinful*			10
 sinner*			10
 sins			10
 sinned			10
@@ -317,16 +309,14 @@ blemish			10
 exploitat*		10
 pervert			10
 wretched*		10 11
-		
-
 righteous*		11
-moral*          	11	
-ethic*          	11	
-value*          	11	
-upstanding      	11	
-good            	11	
-goodness        	11	
-principle*      	11	
+moral*          	11
+ethic*          	11
+value*          	11
+upstanding      	11
+good            	11
+goodness        	11
+principle*      	11
 blameless		11
 exemplary		11
 lesson			11
@@ -345,6 +335,6 @@ wrong*			11
 evil			11
 immoral*		11
 bad			11
-offend*			11 
+offend*			11
 offensive*		11
 transgress*		11
