@@ -31,10 +31,10 @@
 #' NRC Word-Emotion Association Lexicon
 #'
 #' A \pkg{quanteda} \link[quanteda]{dictionary} object containing Mohammad and
-#' Charron's (2010, 2013)  NRC Word-Emotion Association Lexicon (aka NRC Emotion
-#' Lexicon aka EmoLex): association of words with eight emotions (anger, fear,
-#' anticipation, trust, surprise, sadness, joy, and disgust) and two sentiments
-#' (negative and positive) manually annotated on Amazon's Mechanical Turk.
+#' Charron's (2010, 2013) English version of the NRC Word-Emotion Association 
+#' Lexicon (aka NRC Emotion Lexicon aka EmoLex): association of words with eight 
+#' emotions (anger, fear, anticipation, trust, surprise, sadness, joy, and disgust) 
+#' and two sentiments (negative and positive) manually annotated on Amazon's Mechanical Turk.
 #' Available in 40 different languages.
 #' @references
 #'   Saif Mohammad and Peter Turney (2013). "Crowdsourcing a
@@ -52,16 +52,17 @@
 
 #' Positive and negative words from Hu and Liu (2004)
 #'
-#' A \pkg{quanteda} \link[quanteda]{dictionary} object containing the positive
-#' and negative words from Hu and Liu (2004, 2005).
-#' @references Minqing Hu and Bing Liu. "Mining and Summarizing Customer
-#'   Reviews." Proceedings of the ACM SIGKDD International Conference on
-#'   Knowledge Discovery and Data Mining (KDD-2004), Aug 22-25, 2004, Seattle,
-#'   Washington, USA,
+#' A \pkg{quanteda} \link[quanteda]{dictionary} object containing 2,006 positive
+#' and 4,783 negative words from Hu and Liu (2004, 2005).
+#' @references 
+#'   Minqing Hu and Bing Liu. "\href{https://www.cs.uic.edu/~liub/publications/kdd04-revSummary.pdf}{Mining 
+#'   and Summarizing Customer Reviews.}" In \emph{Proceedings of the ACM 
+#'   SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD-2004), 
+#'   Aug 22-25, 2004, Seattle, Washington, USA}.
 #'
-#'   Bing Liu, Minqing Hu and Junsheng Cheng. "Opinion Observer: Analyzing and
-#'   Comparing Opinions on the Web." Proceedings of the 14th International World
-#'   Wide Web conference (WWW-2005), May 10-14, 2005, Chiba, Japan.
+#'   Bing Liu, Minqing Hu and Junsheng Cheng. "\href{https://www.cs.uic.edu/~liub/publications/www05-p536.pdf}{Opinion 
+#'   Observer: Analyzing and Comparing Opinions on the Web.}" In \emph{Proceedings of 
+#'   the 14th International World Wide Web conference (WWW-2005), May 10-14, 2005, Chiba, Japan}.
 #' @source \url{http://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html}
 #' @keywords data
 "data_dictionary_HuLiu"
@@ -70,12 +71,12 @@
 #'
 #' A \pkg{quanteda} \link[quanteda]{dictionary} object containing the
 #' \emph{Positiv} and \emph{Negativ} dictionary entries from the augmented
-#' General Inquirer.  These are new valence categories described at
+#' General Inquirer. These are new valence categories described at
 #' \url{http://www.wjh.harvard.edu/~inquirer/homecat.htm} but also including the
 #' terms from the \href{http://www.wjh.harvard.edu/~inquirer/Yes.html}{yes} and
 #' \href{http://www.wjh.harvard.edu/~inquirer/No.html}{no} dictionary entries.
 #' @references Stone, Philip J., Dexter C. Dunphy, and Marshall S. Smith. 1966.
-#'   \emph{The General Inquirer: A computer approach to content analysis.}
+#'   \emph{The General Inquirer: A Computer Approach to Content Analysis.}
 #'   Cambridge, MA: MIT Press.
 #' @source \url{http://www.wjh.harvard.edu/~inquirer/spreadsheet_guide.htm}
 #' @keywords data
@@ -88,14 +89,13 @@
 #' categories of secondary process cognition, and 7 categories of emotions,
 #' designed by Martindale (1975, 1990) to measure primordial vs. conceptual
 #' thinking.
-#'
 #' @format The dictionary has three levels of nesting, and forms 43 keys in
 #'   total and a total of 3,150 values.
-#' @references Martindale, C. (1975). \emph{Romantic progression: The psychology
-#' of literary history.} Washington, D.C.: Hemisphere.
+#' @references Martindale, C. (1975). \emph{Romantic Progression: The Psychology
+#' of Literary History.} Washington, D.C.: Hemisphere.
 #'
-#' Martindale, C. (1990). \emph{The clockwork muse: The predictability of
-#' artistic change.} New York: Basic Books.
+#' Martindale, C. (1990). \emph{The Clockwork Muse: The Predictability of
+#' Artistic Change.} New York: Basic Books.
 #' @keywords data
 "data_dictionary_RID"
 
@@ -111,9 +111,7 @@
 #' interval of -1 to 1. Note that the version implemented in
 #' \pkg{quanteda.dictionaries} uses a binary classification into positive
 #' (weight > 0) and negative (weight < 0) features.
-#'
 #' @source \url{http://wortschatz.uni-leipzig.de/en/download/}
-#'
 #' @references
 #'   Remus, R., Quasthoff U., and Heyer, G. (2010).
 #'   "\href{http://www.lrec-conf.org/proceedings/lrec2010/pdf/490_Paper.pdf}{SentiWS
@@ -123,6 +121,76 @@
 #'
 #' @keywords data
 "data_dictionary_sentiws"
+
+#' Affective Norms for English Words (AFINN)
+#'
+#' A \pkg{quanteda} \link[quanteda]{dictionary} object containing
+#' the Affective Norms for English Words (AFINN), a publicly available list of 
+#' English words rated for valence with values between -5 (negative) and
+#' +5 (positive). AFINN-111, the latest version, contains 2,477 words and phrases. 
+#' Note that the version implemented in \pkg{quanteda.dictionaries} uses a binary 
+#' classification into 878 positive (valence > 0) and 1,599 negative (valence < 0) 
+#' features.
+#' @source \url{http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010}
+#'
+#' @references
+#'   Nielsen, Finn Å. (2011). "\href{https://arxiv.org/abs/1103.2903}{A new ANEW: 
+#'   Evaluation of a Word List for Sentiment Analysis in Microblogs.}" 
+#'   In \emph{Proceedings of the ESWC2011 Workshop on 'Making Sense of Microposts': 
+#'   Big Things Come in Small Packages}: 93-98.
+#'
+#' @keywords data
+"data_dictionary_AFINN"
+
+#' Moral Foundations Dictionary
+#'
+#' A \pkg{quanteda} \link[quanteda]{dictionary} object containing
+#' the Moral Foundations Dictionary, a publicly available dictionaries with
+#' information on the proportions of virtue and vice words for each foundation. 
+#' The categories are harm (vice/virtue), fairness (vice/virtue), ingroup (vice/virtue), 
+#' authority (vice/virtue), purity (vice/virtue) and morality (general).
+#' @source \url{http://moralfoundations.org/othermaterials}
+#' @references
+#' 
+#'   Haidt, J., Graham, J., and Nosek, B.A. (2009). "Liberals and Conservatives 
+#'   Rely on Different Sets of Moral Foundations. \emph{Journal of Personality and Social
+#'   Inquiry} 20(2-3): 110-119.
+#'   
+#'   Graham, J., and Haidt, J. (2016). \href{http://moralfoundations.org/othermaterials}{Moral 
+#'   Foundations Dictionary.}: \url{http://moralfoundations.org/othermaterials}.
+#' @keywords data
+"data_dictionary_MFD"
+
+#' Laver and Garry Dictionary of Policy Positions
+#'
+#' A \pkg{quanteda} \link[quanteda]{dictionary} object containing the Laver and Garry 
+#' dictionary which been developed to estimates the policy positions of political actors 
+#' in the United Kingdom by comparing their speeches and written documents to key words 
+#' found in the British Conservative and Labour manifestos of 1992. Note: Please remember 
+#' that this dictionary was customized to reflect the policy positions of UK political parties. 
+#' @format The dictionary has two levels of nesting with 7 main policy areas (level 1) divided up into 19 
+#' sub-categories (level 2).
+#' @source \url{https://provalisresearch.com/products/content-analysis-software/wordstat-dictionary/laver-garry-dictionary-of-policy-position/}
+#' @references
+#'   Laver. M., and Garry, J. (2000). "Estimating Policy Positions from Political Texts." 
+#'   \emph{American Journal of Political Science} 44(3): 619-634.
+#' @keywords data
+"data_dictionary_LaverGarry"
+
+#' Loughran and McDonald Sentiment Word Lists
+#'
+#' A \pkg{quanteda} \link[quanteda]{dictionary} object containing
+#' the 2014 version of the Loughran and McDonald Sentiment Word Lists. The 
+#' categories are "negative" (2355 features), "positive" (354), "uncertainty" (297), "litigious" (903), 
+#' "constraining" (184), "superfluous" (56), "interesting" (68), "modal words strong" (68) 
+#' and "modal words weak" (0). 
+#' @source \url{http://sraf.nd.edu/textual-analysis/resources/}
+#' @references
+#'   Loughran, T., and McDonald, B. (2011). "When is a 
+#'   Liability not a Liability? Textual Analysis, Dictionaries, and 10-Ks." 
+#'   \emph{Journal of Finance} 66(1): 35-65.
+#' @keywords data
+"data_dictionary_LoughranMcDonald"
 
 #' Sample short documents for testing
 #'

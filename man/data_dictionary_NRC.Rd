@@ -10,10 +10,10 @@ data_dictionary_NRC
 }
 \description{
 A \pkg{quanteda} \link[quanteda]{dictionary} object containing Mohammad and
-Charron's (2010, 2013)  NRC Word-Emotion Association Lexicon (aka NRC Emotion
-Lexicon aka EmoLex): association of words with eight emotions (anger, fear,
-anticipation, trust, surprise, sadness, joy, and disgust) and two sentiments
-(negative and positive) manually annotated on Amazon's Mechanical Turk.
+Charron's (2010, 2013) English version of the NRC Word-Emotion Association 
+Lexicon (aka NRC Emotion Lexicon aka EmoLex): association of words with eight 
+emotions (anger, fear, anticipation, trust, surprise, sadness, joy, and disgust) 
+and two sentiments (negative and positive) manually annotated on Amazon's Mechanical Turk.
 Available in 40 different languages.
 }
 \references{

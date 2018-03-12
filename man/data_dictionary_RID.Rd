@@ -17,10 +17,10 @@ designed by Martindale (1975, 1990) to measure primordial vs. conceptual
 thinking.
 }
 \references{
-Martindale, C. (1975). \emph{Romantic progression: The psychology
-of literary history.} Washington, D.C.: Hemisphere.
+Martindale, C. (1975). \emph{Romantic Progression: The Psychology
+of Literary History.} Washington, D.C.: Hemisphere.
 
-Martindale, C. (1990). \emph{The clockwork muse: The predictability of
-artistic change.} New York: Basic Books.
+Martindale, C. (1990). \emph{The Clockwork Muse: The Predictability of
+Artistic Change.} New York: Basic Books.
 }
 \keyword{data}
