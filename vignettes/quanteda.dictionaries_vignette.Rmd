@@ -103,7 +103,6 @@ cor_dictionaries <- data.frame(
 
 ggplot(data = cor_dictionaries, aes(x = nrc, y = geninq)) + 
     geom_point(alpha = 0.2) +
-    geom_smooth() + 
     labs(x = "NRC Word-Emotion Association Lexicon",
          y = "General Inquirer Net Positive Sentiment",
          main = "Correlation for Net Positive Sentiment in Movie Reviews")

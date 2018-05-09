@@ -221,9 +221,7 @@
 #' toks2 <- quanteda::tokens_compound(toks1, data_dictionary_Rauh, concatenator = " ")
 #' 
 #' # Apply dictionary
-#' toks2 %>%
-#'     quanteda::dfm() %>%
-#'     quanteda::dfm_lookup(data_dictionary_Rauh) 
+#' dfm(toks2, dictionary = data_dictionary_Rauh) 
 #' @keywords data
 "data_dictionary_Rauh"
 
