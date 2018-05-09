@@ -19,27 +19,43 @@ data_dictionary_Rauh
 }
 \description{
 A \pkg{quanteda} \link[quanteda]{dictionary} object containing 
-the dictionaries provided in Rauh (forthcoming). The augmented German sentiment
-dictionary is based on SentiWS and GermanPolarityClues. Rauh assesses its performance against human intuition in parliamentary speeches, party manifestos and media coverage.
-Note that a combination of \link[quanteda]{tokens_replace} and \link[quanteda]{tokens_compound} is currently required to harmonize the five German bi-gram negations. The example below show how to conduct this transformation. Note that the process changes the the terms "nicht|nichts|kein|keine|keinen" to joint term and thus replaces some of the original features of the corpus.
+the dictionaries provided in Rauh (forthcoming). Rauh assesses its performance against human 
+intuition of sentiment in German political language (parliamentary speeches, party manifestos, and media coverage). 
+The resource builds on, harmonizes and extends the SentiWS (Remus et al. 2010) and GermanPolarityClues (Waltinger 2010) dictionaries. 
+In order to use the negation correction provided by the dictionary, currently a combination of 
+\link[quanteda]{tokens_replace} and \link[quanteda]{tokens_compound} is required to harmonize the 
+five covered bi-gram patterns prior to scoring. The example below shows how to conduct this transformation. 
+Note that the process changes the terms "nicht|nichts|kein|keine|keinen" to a joint term altering 
+some of the features of the original corpus.
 }
 \examples{
-replace German negation terms and compound neg_negative and neg_positive
-toks <- quanteda::tokens("nicht schlecht dieses wunderschöne Wetter")
+# Tokenize example text
+toks <- quanteda::tokens("nicht schlecht dieses wunderschöne Wörterbuch")
+# Replace negation markers with "not"
+toks1 <- quanteda::tokens_replace(toks, pattern = c("nicht", "nichts", "kein", "keine", "keinen"), 
+rep("not", 5)) 
 
-# replace negations with "not".
-toks1 <- quanteda::tokens_replace(toks, pattern = c("nicht", "nichts", "kein", "keine", "keinen"), rep("not", 5)) 
+# Compound bi-gram negation patterns
+toks2 <- quanteda::tokens_compound(toks1, data_dictionary_Rauh, concatenator = " ")
 
-# compound tokens
-toks2 <- quanteda::tokens_compound(toks1, data_dictionary_rauh, concatenator = " ")
-
-# apply dictionary
-toks2 \%>\% 
-    quanteda::dfm() \%>\% 
-    quanteda::dfm_lookup(data_dictionary_rauh) 
+# Apply dictionary
+toks2 \%>\%
+    quanteda::dfm() \%>\%
+    quanteda::dfm_lookup(data_dictionary_Rauh) 
 }
 \references{
 Rauh, C. (Forthcoming). "Validating a Sentiment Dictionary for German Political 
   Language: A Workbench Note." \emph{Journal of Information Technology & Politics}.
+  
+  Remus, R., Quasthoff U., and Heyer, G. (2010).
+  "\href{http://www.lrec-conf.org/proceedings/lrec2010/pdf/490_Paper.pdf}{SentiWS
+  - a Publicly Available German-language Resource for Sentiment Analysis.}"
+  In \emph{Proceedings of the 7th International Language Ressources and
+  Evaluation (LREC'10)}: 1168-1171.
+  
+  Waltinger, U. (2010a) "\href{http://www.ulliwaltinger.de/pdf/91_Paper.pdf}{GermanPolarityClues: 
+  A Lexical Resource for German Sentiment Analysis}." 
+  In \emph{International Conference on Language Resources and Evaluation}, 
+  17-23 May 2010 LREC'10.
 }
 \keyword{data}
