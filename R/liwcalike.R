@@ -77,7 +77,7 @@ liwcalike.character <- function(x, dictionary = NULL, tolower = TRUE, verbose = 
     WPS <- quanteda::textstat_readability(x, "meanSentenceLength")[["meanSentenceLength"]]
 
     # tokenize
-    toks <- quanteda::tokens(x, remove_hyphens = TRUE)
+    toks <- quanteda::tokens(x, remove_hyphens = TRUE, ...)
 
     # lower case the texts if required
     if (tolower)
@@ -85,10 +85,10 @@ liwcalike.character <- function(x, dictionary = NULL, tolower = TRUE, verbose = 
 
     # WC
     result[["WC"]] <- quanteda::ntoken(toks)
-    
+
     # WPS (mean words per sentence)
     result[["WPS"]] <- WPS
-    
+
     # Sixltr
     result[["Sixltr"]] <-
       sapply(toks, function(y) sum(stringi::stri_length(y) > 6)) / result[["WC"]] * 100
