@@ -85,18 +85,18 @@ liwcalike.character <- function(x, dictionary = NULL, tolower = TRUE, verbose = 
 
     # WC
     result[["WC"]] <- quanteda::ntoken(toks)
+    
+    # WPS (mean words per sentence)
+    result[["WPS"]] <- WPS
+    
+    # Sixltr
+    result[["Sixltr"]] <-
+      sapply(toks, function(y) sum(stringi::stri_length(y) > 6)) / result[["WC"]] * 100
 
     # apply the dictionary, if supplied
     if (!is.null(dictionary)) toks <- tokens_lookup(toks, dictionary)
 
     # no implementation for: Analytic	Clout	Authentic	Tone
-
-    # WPS (mean words per sentence)
-    result[["WPS"]] <- WPS
-
-    # Sixltr
-    result[["Sixltr"]] <-
-        sapply(toks, function(y) sum(stringi::stri_length(y) > 6)) / result[["WC"]] * 100
 
     # Dic (percentage of words in the dictionary)
     result[["Dic"]] <- if (!is.null(dictionary)) {
