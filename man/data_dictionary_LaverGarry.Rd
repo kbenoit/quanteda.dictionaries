@@ -4,7 +4,7 @@
 \name{data_dictionary_LaverGarry}
 \alias{data_dictionary_LaverGarry}
 \title{Laver and Garry Dictionary of Policy Positions}
-\format{The dictionary has two levels of nesting with 7 main policy areas (level 1) divided up into 19 
+\format{The dictionary has two levels of nesting with 7 main policy areas (level 1) divided up into 19
 sub-categories (level 2).}
 \source{
 \url{https://provalisresearch.com/products/content-analysis-software/wordstat-dictionary/laver-garry-dictionary-of-policy-position/}
@@ -13,14 +13,14 @@ sub-categories (level 2).}
 data_dictionary_LaverGarry
 }
 \description{
-A \pkg{quanteda} \link[quanteda]{dictionary} object containing the Laver and Garry 
-dictionary which been developed to estimates the policy positions of political actors 
-in the United Kingdom by comparing their speeches and written documents to key words 
-found in the British Conservative and Labour manifestos of 1992. Note: Please remember 
+A \pkg{quanteda} \link[quanteda]{dictionary} object containing the Laver and Garry
+dictionary which been developed to estimates the policy positions of political actors
+in the United Kingdom by comparing their speeches and written documents to key words
+found in the British Conservative and Labour manifestos of 1992. Note: Please remember
 that this dictionary was customized to reflect the policy positions of UK political parties.
 }
 \references{
-Laver. M., and Garry, J. (2000). "Estimating Policy Positions from Political Texts." 
+Laver. M., and Garry, J. (2000). "Estimating Policy Positions from Political Texts."
   \emph{American Journal of Political Science} 44(3): 619-634.
 }
 \keyword{data}

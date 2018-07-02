@@ -13,17 +13,17 @@ data_dictionary_AFINN
 }
 \description{
 A \pkg{quanteda} \link[quanteda]{dictionary} object containing
-the Affective Norms for English Words (AFINN), a publicly available list of 
+the Affective Norms for English Words (AFINN), a publicly available list of
 English words rated for valence with values between -5 (negative) and
-+5 (positive). AFINN-111, the latest version, contains 2,477 words and phrases. 
-Note that the version implemented in \pkg{quanteda.dictionaries} uses a binary 
-classification into 878 positive (valence > 0) and 1,599 negative (valence < 0) 
++5 (positive). AFINN-111, the latest version, contains 2,477 words and phrases.
+Note that the version implemented in \pkg{quanteda.dictionaries} uses a binary
+classification into 878 positive (valence > 0) and 1,599 negative (valence < 0)
 features.
 }
 \references{
-Nielsen, Finn Å. (2011). "\href{https://arxiv.org/abs/1103.2903}{A new ANEW: 
-  Evaluation of a Word List for Sentiment Analysis in Microblogs.}" 
-  In \emph{Proceedings of the ESWC2011 Workshop on 'Making Sense of Microposts': 
+Nielsen, Finn Å. (2011). "\href{https://arxiv.org/abs/1103.2903}{A new ANEW:
+  Evaluation of a Word List for Sentiment Analysis in Microblogs.}"
+  In \emph{Proceedings of the ESWC2011 Workshop on 'Making Sense of Microposts':
   Big Things Come in Small Packages}: 93-98.
 }
 \keyword{data}
