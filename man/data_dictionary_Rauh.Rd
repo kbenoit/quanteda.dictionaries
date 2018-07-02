@@ -8,8 +8,10 @@
 \describe{
 \item{\code{negative}}{19,750 terms indicating negative sentiment}
 \item{\code{positive}}{17,330 terms indicating positive sentiment}
-\item{\code{neg_positive}}{17,330 terms indicating a positive word preceded by a negation (used to convey negative sentiment)}
-\item{\code{neg_negative}}{19,750 terms indicating a negative word preceded by a negation (used to convey positive sentiment)}
+\item{\code{neg_positive}}{17,330 terms indicating a positive word preceded
+by a negation (used to convey negative sentiment)}
+\item{\code{neg_negative}}{19,750 terms indicating a negative word preceded
+by a negation (used to convey positive sentiment)}
 }}
 \source{
 \url{https://doi.org/10.7910/DVN/BKBXWD}
@@ -18,42 +20,46 @@
 data_dictionary_Rauh
 }
 \description{
-A \pkg{quanteda} \link[quanteda]{dictionary} object containing 
-the dictionaries provided in Rauh (forthcoming). Rauh assesses its performance against human 
-intuition of sentiment in German political language (parliamentary speeches, party manifestos, and media coverage). 
-The resource builds on, harmonizes and extends the SentiWS (Remus et al. 2010) and GermanPolarityClues (Waltinger 2010) dictionaries. 
-In order to use the negation correction provided by the dictionary, currently a combination of 
-\link[quanteda]{tokens_replace} and \link[quanteda]{tokens_compound} is required to harmonize the 
-five covered bi-gram patterns prior to scoring. The example below shows how to conduct this transformation. 
-Note that the process changes the terms "nicht|nichts|kein|keine|keinen" to a joint term altering 
+A \pkg{quanteda} \link[quanteda]{dictionary} object containing the
+dictionaries provided in Rauh (forthcoming). Rauh assesses its performance
+against human intuition of sentiment in German political language
+(parliamentary speeches, party manifestos, and media coverage). The resource
+builds on, harmonizes and extends the SentiWS (Remus et al. 2010) and
+GermanPolarityClues (Waltinger 2010) dictionaries. In order to use the
+negation correction provided by the dictionary, currently a combination of
+\link[quanteda]{tokens_replace} and \link[quanteda]{tokens_compound} is
+required to harmonize the five covered bi-gram patterns prior to scoring. The
+example below shows how to conduct this transformation. Note that the process
+changes the terms "nicht|nichts|kein|keine|keinen" to a joint term altering
 some of the features of the original corpus.
 }
 \examples{
-# Tokenize example text
+# tokenize example text
 toks <- quanteda::tokens("nicht schlecht dieses wunderschöne Wörterbuch")
-# Replace negation markers with "not"
-toks1 <- quanteda::tokens_replace(toks, pattern = c("nicht", "nichts", "kein", "keine", "keinen"), 
-rep("not", 5)) 
-
-# Compound bi-gram negation patterns
+# replace negation markers with "not"
+toks1 <- quanteda::tokens_replace(toks, pattern = c("nicht", "nichts", "kein",
+                                                    "keine", "keinen"),
+                                  replacement = rep("not", 5))
+# compound bi-gram negation patterns
 toks2 <- quanteda::tokens_compound(toks1, data_dictionary_Rauh, concatenator = " ")
 
-# Apply dictionary
-quanteda::dfm(toks2, dictionary = data_dictionary_Rauh) 
+# apply dictionary
+quanteda::dfm(toks2, dictionary = data_dictionary_Rauh)
 }
 \references{
-Rauh, C. (Forthcoming). "Validating a Sentiment Dictionary for German Political 
-  Language: A Workbench Note." \emph{Journal of Information Technology & Politics}.
-  
+Rauh, C. (Forthcoming). "Validating a Sentiment Dictionary for German
+  Political Language: A Workbench Note." \emph{Journal of Information
+  Technology & Politics}.
+
   Remus, R., Quasthoff U., and Heyer, G. (2010).
   "\href{http://www.lrec-conf.org/proceedings/lrec2010/pdf/490_Paper.pdf}{SentiWS
   - a Publicly Available German-language Resource for Sentiment Analysis.}"
   In \emph{Proceedings of the 7th International Language Ressources and
   Evaluation (LREC'10)}: 1168-1171.
-  
-  Waltinger, U. (2010a) "\href{http://www.ulliwaltinger.de/pdf/91_Paper.pdf}{GermanPolarityClues: 
-  A Lexical Resource for German Sentiment Analysis}." 
-  In \emph{International Conference on Language Resources and Evaluation}, 
-  17-23 May 2010 LREC'10.
+
+  Waltinger, U. (2010)
+  "\href{http://www.ulliwaltinger.de/pdf/91_Paper.pdf}{GermanPolarityClues: A
+  Lexical Resource for German Sentiment Analysis}." In \emph{International
+  Conference on Language Resources and Evaluation}, 17-23 May 2010 LREC'10.
 }
 \keyword{data}
