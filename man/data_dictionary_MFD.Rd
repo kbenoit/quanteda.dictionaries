@@ -14,16 +14,16 @@ data_dictionary_MFD
 \description{
 A \pkg{quanteda} \link[quanteda]{dictionary} object containing
 the Moral Foundations Dictionary, a publicly available dictionaries with
-information on the proportions of virtue and vice words for each foundation. 
-The categories are harm (vice/virtue), fairness (vice/virtue), ingroup (vice/virtue), 
+information on the proportions of virtue and vice words for each foundation.
+The categories are harm (vice/virtue), fairness (vice/virtue), ingroup (vice/virtue),
 authority (vice/virtue), purity (vice/virtue) and morality (general).
 }
 \references{
-Haidt, J., Graham, J., and Nosek, B.A. (2009). "Liberals and Conservatives 
+Haidt, J., Graham, J., and Nosek, B.A. (2009). "Liberals and Conservatives
   Rely on Different Sets of Moral Foundations. \emph{Journal of Personality and Social
   Inquiry} 20(2-3): 110-119.
-  
-  Graham, J., and Haidt, J. (2016). \href{http://moralfoundations.org/othermaterials}{Moral 
+
+  Graham, J., and Haidt, J. (2016). \href{http://moralfoundations.org/othermaterials}{Moral
   Foundations Dictionary.}: \url{http://moralfoundations.org/othermaterials}.
 }
 \keyword{data}

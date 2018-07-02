@@ -13,14 +13,14 @@ data_dictionary_LoughranMcDonald
 }
 \description{
 A \pkg{quanteda} \link[quanteda]{dictionary} object containing
-the 2014 version of the Loughran and McDonald Sentiment Word Lists. The 
-categories are "negative" (2355 features), "positive" (354), "uncertainty" (297), "litigious" (903), 
-"constraining" (184), "superfluous" (56), "interesting" (68), "modal words strong" (68) 
+the 2014 version of the Loughran and McDonald Sentiment Word Lists. The
+categories are "negative" (2355 features), "positive" (354), "uncertainty" (297), "litigious" (903),
+"constraining" (184), "superfluous" (56), "interesting" (68), "modal words strong" (68)
 and "modal words weak" (0).
 }
 \references{
-Loughran, T., and McDonald, B. (2011). "When is a 
-  Liability not a Liability? Textual Analysis, Dictionaries, and 10-Ks." 
+Loughran, T., and McDonald, B. (2011). "When is a
+  Liability not a Liability? Textual Analysis, Dictionaries, and 10-Ks."
   \emph{Journal of Finance} 66(1): 35-65.
 }
 \keyword{data}
