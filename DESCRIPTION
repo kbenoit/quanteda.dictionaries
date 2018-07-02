@@ -14,12 +14,13 @@ Imports:
     quanteda (>= 0.99),
     stringi
 Suggests:
-    knitr,
-    rmarkdown,
-    testthat,
     covr,
     ggplot2,
-    quanteda.corpora
+    knitr,
+    mgcv,
+    quanteda.corpora,
+    rmarkdown,
+    testthat
 Remotes:
     quanteda/quanteda.corpora
 Encoding: UTF-8
