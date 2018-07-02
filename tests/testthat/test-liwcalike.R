@@ -39,3 +39,27 @@ test_that("object class types are data.frame", {
     expect_true(all(is.integer(liwcout$Segment)))
     expect_true(all(is.integer(liwcout$WC)))
 })
+
+test_that("Arguments passed to quanteda::tokens(x, ...) work (#17)", {
+    expect_true(liwcalike("A.", remove_punct = TRUE)$WC !=
+                    liwcalike("A.", remove_punct = FALSE)$WC)
+    expect_equal(liwcalike("A.", remove_punct = TRUE)$WC, 1)
+    expect_equal(liwcalike("A.", remove_punct = FALSE)$WC, 2)
+    expect_equal(liwcalike("A.", remove_punct = FALSE)$Period, 50)
+})
+
+test_that("sixltr works (#16)", {
+    txt <- c("This sentence contains two six letter words.")
+    dict <- quanteda::dictionary(list(numbers = c("two", "three")))
+    liwcout <- liwcalike(txt, dictionary = dict, remove_punct = TRUE)
+    expect_equal(
+        liwcalike(txt, dictionary = dict, remove_punct = TRUE)$Sixltr,
+        2/7 * 100,
+        tol = .01
+    )
+    expect_equal(
+        liwcalike(txt, dictionary = dict, remove_punct = FALSE)$Sixltr,
+        2/8 * 100,
+        tol = .01
+    )
+})
