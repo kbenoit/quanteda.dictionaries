@@ -27,7 +27,9 @@ With the `liwcalike()` function from the **quanteda.dictionaries**
 package, you can easily analyze text corpora using exising or custom
 dictionaries. Here we show how to apply the Lexicoder Sentiment
 Dictionary (Young and Soroka 2012) to a corpus consting of 2000 movie
-reviews (from the **quanteda.corpora** package, available [here](https://github.com/quanteda/quanteda.corpora)).
+reviews (from the
+[**quanteda.corpora**](https://github.com/quanteda/quanteda.corpora)
+package).
 
 ``` r
 library("quanteda.dictionaries")
