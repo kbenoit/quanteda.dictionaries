@@ -1,7 +1,7 @@
 Package: quanteda.dictionaries
 Type: Package
 Title: Text Analysis Dictionaries
-Version: 0.2
+Version: 0.21
 Authors@R: c( person("Kenneth", "Benoit", email = "kbenoit@lse.ac.uk", role =
     c("aut", "cre", "cph")),
     person("Stefan", "Müller", email = "mullers@tcd.ie", role = "aut"))
@@ -26,4 +26,4 @@ Remotes:
 Encoding: UTF-8
 LazyData: true
 VignetteBuilder: knitr
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0

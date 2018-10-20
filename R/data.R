@@ -144,13 +144,21 @@
 
 #' Moral Foundations Dictionary
 #'
-#' A \pkg{quanteda} \link[quanteda]{dictionary} object containing
+#' @description A \pkg{quanteda} \link[quanteda]{dictionary} object containing
 #' the Moral Foundations Dictionary, a publicly available dictionaries with
 #' information on the proportions of virtue and vice words for each foundation.
 #' The categories are harm (vice/virtue), fairness (vice/virtue), ingroup (vice/virtue),
 #' authority (vice/virtue), purity (vice/virtue) and morality (general).
-#' @source \url{http://moralfoundations.org/othermaterials}
+#'
+#' @description This version is 2.0 version of the dictionary,
+#'   \href{http://www.jeremyfrimer.com/uploads/2/1/2/7/21278832/summary.pdf}{recommended}
+#'   over the first version of the MDF by its authors.
+#' @source http://www.jeremyfrimer.com/research-downloads.html; a previous
+#'   version is available at \url{http://moralfoundations.org/othermaterials}
 #' @references
+#'   Frimer, Jeffrey et. al. (2017).  "Moral Foundations Dictionaries for
+#'   Linguistic Analyses, 2.0."  University of Winnipeg manuscript.
+#'   \url{http://www.jeremyfrimer.com/uploads/2/1/2/7/21278832/summary.pdf}.
 #'
 #'   Haidt, J., Graham, J., and Nosek, B.A. (2009). "Liberals and Conservatives
 #'   Rely on Different Sets of Moral Foundations. \emph{Journal of Personality and Social
