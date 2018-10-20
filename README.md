@@ -5,7 +5,7 @@ quanteda.dictionaries
 [![Travis-CI Build
 Status](https://travis-ci.org/kbenoit/quanteda.dictionaries.svg?branch=master)](https://travis-ci.org/kbenoit/quanteda.dictionaries)
 [![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/kbenoit/quanteda.dictionaries?branch=master&svg=true)](https://ci.appveyor.com/project/kbenoit/quanteda.dictionaries)
+status](https://ci.appveyor.com/api/projects/status/3uvg00bo4p7mr98s/branch/master?svg=true)](https://ci.appveyor.com/project/kbenoit/quanteda-dictionaries/branch/master)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/kbenoit/quanteda.dictionaries/master.svg)](https://codecov.io/github/kbenoit/quanteda.dictionaries?branch=master)
 
