@@ -39,12 +39,12 @@
 #' and two sentiments (negative and positive) manually annotated on Amazon's Mechanical Turk.
 #' Available in 40 different languages.
 #' @references
-#'   Saif Mohammad and Peter Turney (2013). "Crowdsourcing a
-#'   Word-Emotion Association Lexicon." \emph{Computational Intelligence} 29(3), 436-465.
+#'   Mohammad, S. & Turney, P. (2013). \href{https://arxiv.org/abs/1308.6297}{Crowdsourcing 
+#'   a Word-Emotion Association Lexicon}. \emph{Computational Intelligence}, 29(3), 436--465.
 #'
-#'   Saif Mohammad and Peter Turney (2010). "Emotions Evoked by Common Words and
-#'   Phrases: Using Mechanical Turk to Create an Emotion Lexicon." In
-#'   \emph{Proceedings of the NAACL-HLT 2010 Workshop on Computational
+#'   Mohammad, S. & Turney, P. (2010). \href{https://dl.acm.org/citation.cfm?id=1860635}{Emotions 
+#'   Evoked by Common Words and Phrases: Using Mechanical Turk to Create an 
+#'   Emotion Lexicon}. In \emph{Proceedings of the NAACL-HLT 2010 Workshop on Computational
 #'   Approaches to Analysis and Generation of Emotion in Text}, June 2010, LA,
 #'   California.
 #'
@@ -57,14 +57,14 @@
 #' A \pkg{quanteda} \link[quanteda]{dictionary} object containing 2,006 positive
 #' and 4,783 negative words from Hu and Liu (2004, 2005).
 #' @references
-#'   Minqing Hu and Bing Liu. "\href{https://www.cs.uic.edu/~liub/publications/kdd04-revSummary.pdf}{Mining
-#'   and Summarizing Customer Reviews.}" In \emph{Proceedings of the ACM
+#'   Hu, M. & Liu, B. (2004). \href{https://www.cs.uic.edu/~liub/publications/kdd04-revSummary.pdf}{Mining
+#'   and Summarizing Customer Reviews.} In \emph{Proceedings of the ACM
 #'   SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD-2004),
-#'   Aug 22-25, 2004, Seattle, Washington, USA}.
+#'   Aug 22--25, 2004, Seattle, Washington, USA}.
 #'
-#'   Bing Liu, Minqing Hu and Junsheng Cheng. "\href{https://www.cs.uic.edu/~liub/publications/www05-p536.pdf}{Opinion
-#'   Observer: Analyzing and Comparing Opinions on the Web.}" In \emph{Proceedings of
-#'   the 14th International World Wide Web conference (WWW-2005), May 10-14, 2005, Chiba, Japan}.
+#'   Liu, M., Hu, M., & Cheng, J. (2005). \href{https://www.cs.uic.edu/~liub/publications/www05-p536.pdf}{Opinion
+#'   Observer: Analyzing and Comparing Opinions on the Web.} In \emph{Proceedings of
+#'   the 14th International World Wide Web conference (WWW-2005), May 10--14, 2005, Chiba, Japan}.
 #' @source \url{http://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html}
 #' @keywords data
 "data_dictionary_HuLiu"
@@ -77,7 +77,7 @@
 #' \url{http://www.wjh.harvard.edu/~inquirer/homecat.htm} but also including the
 #' terms from the \href{http://www.wjh.harvard.edu/~inquirer/Yes.html}{yes} and
 #' \href{http://www.wjh.harvard.edu/~inquirer/No.html}{no} dictionary entries.
-#' @references Stone, Philip J., Dexter C. Dunphy, and Marshall S. Smith. 1966.
+#' @references Stone, P.J., Dunphy, C.D., & Smith, M.S. (1966).
 #'   \emph{The General Inquirer: A Computer Approach to Content Analysis.}
 #'   Cambridge, MA: MIT Press.
 #' @source \url{http://www.wjh.harvard.edu/~inquirer/spreadsheet_guide.htm}
@@ -116,10 +116,10 @@
 #' @source \url{http://wortschatz.uni-leipzig.de/en/download/}
 #' @references
 #'   Remus, R., Quasthoff U., and Heyer, G. (2010).
-#'   "\href{http://www.lrec-conf.org/proceedings/lrec2010/pdf/490_Paper.pdf}{SentiWS
-#'   - a Publicly Available German-language Resource for Sentiment Analysis}."
+#'   \href{http://www.lrec-conf.org/proceedings/lrec2010/pdf/490_Paper.pdf}{SentiWS
+#'   - a Publicly Available German-language Resource for Sentiment Analysis}.
 #'   In \emph{Proceedings of the 7th International Language Ressources and
-#'   Evaluation (LREC'10)}: 1168-1171.
+#'   Evaluation (LREC'10)}, 1168--1171.
 #'
 #' @keywords data
 "data_dictionary_sentiws"
@@ -136,10 +136,10 @@
 #' @source \url{http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010}
 #'
 #' @references
-#'   Nielsen, Finn Å. (2011). "\href{https://arxiv.org/abs/1103.2903}{A new ANEW:
-#'   Evaluation of a Word List for Sentiment Analysis in Microblogs.}"
+#'   Nielsen, F.Å. (2011). \href{https://arxiv.org/abs/1103.2903}{A new ANEW:
+#'   Evaluation of a Word List for Sentiment Analysis in Microblogs.}
 #'   In \emph{Proceedings of the ESWC2011 Workshop on 'Making Sense of Microposts':
-#'   Big Things Come in Small Packages}: 93-98.
+#'   Big Things Come in Small Packages}, 93--98.
 #'
 #' @keywords data
 "data_dictionary_AFINN"
@@ -158,15 +158,15 @@
 #' @source http://www.jeremyfrimer.com/research-downloads.html; a previous
 #'   version is available at \url{http://moralfoundations.org/othermaterials}
 #' @references
-#'   Frimer, Jeffrey et. al. (2017).  "Moral Foundations Dictionaries for
-#'   Linguistic Analyses, 2.0."  University of Winnipeg manuscript.
+#'   Frimer, J. et. al. (2017).  Moral Foundations Dictionaries for
+#'   Linguistic Analyses, 2.0. University of Winnipeg Manuscript.
 #'   \url{http://www.jeremyfrimer.com/uploads/2/1/2/7/21278832/summary.pdf}.
 #'
-#'   Haidt, J., Graham, J., and Nosek, B.A. (2009). "Liberals and Conservatives
-#'   Rely on Different Sets of Moral Foundations. \emph{Journal of Personality and Social
-#'   Inquiry} 20(2-3): 110-119.
+#'   Haidt, J., Graham, J., & Nosek, B.A. (2009). \href{http://dx.doi.org/10.1037/a0015141}{Liberals 
+#'   and Conservatives Rely on Different Sets of Moral Foundations}. 
+#'   \emph{Journal of Personality and Social Inquiry}, 20(2--3), 110--119.
 #'
-#'   Graham, J., and Haidt, J. (2016). \href{http://moralfoundations.org/othermaterials}{Moral
+#'   Graham, J., & Haidt, J. (2016). \href{http://moralfoundations.org/othermaterials}{Moral
 #'   Foundations Dictionary.}: \url{http://moralfoundations.org/othermaterials}.
 #' @keywords data
 "data_dictionary_MFD"
@@ -182,8 +182,8 @@
 #' sub-categories (level 2).
 #' @source \url{https://provalisresearch.com/products/content-analysis-software/wordstat-dictionary/laver-garry-dictionary-of-policy-position/}
 #' @references
-#'   Laver. M., and Garry, J. (2000). "Estimating Policy Positions from Political Texts."
-#'   \emph{American Journal of Political Science} 44(3): 619-634.
+#'   Laver. M. & Garry, J. (2000). \href{https://doi.org/10.2307/2669268}{Estimating Policy Positions 
+#'   from Political Texts}. \emph{American Journal of Political Science}, 44(3), 619--634.
 #' @keywords data
 "data_dictionary_LaverGarry"
 
@@ -212,20 +212,20 @@
 #' }
 #' @source \url{https://doi.org/10.7910/DVN/BKBXWD}
 #' @references
-#'   Rauh, C. (Forthcoming). "Validating a Sentiment Dictionary for German
-#'   Political Language: A Workbench Note." \emph{Journal of Information
-#'   Technology & Politics}.
+#'   Rauh, C. (2018). \href{https://doi.org/10.1080/19331681.2018.1485608}{Validating a 
+#'   Sentiment Dictionary for German Political Language: A Workbench Note}. \emph{Journal of 
+#'   Information Technology & Politics}, 15(4), 319--343.
 #'
-#'   Remus, R., Quasthoff U., and Heyer, G. (2010).
+#'   Remus, R., Quasthoff U., & Heyer, G. (2010).
 #'   "\href{http://www.lrec-conf.org/proceedings/lrec2010/pdf/490_Paper.pdf}{SentiWS
 #'   - a Publicly Available German-language Resource for Sentiment Analysis.}"
 #'   In \emph{Proceedings of the 7th International Language Ressources and
-#'   Evaluation (LREC'10)}: 1168-1171.
+#'   Evaluation (LREC'10)}, 1168--1171.
 #'
-#'   Waltinger, U. (2010)
+#'   Waltinger, U. (2010). 
 #'   "\href{http://www.ulliwaltinger.de/pdf/91_Paper.pdf}{GermanPolarityClues: A
 #'   Lexical Resource for German Sentiment Analysis}." In \emph{International
-#'   Conference on Language Resources and Evaluation}, 17-23 May 2010 LREC'10.
+#'   Conference on Language Resources and Evaluation}, 17--23 May 2010 LREC'10.
 #' @examples
 #' # tokenize example text
 #' toks <- quanteda::tokens("nicht schlecht dieses wunderschöne Wörterbuch")
@@ -250,9 +250,9 @@
 #' and "modal words weak" (0).
 #' @source \url{http://sraf.nd.edu/textual-analysis/resources/}
 #' @references
-#'   Loughran, T., and McDonald, B. (2011). "When is a
-#'   Liability not a Liability? Textual Analysis, Dictionaries, and 10-Ks."
-#'   \emph{Journal of Finance} 66(1): 35-65.
+#'   Loughran, T. & McDonald, B. (2011). \href{https://doi.org/10.1111/j.1540-6261.2010.01625.x}{When 
+#'   is a Liability not a Liability? Textual Analysis, Dictionaries, and 10-Ks}. 
+#'   \emph{Journal of Finance}, 66(1), 35--65.
 #' @keywords data
 "data_dictionary_LoughranMcDonald"
 
