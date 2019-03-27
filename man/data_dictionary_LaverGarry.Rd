@@ -20,7 +20,7 @@ found in the British Conservative and Labour manifestos of 1992. Note: Please re
 that this dictionary was customized to reflect the policy positions of UK political parties.
 }
 \references{
-Laver. M., and Garry, J. (2000). "Estimating Policy Positions from Political Texts."
-  \emph{American Journal of Political Science} 44(3): 619-634.
+Laver. M. & Garry, J. (2000). \href{https://doi.org/10.2307/2669268}{Estimating Policy Positions 
+  from Political Texts}. \emph{American Journal of Political Science}, 44(3), 619--634.
 }
 \keyword{data}

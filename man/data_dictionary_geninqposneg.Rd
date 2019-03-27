@@ -20,7 +20,7 @@ terms from the \href{http://www.wjh.harvard.edu/~inquirer/Yes.html}{yes} and
 \href{http://www.wjh.harvard.edu/~inquirer/No.html}{no} dictionary entries.
 }
 \references{
-Stone, Philip J., Dexter C. Dunphy, and Marshall S. Smith. 1966.
+Stone, P.J., Dunphy, C.D., & Smith, M.S. (1966).
   \emph{The General Inquirer: A Computer Approach to Content Analysis.}
   Cambridge, MA: MIT Press.
 }

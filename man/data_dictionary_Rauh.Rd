@@ -47,19 +47,19 @@ toks2 <- quanteda::tokens_compound(toks1, data_dictionary_Rauh, concatenator = "
 quanteda::dfm(toks2, dictionary = data_dictionary_Rauh)
 }
 \references{
-Rauh, C. (Forthcoming). "Validating a Sentiment Dictionary for German
-  Political Language: A Workbench Note." \emph{Journal of Information
-  Technology & Politics}.
+Rauh, C. (2018). \href{https://doi.org/10.1080/19331681.2018.1485608}{Validating a 
+  Sentiment Dictionary for German Political Language: A Workbench Note}. \emph{Journal of 
+  Information Technology & Politics}, 15(4), 319--343.
 
-  Remus, R., Quasthoff U., and Heyer, G. (2010).
+  Remus, R., Quasthoff U., & Heyer, G. (2010).
   "\href{http://www.lrec-conf.org/proceedings/lrec2010/pdf/490_Paper.pdf}{SentiWS
   - a Publicly Available German-language Resource for Sentiment Analysis.}"
   In \emph{Proceedings of the 7th International Language Ressources and
-  Evaluation (LREC'10)}: 1168-1171.
+  Evaluation (LREC'10)}, 1168--1171.
 
-  Waltinger, U. (2010)
+  Waltinger, U. (2010). 
   "\href{http://www.ulliwaltinger.de/pdf/91_Paper.pdf}{GermanPolarityClues: A
   Lexical Resource for German Sentiment Analysis}." In \emph{International
-  Conference on Language Resources and Evaluation}, 17-23 May 2010 LREC'10.
+  Conference on Language Resources and Evaluation}, 17--23 May 2010 LREC'10.
 }
 \keyword{data}
