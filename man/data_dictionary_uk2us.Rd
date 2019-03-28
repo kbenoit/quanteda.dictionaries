@@ -31,8 +31,10 @@ txt <- c(uk = "endeavour to prioritise honour over esthetics",
          us = "endeavor to prioritize honor over aesthetics")
 toks <- quanteda::tokens(txt)
 
-quanteda::tokens_replace(toks, data_dictionary_uk2us)
-quanteda::tokens_replace(toks, data_dictionary_uk2us)
+quanteda::tokens_lookup(toks, data_dictionary_uk2us, exclusive = FALSE,
+                        capkeys = FALSE)
+quanteda::tokens_lookup(toks, data_dictionary_us2uk, exclusive = FALSE,
+                        capkeys = FALSE)
 }
 \keyword{data}
 \keyword{datasets}

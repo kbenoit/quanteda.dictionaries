@@ -21,9 +21,9 @@ classification into 878 positive (valence > 0) and 1,599 negative (valence < 0)
 features.
 }
 \references{
-Nielsen, Finn Å. (2011). "\href{https://arxiv.org/abs/1103.2903}{A new ANEW:
-  Evaluation of a Word List for Sentiment Analysis in Microblogs.}"
+Nielsen, F.Å. (2011). \href{https://arxiv.org/abs/1103.2903}{A new ANEW:
+  Evaluation of a Word List for Sentiment Analysis in Microblogs.}
   In \emph{Proceedings of the ESWC2011 Workshop on 'Making Sense of Microposts':
-  Big Things Come in Small Packages}: 93-98.
+  Big Things Come in Small Packages}, 93--98.
 }
 \keyword{data}

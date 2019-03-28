@@ -25,9 +25,9 @@ interval of -1 to 1. Note that the version implemented in
 }
 \references{
 Remus, R., Quasthoff U., and Heyer, G. (2010).
-  "\href{http://www.lrec-conf.org/proceedings/lrec2010/pdf/490_Paper.pdf}{SentiWS
-  - a Publicly Available German-language Resource for Sentiment Analysis}."
+  \href{http://www.lrec-conf.org/proceedings/lrec2010/pdf/490_Paper.pdf}{SentiWS
+  - a Publicly Available German-language Resource for Sentiment Analysis}.
   In \emph{Proceedings of the 7th International Language Ressources and
-  Evaluation (LREC'10)}: 1168-1171.
+  Evaluation (LREC'10)}, 1168--1171.
 }
 \keyword{data}
