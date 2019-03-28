@@ -172,13 +172,15 @@ toks <- quanteda::tokens(txt)
 If we want to change words from British English to US English we can use `tokens_replace()` from the **quanteda** package in combination with `data_dictionary_uk2us`.
 
 ```{r}
-quanteda::tokens_replace(toks, data_dictionary_uk2us)
+quanteda::tokens_lookup(toks, data_dictionary_uk2us, 
+                        exclusive = FALSE, capkeys = FALSE)
 ```
 
 To make all speelings British, we use `data_dictionary_us2uk` instead.
 
 ```{r}
-quanteda::tokens_replace(toks, data_dictionary_us2uk)
+quanteda::tokens_lookup(toks, data_dictionary_us2uk,
+                        exclusive = FALSE, capkeys = FALSE)
 ```
 
 We can see the difference that this makes when converting the texts to a document-feature matrix:
@@ -188,13 +190,14 @@ We can see the difference that this makes when converting the texts to a documen
 quanteda::dfm(toks)
 
 # homogeni[zs]ed dfm
-quanteda::dfm(quanteda::tokens_replace(toks, data_dictionary_uk2us))
+quanteda::dfm(quanteda::tokens_lookup(toks, data_dictionary_uk2us,
+                                      exclusive = FALSE, capkeys = FALSE))
 ```
 
 
 ## References
 
-Pang, Bo, Lillian Lee, and Shivakumar Vaithyanathan. 2002. Thumbs up?: sentiment classification using machine learning techniques. In Proceedings of the ACL-02 conference on Empirical methods in natural language processing - Volume 10 (EMNLP '02), Vol. 10. Association for Computational Linguistics, Stroudsburg, PA, USA, 79-86. DOI: https://doi.org/10.3115/1118693.1118704
+Pang, Bo, Lillian Lee, and Shivakumar Vaithyanathan. 2002. Thumbs up?: sentiment classification using machine learning techniques. In _Proceedings of the ACL-02 conference on Empirical methods in natural language processing_, Vol. 10 (EMNLP '02), Vol. 10. Association for Computational Linguistics, Stroudsburg, PA, USA, 79-86. DOI: https://doi.org/10.3115/1118693.1118704
 
 Pennebaker, J.W., Chung, C.K., Ireland, M., Gonzales, A., & Booth, R.J. (2007). _The development and psychometric properties of LIWC2007_. [Software manual]. Austin, TX (http://www.liwc.net).
 
