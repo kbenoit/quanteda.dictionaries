@@ -1,7 +1,7 @@
 Package: quanteda.dictionaries
 Type: Package
 Title: Text Analysis Dictionaries
-Version: 0.21
+Version: 0.22
 Authors@R: c( person("Kenneth", "Benoit", email = "kbenoit@lse.ac.uk", role =
     c("aut", "cre", "cph")),
     person("Stefan", "Müller", email = "mullers@tcd.ie", role = "aut"))
