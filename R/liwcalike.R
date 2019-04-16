@@ -73,21 +73,18 @@ liwcalike.character <- function(x, dictionary = NULL, tolower = TRUE, verbose = 
         data.frame(docname = if (is.null(names(x))) paste0("text", 1:length(x)) else names(x),
                    Segment = 1:length(x), row.names = NULL, stringsAsFactors = FALSE)
 
-    # get readability before lowercasing
-    WPS <- quanteda::textstat_readability(x, "meanSentenceLength")[["meanSentenceLength"]]
-
     # tokenize
     toks <- quanteda::tokens(x, remove_hyphens = TRUE, ...)
+
+    # WPS (mean words per sentence) - count sentences before lowercasing
+    result[["WPS"]] <- quanteda::ntoken(toks) / quanteda::nsentence(x)
+
+    # WC (word count)
+    result[["WC"]] <- quanteda::ntoken(toks)
 
     # lower case the texts if required
     if (tolower)
         toks <- quanteda::tokens_tolower(toks)
-
-    # WC
-    result[["WC"]] <- quanteda::ntoken(toks)
-
-    # WPS (mean words per sentence)
-    result[["WPS"]] <- WPS
 
     # Sixltr
     result[["Sixltr"]] <-
@@ -159,6 +156,9 @@ liwcalike.character <- function(x, dictionary = NULL, tolower = TRUE, verbose = 
     # OtherP
     result[["OtherP"]] <-
         stringi::stri_count_charclass(x, "\\p{Po}") / result[["WC"]] * 100
+
+    # convert any NaN to zeros
+    result[, -1][is.nan(as.matrix(result[, -1])) | is.infinite(as.matrix(result[, -1]))] <- 0
 
     # format the result
     round_index <- which(names(result) == "Sixltr") : ncol(result)

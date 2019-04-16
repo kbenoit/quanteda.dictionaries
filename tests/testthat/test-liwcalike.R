@@ -63,3 +63,33 @@ test_that("sixltr works (#16)", {
         tol = .01
     )
 })
+
+test_that("works on all-punctuation documents (#26)", {
+    txt <- c("This is one sentence.", "...", ":-)")
+    dict <- quanteda::dictionary(list(numbers = c("one", "three")))
+
+    expect_equal(
+        liwcalike(txt, dictionary = dict, remove_punct = TRUE)[, 1:5],
+        data.frame(
+            docname = paste0("text", 1:3),
+            Segment = 1:3,
+            WPS = c(4, 0, 0),
+            WC = c(4, 0, 0),
+            Sixltr = c(25, 0, 0),
+            stringsAsFactors = FALSE
+        )
+    )
+
+    expect_equal(
+        liwcalike(txt, dictionary = dict, remove_punct = FALSE)[, c(1:5, 9)],
+        data.frame(
+            docname = paste0("text", 1:3),
+            Segment = 1:3,
+            WPS = c(5, 3, 3),
+            WC = c(5, 3, 3),
+            Sixltr = c(20, 0, 0),
+            Period = c(20, 100, 0),
+            stringsAsFactors = FALSE
+        )
+    )
+})
