@@ -3,4 +3,5 @@
 S3method(liwcalike,character)
 S3method(liwcalike,corpus)
 export(liwcalike)
+export(readliwc)
 import(quanteda)
