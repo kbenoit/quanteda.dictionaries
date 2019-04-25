@@ -15,9 +15,20 @@ a \pkg{quanteda} \link[quanteda]{dictionary}
 \description{
 Creates a \pkg{quanteda} dictionary from a LIWC dictionary output from the
 LIWC software as a "dictionary poster" pdf.  Currently tested with LIWC 2015
-v1.5.0, available for purchase from \url{http://http://liwc.wpengine.com/}.
+v1.5.0, available for purchase from \url{http://liwc.wpengine.com/}.
 The poster files can be output using Dictionary -> Export Internal
 Dictionaries from the LIWC2015 application menu.
+}
+\details{
+Currently only works with the \code{LIWC2015 dictionary poster.pdf} file.
+
+TO DO:
+\itemize{
+\item{either hard-wire the columns for the other three pdf files, or (better)
+detect them from the category list's proximity to the columns}
+\item{detect xpdf installation and issue a message with installation
+instructions if absent}
+}
 }
 \examples{
 \dontrun{
