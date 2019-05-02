@@ -27,25 +27,17 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' data_dictionary_liwc2015eng <- readliwc("~/Desktop/LIWC2015 dictionary poster.pdf")
+#' data_dictionary_liwc2015eng <- readliwc("LIWC2015 dictionary poster.pdf")
 #' names(data_dictionary_liwc2015eng)
 #' data_dictionary_liwc2015eng["Assent"]
 #' data_dictionary_liwc2015eng["Netspeak"]
 #' }
 readliwc <- function(file) {
-    if (Sys.info()[["sysname"]] == "Darwin") {
-        file <- stringi::stri_replace_all_fixed(file, " ", "\\ ")
-    }
-    if (Sys.info()[["sysname"]] == "Windows") {
-        file <- shQuote(file)
-    }
-
-    if (!file.exists(file))
-        stop("File ", file, " not found.")
+    if (!file.exists(file)) stop("File ", file, " not found.")
 
     # dict <- system2("pdftotext", args = c("-layout", "-r 600", "-nopgbrk", file, "-"), stdout = TRUE)
     check_for_pdftotext()
-    dict <- system2("pdftotext", args = c("-table", "-nopgbrk", file, "-"), stdout = TRUE)
+    dict <- system2("pdftotext", args = c("-table", "-nopgbrk", shQuote(file), "-"), stdout = TRUE)
     # get category names
     cats <- as.character(tokens(dict[7]))
 
