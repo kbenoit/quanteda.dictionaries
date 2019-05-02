@@ -8,3 +8,4 @@
 README.Rmd
 sources/
 ^CONDUCT\.md$
+tests/data/

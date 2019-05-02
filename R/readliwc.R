@@ -8,14 +8,19 @@
 #'
 #' Currently only works with the \code{LIWC2015 dictionary poster.pdf} file.
 #'
-#' This function requires that you have the xpdf utilities (which includes pdftotext) installed on your system.  These are available from
-#' \url{https://www.xpdfreader.com/download.html}.  They can be installed for macOS using:
+#' This function requires that you have the xpdf utilities (which includes
+#' pdftotext) installed on your system.  These are available from
+#' \url{https://www.xpdfreader.com/download.html}.  They can be installed for
+#' macOS using:
 #'
 #' \code{brew install xpdf}
 #'
 #' or for Linux using
 #'
 #' \code{sudo apt-get install xpdf}
+#'
+#' Before processing the 2001 and 2007 files, you should run the pdf through
+#' \url{https://smallpdf.com/unlock-pdf} for this function to work.
 #'
 #' TO DO:
 #' \itemize{
@@ -27,7 +32,7 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' data_dictionary_liwc2015eng <- readliwc("LIWC2015 dictionary poster.pdf")
+#' data_dictionary_liwc2015eng <- readliwc("tests/data/LIWC2015 dictionary poster.pdf")
 #' names(data_dictionary_liwc2015eng)
 #' data_dictionary_liwc2015eng["Assent"]
 #' data_dictionary_liwc2015eng["Netspeak"]
@@ -35,11 +40,17 @@
 readliwc <- function(file) {
     if (!file.exists(file)) stop("File ", file, " not found.")
 
+    if (Sys.info()[["sysname"]] == "Darwin") {
+        file <- stringi::stri_replace_all_fixed(file, " ", "\\ ")
+    } else {
+        file <- shQuote(file)
+    }
+
     # dict <- system2("pdftotext", args = c("-layout", "-r 600", "-nopgbrk", file, "-"), stdout = TRUE)
     check_for_pdftotext()
-    dict <- system2("pdftotext", args = c("-table", "-nopgbrk", shQuote(file), "-"), stdout = TRUE)
+    dict <- system2("pdftotext", args = c("-table", "-nopgbrk", "-enc UTF-8", file, "-"), stdout = TRUE)
     # get category names
-    cats <- as.character(tokens(dict[7]))
+    cats <- as.character(quanteda::tokens(dict[7]))
 
     # remove first eight lines
     dict <- dict[-c(1:7)]
@@ -58,6 +69,8 @@ readliwc <- function(file) {
     liwclist <- wrapcols(dicttable, cats, colwidths)
     # remove spaces in words
     liwclist <- lapply(liwclist, stringi::stri_replace_all_fixed, " ", "")
+    # remove blanks and NAs
+    liwclist <- lapply(liwclist, function(x) x[x != "" & !is.na(x)])
 
     quanteda::dictionary(liwclist)
 }
@@ -65,10 +78,8 @@ readliwc <- function(file) {
 wrapcols <- function(input, keynames, colwidths) {
     stopifnot(length(keynames) == length(colwidths))
     tmp <- as.vector(as.matrix(input))
-    tmp <- stringi::stri_trim_both(tmp)
     output <- split(tmp, rep(keynames, colwidths * nrow(input)))
-    output <- lapply(output, function(x) x[x != "" & !is.na(x)])
-    output
+    output[keynames]
 }
 
 check_for_pdftotext <- function() {

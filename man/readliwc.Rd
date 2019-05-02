@@ -22,14 +22,19 @@ Dictionaries from the LIWC2015 application menu.
 \details{
 Currently only works with the \code{LIWC2015 dictionary poster.pdf} file.
 
-This function requires that you have the xpdf utilities (which includes pdftotext) installed on your system.  These are available from
-\url{https://www.xpdfreader.com/download.html}.  They can be installed for macOS using:
+This function requires that you have the xpdf utilities (which includes
+pdftotext) installed on your system.  These are available from
+\url{https://www.xpdfreader.com/download.html}.  They can be installed for
+macOS using:
 
 \code{brew install xpdf}
 
 or for Linux using
 
 \code{sudo apt-get install xpdf}
+
+Before processing the 2001 and 2007 files, you should run the pdf through
+\url{https://smallpdf.com/unlock-pdf} for this function to work.
 
 TO DO:
 \itemize{
@@ -39,7 +44,7 @@ detect them from the category list's proximity to the columns}
 }
 \examples{
 \dontrun{
-data_dictionary_liwc2015eng <- readliwc("~/Desktop/LIWC2015 dictionary poster.pdf")
+data_dictionary_liwc2015eng <- readliwc("tests/data/LIWC2015 dictionary poster.pdf")
 names(data_dictionary_liwc2015eng)
 data_dictionary_liwc2015eng["Assent"]
 data_dictionary_liwc2015eng["Netspeak"]
