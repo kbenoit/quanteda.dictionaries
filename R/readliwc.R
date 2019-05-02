@@ -39,6 +39,9 @@ readliwc <- function(file) {
     if (Sys.info()[["sysname"]] == "Windows") {
         file <- shQuote(file)
     }
+    
+    if (!file.exists(file))
+        stop("File ", file, " not found.")
   
     # dict <- system2("pdftotext", args = c("-layout", "-r 600", "-nopgbrk", file, "-"), stdout = TRUE)
     check_for_pdftotext()
