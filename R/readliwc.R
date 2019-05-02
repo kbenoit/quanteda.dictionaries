@@ -39,10 +39,10 @@ readliwc <- function(file) {
     if (Sys.info()[["sysname"]] == "Windows") {
         file <- shQuote(file)
     }
-    
+
     if (!file.exists(file))
         stop("File ", file, " not found.")
-  
+
     # dict <- system2("pdftotext", args = c("-layout", "-r 600", "-nopgbrk", file, "-"), stdout = TRUE)
     check_for_pdftotext()
     dict <- system2("pdftotext", args = c("-table", "-nopgbrk", file, "-"), stdout = TRUE)
@@ -92,7 +92,7 @@ check_for_pdftotext <- function() {
 
     pdftotext_msg <- attr(ver, "condition")$message
     if (!is.null(pdftotext_msg) && (pdftotext_msg == "error in running command" ||
-                                    stri_detect_fixed(pdftotext_msg, "not found"))) {
+                                    stringi::stri_detect_fixed(pdftotext_msg, "not found"))) {
         stop("pdftotext not installed; try: ", instructions)
     }
 
