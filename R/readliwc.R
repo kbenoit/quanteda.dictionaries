@@ -42,12 +42,14 @@ readliwc <- function(file) {
   
     # dict <- system2("pdftotext", args = c("-layout", "-r 600", "-nopgbrk", file, "-"), stdout = TRUE)
     check_for_pdftotext()
-    dict <- system2("pdftotext", args = c("-layout", "-nopgbrk", file, "-"), stdout = TRUE)
+    dict <- system2("pdftotext", args = c("-table", "-nopgbrk", file, "-"), stdout = TRUE)
     # get category names
     cats <- as.character(tokens(dict[7]))
 
     # remove first eight lines
-    dict <- dict[-c(1:8)]
+    dict <- dict[-c(1:7)]
+    # remove blank lines
+    dict <- dict[dict != ""]
 
     # get fixed column locations
     columns <- as.data.frame(stringi::stri_locate_all_regex(dict, "\\s{2}[\\w\\p{P}]")[[1]])
