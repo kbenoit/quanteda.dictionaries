@@ -36,7 +36,10 @@ readliwc <- function(file) {
     if (Sys.info()[["sysname"]] == "Darwin") {
         file <- stringi::stri_replace_all_fixed(file, " ", "\\ ")
     }
-
+    if (Sys.info()[["sysname"]] == "Windows") {
+        file <- shQuote(file)
+    }
+  
     # dict <- system2("pdftotext", args = c("-layout", "-r 600", "-nopgbrk", file, "-"), stdout = TRUE)
     check_for_pdftotext()
     dict <- system2("pdftotext", args = c("-layout", "-nopgbrk", file, "-"), stdout = TRUE)
@@ -57,7 +60,7 @@ readliwc <- function(file) {
 
     liwclist <- wrapcols(dicttable, cats, colwidths)
     # remove spaces in words
-    liwclist <- lapply(liwclist, stri_replace_all_fixed, " ", "")
+    liwclist <- lapply(liwclist, stringi::stri_replace_all_fixed, " ", "")
 
     quanteda::dictionary(liwclist)
 }
@@ -83,11 +86,12 @@ check_for_pdftotext <- function() {
                            Linux = "sudo apt-get install xpdf")
 
     pdftotext_msg <- attr(ver, "condition")$message
-    if (!is.null(pdftotext_msg) && pdftotext_msg == "error in running command") {
+    if (!is.null(pdftotext_msg) && (pdftotext_msg == "error in running command" ||
+                                    stri_detect_fixed(pdftotext_msg, "not found"))) {
         stop("pdftotext not installed; try: ", instructions)
     }
 
-    versnumber <- as.numeric(unlist(strsplit(ver[1], " "))[3])
+    versnumber <- as.numeric_version(unlist(strsplit(ver[1], " "))[3])
     if (versnumber < 4) {
         stop("pdftotext should be v4 or above (found ", versnumber, "); ", instructions)
     }
