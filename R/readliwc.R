@@ -8,12 +8,19 @@
 #'
 #' Currently only works with the \code{LIWC2015 dictionary poster.pdf} file.
 #'
+#' This function requires that you have the xpdf utilities (which includes pdftotext) installed on your system.  These are available from
+#' \url{https://www.xpdfreader.com/download.html}.  They can be installed for macOS using:
+#'
+#' \code{brew install xpdf}
+#'
+#' or for Linux using
+#'
+#' \code{sudo apt-get install xpdf}
+#'
 #' TO DO:
 #' \itemize{
 #' \item{either hard-wire the columns for the other three pdf files, or (better)
 #' detect them from the category list's proximity to the columns}
-#' \item{detect xpdf installation and issue a message with installation
-#' instructions if absent}
 #' }
 #' @param file the filename of the LIWC dictionary poster pdf to be read
 #' @return a \pkg{quanteda} \link[quanteda]{dictionary}
@@ -29,16 +36,18 @@ readliwc <- function(file) {
     if (Sys.info()[["sysname"]] == "Darwin") {
         file <- stringi::stri_replace_all_fixed(file, " ", "\\ ")
     }
-    dict <- system2("pdftotext", args = c("-layout", "-r 600", "-nopgbrk", file, "-"), stdout = TRUE)
 
+    # dict <- system2("pdftotext", args = c("-layout", "-r 600", "-nopgbrk", file, "-"), stdout = TRUE)
+    check_for_pdftotext()
+    dict <- system2("pdftotext", args = c("-layout", "-nopgbrk", file, "-"), stdout = TRUE)
     # get category names
-    cats <- as.character(tokens(dict[4]))
+    cats <- as.character(tokens(dict[7]))
 
-    # remove first three lines
-    dict <- dict[-c(1:4)]
+    # remove first eight lines
+    dict <- dict[-c(1:8)]
 
     # get fixed column locations
-    columns <- as.data.frame(stringi::stri_locate_all_regex(dict, "\\s[\\w\\p{P}]")[[1]])
+    columns <- as.data.frame(stringi::stri_locate_all_regex(dict, "\\s{2}[\\w\\p{P}]")[[1]])
     colwidths <- c(columns$end, max(nchar(dict)) + 1) - c(1, columns$end)
     dicttable <- utils::read.fwf(textConnection(dict), widths = colwidths, stringsAsFactors = FALSE)
 
@@ -47,6 +56,8 @@ readliwc <- function(file) {
                    rep(3, 2), 1, 7, 3, 3, 2, 3, 2, 1, 2, 2, 1, 3, 1, 2, rep(1, 3))
 
     liwclist <- wrapcols(dicttable, cats, colwidths)
+    # remove spaces in words
+    liwclist <- lapply(liwclist, stri_replace_all_fixed, " ", "")
 
     quanteda::dictionary(liwclist)
 }
@@ -58,4 +69,26 @@ wrapcols <- function(input, keynames, colwidths) {
     output <- split(tmp, rep(keynames, colwidths * nrow(input)))
     output <- lapply(output, function(x) x[x != "" & !is.na(x)])
     output
+}
+
+check_for_pdftotext <- function() {
+    ver <- try(
+        suppressWarnings(system2("pdftotext", args = "-v", stdout = TRUE, stderr = TRUE)),
+        silent = TRUE
+    )
+
+    instructions <- switch(Sys.info()[["sysname"]],
+                           Darwin = "brew install xpdf",
+                           Windows = "https://www.xpdfreader.com/download.html",
+                           Linux = "sudo apt-get install xpdf")
+
+    pdftotext_msg <- attr(ver, "condition")$message
+    if (!is.null(pdftotext_msg) && pdftotext_msg == "error in running command") {
+        stop("pdftotext not installed; try: ", instructions)
+    }
+
+    versnumber <- as.numeric(unlist(strsplit(ver[1], " "))[3])
+    if (versnumber < 4) {
+        stop("pdftotext should be v4 or above (found ", versnumber, "); ", instructions)
+    }
 }

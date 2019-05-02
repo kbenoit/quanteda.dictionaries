@@ -22,12 +22,19 @@ Dictionaries from the LIWC2015 application menu.
 \details{
 Currently only works with the \code{LIWC2015 dictionary poster.pdf} file.
 
+This function requires that you have the xpdf utilities (which includes pdftotext) installed on your system.  These are available from
+\url{https://www.xpdfreader.com/download.html}.  They can be installed for macOS using:
+
+\code{brew install xpdf}
+
+or for Linux using
+
+\code{sudo apt-get install xpdf}
+
 TO DO:
 \itemize{
 \item{either hard-wire the columns for the other three pdf files, or (better)
 detect them from the category list's proximity to the columns}
-\item{detect xpdf installation and issue a message with installation
-instructions if absent}
 }
 }
 \examples{
