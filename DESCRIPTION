@@ -1,10 +1,11 @@
 Package: quanteda.dictionaries
 Type: Package
-Title: Text Analysis Dictionaries
+Title: Dictionaries for Text Analysis and Associated Utilities
 Version: 0.22
-Authors@R: c( person("Kenneth", "Benoit", email = "kbenoit@lse.ac.uk", role =
-    c("aut", "cre", "cph")),
-    person("Stefan", "Müller", email = "mullers@tcd.ie", role = "aut"))
+Authors@R: c(person("Kenneth", "Benoit", email = "kbenoit@lse.ac.uk", role =
+    c("aut", "cre", "cph"), comment = c(ORCID = "0000-0002-0797-564X")),
+    person("Stefan", "Müller", email = "mueller@ipz.uzh.ch", role = "aut",
+    comment = c(ORCID = "0000-0002-6315-4125")))
 Description: Provides text analysis dictionaries and additional functionality 
     for their use in text analysis frameworks, especially quanteda.
 License: MIT + file LICENSE
@@ -21,9 +22,11 @@ Suggests:
     quanteda.corpora,
     rmarkdown,
     testthat
+BugReports: https://github.com/kbenoit/quanteda.dictionaries/issues
 Remotes:
     quanteda/quanteda.corpora
 Encoding: UTF-8
 LazyData: true
+Language: en-GB
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
