@@ -23,7 +23,7 @@ finer-grained control over how "words" are defined}
 \item{dictionary}{a \pkg{quanteda} \link[quanteda]{dictionary} object
 supplied for analysis}
 
-\item{tolower}{convert to common (lowser) case before tokenizing}
+\item{tolower}{convert to common (lower) case before tokenizing}
 
 \item{verbose}{if \code{TRUE} print status messages during processing}
 
@@ -55,21 +55,21 @@ liwcalike(data_char_testphrases)
 # examples for comparison
 txt <- c("The red-shirted lawyer gave her yellow-haired, red nose ex-boyfriend $300
             out of pity:(.")
-myDict <- quanteda::dictionary(list(people = c("lawyer", "boyfriend"),
-                          colorFixed = "red",
-                          colorGlob = c("red*", "yellow*", "green*"),
-                          mwe = "out of"))
-liwcalike(txt, myDict, what = "word")
-liwcalike(txt, myDict, what = "fasterword")
-(toks <- quanteda::tokens(txt, what = "fasterword", removeHyphens = TRUE))
+dict <- quanteda::dictionary(list(people = c("lawyer", "boyfriend"),
+                                  color_fixed = "red",
+                                  color_glob = c("red*", "yellow*", "green*"),
+                                  mwe = "out of"))
+liwcalike(txt, dict, what = "word")
+liwcalike(txt, dict, what = "fasterword")
+(toks <- quanteda::tokens(txt, what = "fasterword", remove_hyphens = TRUE))
 length(toks[[1]])
 # LIWC says 12 words
 
 \dontrun{# works with LIWC 2015 dictionary too
-liwc2015dict <- dictionary(file = "~/Dropbox/QUANTESS/dictionaries/LIWC/LIWC2015_English_Flat.dic",
-                           format = "LIWC")
-inaugLIWCanalysis <- liwcalike(data_corpus_inaugural, liwc2015dict)
-inaugLIWCanalysis[1:6, 1:10]
+dict_liwc_2015 <- dictionary(file = "~/Dropbox/QUANTESS/dictionaries/LIWC/LIWC2015_English_Flat.dic",
+                             format = "LIWC")
+dat_liwc_analysis <- liwcalike(data_corpus_inaugural, dict_liwc_2015)
+dat_liwc_analysis[1:6, 1:10]
 ##           docname Segment   WC      WPS Sixltr   Dic function article relativ motion
 ## 1 1789-Washington       1 1540 62.21739  24.35 253.1   52.403  9.0909 101.361 0.3483
 ## 2 1793-Washington       2  147 33.75000  25.17 250.3    5.065  0.9091  10.884 0.0387
