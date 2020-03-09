@@ -28,7 +28,7 @@ library("quanteda.dictionaries")
 
 ## 2.1 Accessing texts
 
-To access texts for scoring sentiment, we will use the movie reviews corpus from Pang, Lee, and Vaithyanathan (2002), found in the [**quanteda.corpora**](http://github.com/quanteda/quanteda.corpora) package. This requires that you have installed that package.  (If you want to use your own texts, we recommend the [**readtext**](https://github.com/quanteda/readtext) package for reading in your texts.)
+To access texts for scoring sentiment, we will use the movie reviews corpus from Pang, Lee, and Vaithyanathan (2002), found in the [**quanteda.textmodels**](http://github.com/quanteda/quanteda.textmodels) package. This requires that you have installed that package.  (If you want to use your own texts, we recommend the [**readtext**](https://github.com/quanteda/readtext) package for reading in your texts.)
 
 ```{r}
 data(data_corpus_moviereviews, package = "quanteda.textmodels")
