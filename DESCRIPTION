@@ -1,32 +1,32 @@
 Package: quanteda.dictionaries
 Type: Package
-Title: Dictionaries for Text Analysis and Associated Utilities
-Version: 0.22
+Title: Text Analysis Dictionaries
+Version: 0.30
 Authors@R: c(person("Kenneth", "Benoit", email = "kbenoit@lse.ac.uk", role =
     c("aut", "cre", "cph"), comment = c(ORCID = "0000-0002-0797-564X")),
     person("Stefan", "Müller", email = "mueller@ipz.uzh.ch", role = "aut",
     comment = c(ORCID = "0000-0002-6315-4125")))
 Description: Provides text analysis dictionaries and additional functionality 
     for their use in text analysis frameworks, especially quanteda.
-License: MIT + file LICENSE
+License: GPL-3 + file LICENSE
 Depends:
     R (>= 3.1.0)
 Imports:
-    quanteda (>= 1.2),
+    quanteda (>= 2.0.0),
     stringi
 Suggests:
     covr,
     ggplot2,
     knitr,
     mgcv,
-    quanteda.corpora,
+    quanteda.textmodels,
     rmarkdown,
     testthat
 BugReports: https://github.com/kbenoit/quanteda.dictionaries/issues
 Remotes:
-    quanteda/quanteda.corpora
+    quanteda/quanteda.textmodels
 Encoding: UTF-8
 LazyData: true
 Language: en-GB
 VignetteBuilder: knitr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
