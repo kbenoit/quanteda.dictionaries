@@ -72,16 +72,17 @@ length(toks[[1]])
 # LIWC says 12 words
 
 \dontrun{# works with LIWC 2015 dictionary too
-dict_liwc_2015 <- dictionary(file = "~/Dropbox/QUANTESS/dictionaries/LIWC/LIWC2015_English_Flat.dic",
-                             format = "LIWC")
+dict_liwc_2015 <-
+    dictionary(file = "~/Dropbox/QUANTESS/dictionaries/LIWC/LIWC2015_English_Flat.dic",
+               format = "LIWC")
 dat_liwc_analysis <- liwcalike(data_corpus_inaugural, dict_liwc_2015)
 dat_liwc_analysis[1:6, 1:10]
-##           docname Segment   WC      WPS Sixltr   Dic function article relativ motion
-## 1 1789-Washington       1 1540 62.21739  24.35 253.1   52.403  9.0909 101.361 0.3483
-## 2 1793-Washington       2  147 33.75000  25.17 250.3    5.065  0.9091  10.884 0.0387
-## 3      1797-Adams       3 2584 62.72973  24.61 237.5   82.403 15.0649 163.946 0.3096
-## 4  1801-Jefferson       4 1935 42.19512  20.36 253.2   62.143 10.0000 105.442 0.7353
-## 5  1805-Jefferson       5 2381 48.13333  22.97 255.8   79.221 10.9091 151.701 0.6966
-## 6    1809-Madison       6 1267 56.04762  24.78 258.2   42.987  8.3117  83.673 0.3870
+##           docname Segment      WPS   WC Sixltr    Dic function pronoun ppron    i
+## 1 1789-Washington       1 66.91304 1539  24.37 240.74    52.44   12.02  5.98 3.70
+## 2 1793-Washington       2 36.75000  147  25.17 236.73    53.06   12.24  6.80 6.12
+## 3      1797-Adams       3 69.81081 2583  24.62 226.40    49.13    8.52  3.33 1.32
+## 4  1801-Jefferson       4 47.09756 1931  20.40 241.12    49.56   12.53  6.37 1.76
+## 5  1805-Jefferson       5 52.88889 2380  22.98 241.93    51.26   13.95  7.39 1.55
+## 6    1809-Madison       6 60.23810 1265  24.82 239.29    52.33    9.72  4.98 2.53
 }
 }
