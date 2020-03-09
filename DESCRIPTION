@@ -22,7 +22,7 @@ Suggests:
     rmarkdown,
     testthat
 Remotes:
-    quanteda/quanteda.corpora
+    quanteda/quanteda.textmodels
 Encoding: UTF-8
 LazyData: true
 VignetteBuilder: knitr
