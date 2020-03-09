@@ -6,8 +6,12 @@ output: github_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+```{r echo=FALSE, results="hide", message=FALSE}
+library("badger")
+```
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/quanteda.dictionaries)](https://cran.r-project.org/package=quanteda.dictionaries)
+`r badge_devel("kbenoit/quanteda.dictionaries", "royalblue")`
 [![Travis-CI Build Status](https://travis-ci.org/kbenoit/quanteda.dictionaries.svg?branch=master)](https://travis-ci.org/kbenoit/quanteda.dictionaries)
 [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/3uvg00bo4p7mr98s/branch/master?svg=true)](https://ci.appveyor.com/project/kbenoit/quanteda-dictionaries/branch/master)
 [![Coverage Status](https://img.shields.io/codecov/c/github/kbenoit/quanteda.dictionaries/master.svg)](https://codecov.io/github/kbenoit/quanteda.dictionaries?branch=master)
@@ -28,7 +32,8 @@ With the `liwcalike()` function from the **quanteda.dictionaries** package, you 
 ```{r, warning=FALSE, message=FALSE}
 library("quanteda.dictionaries")
 
-output_lsd <- liwcalike(quanteda.corpora::data_corpus_movies, 
+# requires GitHub version of quanteda.textmodels
+output_lsd <- liwcalike(quanteda.textmodels::data_corpus_moviereviews,
                         dictionary = data_dictionary_NRC)
 
 head(output_lsd)

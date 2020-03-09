@@ -10,18 +10,20 @@ test_that("test dictionary count etc.", {
                               mwe = "out of"))
     myCount <- liwcalike(txt, myDict, what = "word")
 
-    toks <- quanteda::tokens(txt[1], remove_hyphens = TRUE)
+    toks <- quanteda::tokens(txt[1], split_hyphens = TRUE)
     num_words_txt1 <- quanteda::ntoken(toks)
 
     # dictionary count
-    num_people <- sum(toks$text1 == "lawyer") + sum(toks$text1 == "boyfriend")
-    expect_equivalent(round(as.numeric(myCount$people[1]), 2),
-                      round(100 * num_people / num_words_txt1, 2))
+    num_people <- sum(toks[["text1"]] == "lawyer") + sum(toks[["text1"]] == "boyfriend")
+    expect_equal(
+        c(text1 = myCount$people[1]),
+        100 * num_people / num_words_txt1,
+        tol = 0.01
+    )
 
     # period count
     num_Period <- stringi::stri_count_fixed(txt[1], ".") / num_words_txt1 * 100
-    expect_equivalent(round(as.numeric(myCount$Period[1]), 2),
-                      round(num_Period, 2))
+    expect_equal(c(text1 = myCount$Period[1]), num_Period, tol = 0.01)
 })
 
 test_that("object class types are data.frame", {

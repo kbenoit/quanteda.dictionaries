@@ -3,7 +3,6 @@
 \docType{package}
 \name{quanteda.dictionaries}
 \alias{quanteda.dictionaries}
-\alias{quanteda.dictionaries-package}
 \title{quanteda.dictionaries}
 \description{
 Provides text analysis dictionaries and additional functionality for their

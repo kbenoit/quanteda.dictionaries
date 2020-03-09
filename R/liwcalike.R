@@ -74,7 +74,7 @@ liwcalike.character <- function(x, dictionary = NULL, tolower = TRUE, verbose = 
                    Segment = 1:length(x), row.names = NULL, stringsAsFactors = FALSE)
 
     # tokenize
-    toks <- quanteda::tokens(x, remove_hyphens = TRUE, ...)
+    toks <- quanteda::tokens(x, split_hyphens = TRUE, ...)
 
     # WPS (mean words per sentence) - count sentences before lowercasing
     result[["WPS"]] <- quanteda::ntoken(toks) / quanteda::nsentence(x)

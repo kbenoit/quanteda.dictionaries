@@ -10,8 +10,14 @@ liwcalike(x, ...)
 
 \method{liwcalike}{corpus}(x, ...)
 
-\method{liwcalike}{character}(x, dictionary = NULL, tolower = TRUE,
-  verbose = TRUE, digits = 2, ...)
+\method{liwcalike}{character}(
+  x,
+  dictionary = NULL,
+  tolower = TRUE,
+  verbose = TRUE,
+  digits = 2,
+  ...
+)
 }
 \arguments{
 \item{x}{input object, a \pkg{quanteda} \link[quanteda]{corpus} or character

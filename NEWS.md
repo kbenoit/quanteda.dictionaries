@@ -1,3 +1,8 @@
+# quanteda.dictionaries 0.3
+
+* Updated the dictionary objects for quanteda v2.
+* Fixed some tests that were breaking after the quanteda v2 release.
+
 # quanteda.dictionaries 0.2
 
 * Added a `NEWS.md` file to track changes to the package.  

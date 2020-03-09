@@ -6,3 +6,4 @@ doc
 .Ruserdata
 quanteda.dictionaries.Rproj
 inst/doc
+.DS_Store
