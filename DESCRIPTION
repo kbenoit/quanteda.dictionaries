@@ -8,11 +8,11 @@ Authors@R: c(person("Kenneth", "Benoit", email = "kbenoit@lse.ac.uk", role =
     comment = c(ORCID = "0000-0002-6315-4125")))
 Description: Provides text analysis dictionaries and additional functionality 
     for their use in text analysis frameworks, especially quanteda.
-License: MIT + file LICENSE
+License: GPL-3 + file LICENSE
 Depends:
     R (>= 3.1.0)
 Imports:
-    quanteda (>= 1.2),
+    quanteda (>= 2.0.0),
     stringi
 Suggests:
     covr,
