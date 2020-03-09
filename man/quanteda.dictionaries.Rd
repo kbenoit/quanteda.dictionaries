@@ -2,7 +2,7 @@
 % Please edit documentation in R/quanteda.dictionaries-package.r
 \docType{package}
 \name{quanteda.dictionaries}
-\alias{quanteda.dictionaries-package}
+\alias{quanteda.dictionaries}
 \title{An R package consisting of dictionaries for text analysis and associated utilities}
 \description{
 Provides text analysis dictionaries and additional functionality for their
@@ -12,7 +12,7 @@ use in text analysis frameworks, especially \pkg{quanteda}.
 The package contains several dictionaries that capture positive and negative sentiment, and 
 other types of emotions. Moreover, the package contains word lists of words spelled differently in 
 British and American English. These lists can be used to adjust text corpora and avoid 
-double-counting the same word with different spellings in the same corpus.
+double-counting the same word with different spellings in the same corpus. 
 
 The second main purpose of \pkg{quanteda.dictionaries} is the function \link{liwcalike}. It allows 
 analyzing text corpora in a LIWC-alike fashion. LIWC (Linguistic Inquiry and Word Count) is a 
