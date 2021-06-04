@@ -4,8 +4,10 @@
 \name{data_dictionary_RID}
 \alias{data_dictionary_RID}
 \title{Martindale's Regressive Imagery Dictionary (RID)}
-\format{The dictionary has three levels of nesting, and forms 43 keys in
-  total and a total of 3,150 values.}
+\format{
+The dictionary has three levels of nesting, and forms 43 keys in
+  total and a total of 3,150 values.
+}
 \usage{
 data_dictionary_RID
 }

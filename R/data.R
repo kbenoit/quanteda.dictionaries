@@ -30,60 +30,6 @@
 #' @rdname data_dictionary_uk2us
 "data_dictionary_us2uk"
 
-#' NRC Word-Emotion Association Lexicon
-#'
-#' A \pkg{quanteda} \link[quanteda]{dictionary} object containing Mohammad and
-#' Charron's (2010, 2013) English version of the NRC Word-Emotion Association
-#' Lexicon (aka NRC Emotion Lexicon aka EmoLex): association of words with eight
-#' emotions (anger, fear, anticipation, trust, surprise, sadness, joy, and disgust)
-#' and two sentiments (negative and positive) manually annotated on Amazon's Mechanical Turk.
-#' Available in 40 different languages.
-#' @references
-#'   Mohammad, S. & Turney, P. (2013). \href{https://arxiv.org/abs/1308.6297}{Crowdsourcing 
-#'   a Word-Emotion Association Lexicon}. \emph{Computational Intelligence}, 29(3), 436--465.
-#'
-#'   Mohammad, S. & Turney, P. (2010). \href{https://dl.acm.org/citation.cfm?id=1860635}{Emotions 
-#'   Evoked by Common Words and Phrases: Using Mechanical Turk to Create an 
-#'   Emotion Lexicon}. In \emph{Proceedings of the NAACL-HLT 2010 Workshop on Computational
-#'   Approaches to Analysis and Generation of Emotion in Text}, June 2010, LA,
-#'   California.
-#'
-#'   NRC webpage: \url{http://saifmohammad.com/WebPages/AccessResource.htm}
-#' @keywords data
-"data_dictionary_NRC"
-
-#' Positive and negative words from Hu and Liu (2004)
-#'
-#' A \pkg{quanteda} \link[quanteda]{dictionary} object containing 2,006 positive
-#' and 4,783 negative words from Hu and Liu (2004, 2005).
-#' @references
-#'   Hu, M. & Liu, B. (2004). \href{https://www.cs.uic.edu/~liub/publications/kdd04-revSummary.pdf}{Mining
-#'   and Summarizing Customer Reviews.} In \emph{Proceedings of the ACM
-#'   SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD-2004),
-#'   Aug 22--25, 2004, Seattle, Washington, USA}.
-#'
-#'   Liu, M., Hu, M., & Cheng, J. (2005). \href{https://www.cs.uic.edu/~liub/publications/www05-p536.pdf}{Opinion
-#'   Observer: Analyzing and Comparing Opinions on the Web.} In \emph{Proceedings of
-#'   the 14th International World Wide Web conference (WWW-2005), May 10--14, 2005, Chiba, Japan}.
-#' @source \url{http://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html}
-#' @keywords data
-"data_dictionary_HuLiu"
-
-#' Augmented General Inquirer \emph{Positiv} and \emph{Negativ} dictionary
-#'
-#' A \pkg{quanteda} \link[quanteda]{dictionary} object containing the
-#' \emph{Positiv} and \emph{Negativ} dictionary entries from the augmented
-#' General Inquirer. These are new valence categories described at
-#' \url{http://www.wjh.harvard.edu/~inquirer/homecat.htm} but also including the
-#' terms from the \href{http://www.wjh.harvard.edu/~inquirer/Yes.html}{yes} and
-#' \href{http://www.wjh.harvard.edu/~inquirer/No.html}{no} dictionary entries.
-#' @references Stone, P.J., Dunphy, C.D., & Smith, M.S. (1966).
-#'   \emph{The General Inquirer: A Computer Approach to Content Analysis.}
-#'   Cambridge, MA: MIT Press.
-#' @source \url{http://www.wjh.harvard.edu/~inquirer/spreadsheet_guide.htm}
-#' @keywords data
-"data_dictionary_geninqposneg"
-
 #' Martindale's Regressive Imagery Dictionary (RID)
 #'
 #' The English Regressive Imagery Dictionary (RID) consists of about 3,150 words
@@ -100,49 +46,6 @@
 #' Artistic Change.} New York: Basic Books.
 #' @keywords data
 "data_dictionary_RID"
-
-#' SentimentWortschatz (SentiWS)
-#'
-#' A \pkg{quanteda} \link[quanteda]{dictionary} object containing
-#' SentimentWortschatz (SentiWS), a publicly available German-language resource
-#' for sentiment analysis. The current version of SentiWS contains 1,650
-#' positive and 1,818 negative words, which sum up to 15,649 positive and 15,632
-#' negative word forms including their inflections. It not only contains
-#' adjectives and adverbs explicitly expressing a sentiment, but also nouns and
-#' verbs implicitly containing one. The original dictionary weights within the
-#' interval of -1 to 1. Note that the version implemented in
-#' \pkg{quanteda.dictionaries} uses a binary classification into positive
-#' (weight > 0) and negative (weight < 0) features.
-#' @source \url{http://wortschatz.uni-leipzig.de/en/download/}
-#' @references
-#'   Remus, R., Quasthoff U., and Heyer, G. (2010).
-#'   \href{http://www.lrec-conf.org/proceedings/lrec2010/pdf/490_Paper.pdf}{SentiWS
-#'   - a Publicly Available German-language Resource for Sentiment Analysis}.
-#'   In \emph{Proceedings of the 7th International Language Ressources and
-#'   Evaluation (LREC'10)}, 1168--1171.
-#'
-#' @keywords data
-"data_dictionary_sentiws"
-
-#' Affective Norms for English Words (AFINN)
-#'
-#' A \pkg{quanteda} \link[quanteda]{dictionary} object containing
-#' the Affective Norms for English Words (AFINN), a publicly available list of
-#' English words rated for valence with values between -5 (negative) and
-#' +5 (positive). AFINN-111, the latest version, contains 2,477 words and phrases.
-#' Note that the version implemented in \pkg{quanteda.dictionaries} uses a binary
-#' classification into 878 positive (valence > 0) and 1,599 negative (valence < 0)
-#' features.
-#' @source \url{http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010}
-#'
-#' @references
-#'   Nielsen, F.Å. (2011). \href{https://arxiv.org/abs/1103.2903}{A new ANEW:
-#'   Evaluation of a Word List for Sentiment Analysis in Microblogs.}
-#'   In \emph{Proceedings of the ESWC2011 Workshop on 'Making Sense of Microposts':
-#'   Big Things Come in Small Packages}, 93--98.
-#'
-#' @keywords data
-"data_dictionary_AFINN"
 
 #' Moral Foundations Dictionary
 #'
@@ -162,8 +65,8 @@
 #'   Linguistic Analyses, 2.0. University of Winnipeg Manuscript.
 #'   \url{http://www.jeremyfrimer.com/uploads/2/1/2/7/21278832/summary.pdf}.
 #'
-#'   Haidt, J., Graham, J., & Nosek, B.A. (2009). \href{http://dx.doi.org/10.1037/a0015141}{Liberals 
-#'   and Conservatives Rely on Different Sets of Moral Foundations}. 
+#'   Haidt, J., Graham, J., & Nosek, B.A. (2009). \href{http://dx.doi.org/10.1037/a0015141}{Liberals
+#'   and Conservatives Rely on Different Sets of Moral Foundations}.
 #'   \emph{Journal of Personality and Social Inquiry}, 20(2--3), 110--119.
 #'
 #'   Graham, J., & Haidt, J. (2016). \href{http://moralfoundations.org/othermaterials}{Moral
@@ -182,79 +85,10 @@
 #' sub-categories (level 2).
 #' @source \url{https://provalisresearch.com/products/content-analysis-software/wordstat-dictionary/laver-garry-dictionary-of-policy-position/}
 #' @references
-#'   Laver. M. & Garry, J. (2000). \href{https://doi.org/10.2307/2669268}{Estimating Policy Positions 
+#'   Laver. M. & Garry, J. (2000). \href{https://doi.org/10.2307/2669268}{Estimating Policy Positions
 #'   from Political Texts}. \emph{American Journal of Political Science}, 44(3), 619--634.
 #' @keywords data
 "data_dictionary_LaverGarry"
-
-#' Rauh's German Political Sentiment Dictionary
-#'
-#' A \pkg{quanteda} \link[quanteda]{dictionary} object containing the
-#' dictionaries provided in Rauh (forthcoming). Rauh assesses its performance
-#' against human intuition of sentiment in German political language
-#' (parliamentary speeches, party manifestos, and media coverage). The resource
-#' builds on, harmonizes and extends the SentiWS (Remus et al. 2010) and
-#' GermanPolarityClues (Waltinger 2010) dictionaries. In order to use the
-#' negation correction provided by the dictionary, currently a combination of
-#' \link[quanteda]{tokens_replace} and \link[quanteda]{tokens_compound} is
-#' required to harmonize the five covered bi-gram patterns prior to scoring. The
-#' example below shows how to conduct this transformation. Note that the process
-#' changes the terms "nicht|nichts|kein|keine|keinen" to a joint term altering
-#' some of the features of the original corpus.
-#' @format The dictionary has four keys.
-#' \describe{
-#' \item{\code{negative}}{19,750 terms indicating negative sentiment}
-#' \item{\code{positive}}{17,330 terms indicating positive sentiment}
-#' \item{\code{neg_positive}}{17,330 terms indicating a positive word preceded
-#' by a negation (used to convey negative sentiment)}
-#' \item{\code{neg_negative}}{19,750 terms indicating a negative word preceded
-#' by a negation (used to convey positive sentiment)}
-#' }
-#' @source \url{https://doi.org/10.7910/DVN/BKBXWD}
-#' @references
-#'   Rauh, C. (2018). \href{https://doi.org/10.1080/19331681.2018.1485608}{Validating a 
-#'   Sentiment Dictionary for German Political Language: A Workbench Note}. \emph{Journal of 
-#'   Information Technology & Politics}, 15(4), 319--343.
-#'
-#'   Remus, R., Quasthoff U., & Heyer, G. (2010).
-#'   "\href{http://www.lrec-conf.org/proceedings/lrec2010/pdf/490_Paper.pdf}{SentiWS
-#'   - a Publicly Available German-language Resource for Sentiment Analysis.}"
-#'   In \emph{Proceedings of the 7th International Language Ressources and
-#'   Evaluation (LREC'10)}, 1168--1171.
-#'
-#'   Waltinger, U. (2010). 
-#'   "\href{http://www.ulliwaltinger.de/pdf/91_Paper.pdf}{GermanPolarityClues: A
-#'   Lexical Resource for German Sentiment Analysis}." In \emph{International
-#'   Conference on Language Resources and Evaluation}, 17--23 May 2010 LREC'10.
-#' @examples
-#' # tokenize example text
-#' toks <- quanteda::tokens("nicht schlecht dieses wunderschöne Wörterbuch")
-#' # replace negation markers with "not"
-#' toks1 <- quanteda::tokens_replace(toks, pattern = c("nicht", "nichts", "kein",
-#'                                                     "keine", "keinen"),
-#'                                   replacement = rep("not", 5))
-#' # compound bi-gram negation patterns
-#' toks2 <- quanteda::tokens_compound(toks1, data_dictionary_Rauh, concatenator = " ")
-#'
-#' # apply dictionary
-#' quanteda::dfm(toks2, dictionary = data_dictionary_Rauh)
-#' @keywords data
-"data_dictionary_Rauh"
-
-#' Loughran and McDonald Sentiment Word Lists
-#'
-#' A \pkg{quanteda} \link[quanteda]{dictionary} object containing
-#' the 2014 version of the Loughran and McDonald Sentiment Word Lists. The
-#' categories are "negative" (2355 features), "positive" (354), "uncertainty" (297), "litigious" (903),
-#' "constraining" (184), "superfluous" (56), "interesting" (68), "modal words strong" (68)
-#' and "modal words weak" (0).
-#' @source \url{http://sraf.nd.edu/textual-analysis/resources/}
-#' @references
-#'   Loughran, T. & McDonald, B. (2011). \href{https://doi.org/10.1111/j.1540-6261.2010.01625.x}{When 
-#'   is a Liability not a Liability? Textual Analysis, Dictionaries, and 10-Ks}. 
-#'   \emph{Journal of Finance}, 66(1), 35--65.
-#' @keywords data
-"data_dictionary_LoughranMcDonald"
 
 #' Sample short documents for testing
 #'

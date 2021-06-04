@@ -2,16 +2,19 @@
 % Please edit documentation in R/liwcalike.R
 \name{liwcalike}
 \alias{liwcalike}
-\alias{liwcalike.corpus}
 \alias{liwcalike.character}
 \title{Analyze text in a LIWC-alike fashion}
 \usage{
 liwcalike(x, ...)
 
-\method{liwcalike}{corpus}(x, ...)
-
-\method{liwcalike}{character}(x, dictionary = NULL, tolower = TRUE,
-  verbose = TRUE, digits = 2, ...)
+\method{liwcalike}{character}(
+  x,
+  dictionary = NULL,
+  tolower = TRUE,
+  verbose = TRUE,
+  digits = 2,
+  ...
+)
 }
 \arguments{
 \item{x}{input object, a \pkg{quanteda} \link[quanteda]{corpus} or character
@@ -61,13 +64,14 @@ dict <- quanteda::dictionary(list(people = c("lawyer", "boyfriend"),
                                   mwe = "out of"))
 liwcalike(txt, dict, what = "word")
 liwcalike(txt, dict, what = "fasterword")
-(toks <- quanteda::tokens(txt, what = "fasterword", remove_hyphens = TRUE))
+(toks <- quanteda::tokens(txt, what = "fasterword", split_hyphens = TRUE))
 length(toks[[1]])
 # LIWC says 12 words
 
 \dontrun{# works with LIWC 2015 dictionary too
-dict_liwc_2015 <- dictionary(file = "~/Dropbox/QUANTESS/dictionaries/LIWC/LIWC2015_English_Flat.dic",
-                             format = "LIWC")
+dict_liwc_2015 <-
+  dictionary(file = "~/Dropbox/QUANTESS/dictionaries/LIWC/LIWC2015_English_Flat.dic",
+             format = "LIWC")
 dat_liwc_analysis <- liwcalike(data_corpus_inaugural, dict_liwc_2015)
 dat_liwc_analysis[1:6, 1:10]
 ##           docname Segment   WC      WPS Sixltr   Dic function article relativ motion

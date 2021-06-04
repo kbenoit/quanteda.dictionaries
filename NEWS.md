@@ -1,3 +1,10 @@
+# quanteda.dictionaries 0.3
+
+* Updated the dictionary objects for quanteda v3.
+* Moved the sentiment-related dictionaries to **quanteda.sentiment**.
+* Added `dictionary_edit()`, formerly in **quanteda** (but removed in v3).
+* Fixed some tests that were breaking after the quanteda v3 release.
+
 # quanteda.dictionaries 0.2
 
 * Added a `NEWS.md` file to track changes to the package.  

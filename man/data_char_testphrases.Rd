@@ -4,7 +4,9 @@
 \name{data_char_testphrases}
 \alias{data_char_testphrases}
 \title{Sample short documents for testing}
-\format{An object of class \code{character} of length 10.}
+\format{
+An object of class \code{character} of length 10.
+}
 \usage{
 data_char_testphrases
 }

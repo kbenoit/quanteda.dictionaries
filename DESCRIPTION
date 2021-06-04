@@ -1,7 +1,7 @@
 Package: quanteda.dictionaries
 Type: Package
 Title: Dictionaries for Text Analysis and Associated Utilities
-Version: 0.22
+Version: 0.3
 Authors@R: c(person("Kenneth", "Benoit", email = "kbenoit@lse.ac.uk", role =
     c("aut", "cre", "cph"), comment = c(ORCID = "0000-0002-0797-564X")),
     person("Stefan", "Müller", email = "mueller@ipz.uzh.ch", role = "aut",
@@ -12,21 +12,25 @@ License: MIT + file LICENSE
 Depends:
     R (>= 3.1.0)
 Imports:
-    quanteda (>= 1.2),
-    stringi
+    quanteda (>= 3.0),
+    stringi,
+    yaml
 Suggests:
     covr,
     ggplot2,
     knitr,
     mgcv,
     quanteda.corpora,
+    quanteda.sentiment,
+    quanteda.textmodels,
     rmarkdown,
     testthat
 BugReports: https://github.com/kbenoit/quanteda.dictionaries/issues
 Remotes:
-    quanteda/quanteda.corpora
+    quanteda/quanteda.corpora,
+    quanteda/quanteda.sentiment
 Encoding: UTF-8
 LazyData: true
 Language: en-GB
 VignetteBuilder: knitr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1

@@ -34,13 +34,14 @@
 #'                                   mwe = "out of"))
 #' liwcalike(txt, dict, what = "word")
 #' liwcalike(txt, dict, what = "fasterword")
-#' (toks <- quanteda::tokens(txt, what = "fasterword", remove_hyphens = TRUE))
+#' (toks <- quanteda::tokens(txt, what = "fasterword", split_hyphens = TRUE))
 #' length(toks[[1]])
 #' # LIWC says 12 words
 #'
 #' \dontrun{# works with LIWC 2015 dictionary too
-#' dict_liwc_2015 <- dictionary(file = "~/Dropbox/QUANTESS/dictionaries/LIWC/LIWC2015_English_Flat.dic",
-#'                              format = "LIWC")
+#' dict_liwc_2015 <-
+#'   dictionary(file = "~/Dropbox/QUANTESS/dictionaries/LIWC/LIWC2015_English_Flat.dic",
+#'              format = "LIWC")
 #' dat_liwc_analysis <- liwcalike(data_corpus_inaugural, dict_liwc_2015)
 #' dat_liwc_analysis[1:6, 1:10]
 #' ##           docname Segment   WC      WPS Sixltr   Dic function article relativ motion
@@ -57,13 +58,6 @@ liwcalike <- function(x, ...) {
     UseMethod("liwcalike")
 }
 
-
-#' @rdname liwcalike
-#' @export
-liwcalike.corpus <- function(x, ...) {
-    liwcalike(texts(x), ...)
-}
-
 #' @rdname liwcalike
 #' @export
 liwcalike.character <- function(x, dictionary = NULL, tolower = TRUE, verbose = TRUE, digits = 2, ...) {
@@ -74,7 +68,7 @@ liwcalike.character <- function(x, dictionary = NULL, tolower = TRUE, verbose = 
                    Segment = 1:length(x), row.names = NULL, stringsAsFactors = FALSE)
 
     # tokenize
-    toks <- quanteda::tokens(x, remove_hyphens = TRUE, ...)
+    toks <- quanteda::tokens(x, split_hyphens = TRUE, ...)
 
     # WPS (mean words per sentence) - count sentences before lowercasing
     result[["WPS"]] <- quanteda::ntoken(toks) / quanteda::nsentence(x)
@@ -107,7 +101,8 @@ liwcalike.character <- function(x, dictionary = NULL, tolower = TRUE, verbose = 
     if (!is.null(dictionary)) {
         dfmdict <- quanteda::dfm(toks, verbose = FALSE)
         result <- cbind(result,
-                        as.data.frame(as.matrix(dfmdict) / matrix(rep(result[["WC"]], each = nfeat(dfmdict)), ncol = nfeat(dfmdict), byrow = TRUE),
+                        as.data.frame(as.matrix(dfmdict) / matrix(rep(result[["WC"]], each = nfeat(dfmdict)),
+                                                                  ncol = nfeat(dfmdict), byrow = TRUE),
                                       row.names = seq_len(nrow(result))) * 100)
     }
 

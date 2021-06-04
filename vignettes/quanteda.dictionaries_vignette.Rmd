@@ -22,16 +22,16 @@ Built on the [**quanteda**](http://www.quanteda.io) package for text analysis, *
 # 2. Using dictionaries with quanteda
 
 ```{r eval=TRUE, warning=FALSE, message=FALSE}
-library(quanteda)
-library(quanteda.dictionaries)
+library("quanteda")
+library("quanteda.dictionaries")
 ```
 
 ## 2.1 Accessing texts
 
-To access texts for scoring sentiment, we will use the movie reviews corpus from Pang, Lee, and Vaithyanathan (2002), found in the [**quanteda.corpora**](http://github.com/quanteda/quanteda.corpora) package. This requires that you have installed that package.  (If you want to use your own texts, we recommend the [**readtext**](https://github.com/quanteda/readtext) package for reading in your texts.)
+To access texts for scoring sentiment, we will use the movie reviews corpus from Pang, Lee, and Vaithyanathan (2002), found in the [**quanteda.textmodels**](http://github.com/quanteda/quanteda.textmodels) package. This requires that you have installed that package.  (If you want to use your own texts, we recommend the [**readtext**](https://github.com/quanteda/readtext) package for reading in your texts.)
 
 ```{r}
-data(data_corpus_movies, package = "quanteda.corpora")
+data(data_corpus_moviereviews, package = "quanteda.textmodels")
 ```
 
 
@@ -52,10 +52,10 @@ tail(liwc2007dict, 1)
 #     - blah, idon'tknow, idontknow, imean, ohwell, oranything*, orsomething*, orwhatever*, rr*, yakn*, ykn*, youknow*
 ```
 
-While you can use the LIWC dictionary which you need to purchase, in this example we use the NRC sentiument dictionary object `data_dictionary_NRC`. The `liwcalike()` function from **quanteda.dictionaries** gives similar output to that from the LIWC stand-alone software.  We use a collection of 2000 movie reviews classified as "positive" or "negative", a corpus which comes with **quanteda.corpora**.
+While you can use the LIWC dictionary which you need to purchase, in this example we use the NRC sentiument dictionary object `data_dictionary_NRC`. The `liwcalike()` function from **quanteda.dictionaries** gives similar output to that from the LIWC stand-alone software.  We use a collection of 2000 movie reviews classified as "positive" or "negative", a corpus which comes with **quanteda.textmodels**.
 
 ```{r}
-output_nrc <- liwcalike(data_corpus_movies, data_dictionary_NRC)
+output_nrc <- liwcalike(data_corpus_moviereviews, data_dictionary_LSD2015)
 head(output_nrc)
 ```
 
@@ -63,11 +63,11 @@ Next, we can use the `negative` and `positive` columns to estimate the net senti
 
 ```{r fig.width=7, fig.height=6}
 output_nrc$net_positive <- output_nrc$positive - output_nrc$negative
-output_nrc$sentiment <- docvars(data_corpus_movies, "Sentiment")
+output_nrc$sentiment <- docvars(data_corpus_moviereviews, "sentiment")
 
-library(ggplot2)
+library("ggplot2")
 # set ggplot2 theme
-theme_set(theme_bw())
+theme_set(theme_minimal())
 ggplot(output_nrc, aes(x = sentiment, y = net_positive)) +
     geom_boxplot() +
     labs(x = "Classified sentiment", 
@@ -78,11 +78,13 @@ ggplot(output_nrc, aes(x = sentiment, y = net_positive)) +
 We see that the median of the net positive sentiment from our dictionary analysis is higher for reviews that have been classified as being positive. To check whether the choice of dictionary had an impact on this result, we can rerun the analysis with a the General Inquirer _Positive_ and _Negative_ dictionary, an alternative sentiment dictionary provided in **quanteda.dictionaries**.
 
 ```{r fig.width=7, fig.height=6}
-output_geninq <- liwcalike(data_corpus_movies, data_dictionary_geninqposneg)
+library("quanteda")
+library("quanteda.sentiment")
+output_geninq <- liwcalike(data_corpus_moviereviews, data_dictionary_geninqposneg)
 names(output_geninq)
 
 output_geninq$net_positive <- output_geninq$positive - output_geninq$negative
-output_geninq$sentiment <- docvars(data_corpus_movies, "Sentiment")
+output_geninq$sentiment <- docvars(data_corpus_moviereviews, "sentiment")
 
 ggplot(output_geninq, aes(x = sentiment, y = net_positive)) +
     geom_boxplot() +
@@ -113,10 +115,10 @@ ggplot(data = cor_dictionaries, aes(x = nrc, y = geninq)) +
 The LIWC software allows to build custom dictionaries created for specific research questions. With **quanteda**'s `dictionary()` function we can do the same. 
 
 ```{r}
-mydict <- dictionary(list(positive = c("great", "phantastic", "wonderful"),
-                          negative = c("bad", "horrible", "terrible")))
+dict <- dictionary(list(positive = c("great", "phantastic", "wonderful"),
+                        negative = c("bad", "horrible", "terrible")))
 
-output_custom_dict <- liwcalike(data_corpus_movies, mydict)
+output_custom_dict <- liwcalike(data_corpus_moviereviews, dict)
 
 head(output_custom_dict)
 ```
@@ -176,7 +178,7 @@ quanteda::tokens_lookup(toks, data_dictionary_uk2us,
                         exclusive = FALSE, capkeys = FALSE)
 ```
 
-To make all speelings British, we use `data_dictionary_us2uk` instead.
+To make all spellings British, we use `data_dictionary_us2uk` instead.
 
 ```{r}
 quanteda::tokens_lookup(toks, data_dictionary_us2uk,

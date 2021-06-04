@@ -5,8 +5,12 @@
 \alias{data_dictionary_uk2us}
 \alias{data_dictionary_us2uk}
 \title{English UK-US spelling conversion dictionary}
-\format{A \link[quanteda]{dictionary} where the key is the English variant to which conversion is
-desired, and the values are spelling variants in English variant from which conversion is desired.}
+\format{
+A \link[quanteda]{dictionary} where the key is the English variant to which conversion is
+desired, and the values are spelling variants in English variant from which conversion is desired.
+
+An object of class \code{dictionary2} of length 1738.
+}
 \source{
 \url{http://www.tysto.com/uk-us-spelling-list.html}
 }
