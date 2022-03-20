@@ -3,7 +3,7 @@
 library("quanteda")
 library("dplyr")
 
-# load dictionary dataframes (downloaded here: https://doi.org/10.7910/DVN/BKBX)
+# load dictionary dataframes (downloaded here: https://doi.org/10.7910/DVN/BKBXWD)
 load("sources/Rauh/Rauh_SentDictionaryGerman_Negation.Rdata")
 load("sources/Rauh/Rauh_SentDictionaryGerman.Rdata")
 
