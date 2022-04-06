@@ -1,3 +1,7 @@
+# quanteda.dictionaries 0.3.1
+
+* Fixed a bug causing the number of parentheses to be incorrectly counted, when not all texts contained parentheses. (#36)
+
 # quanteda.dictionaries 0.3
 
 * Updated the dictionary objects for quanteda v3.

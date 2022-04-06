@@ -145,8 +145,8 @@ liwcalike.character <- function(x, dictionary = NULL, tolower = TRUE, verbose = 
 
     # Parenth -- note this is specified as "pairs of parentheses"
     result[["Parenth"]] <-
-        min(c(stringi::stri_count_fixed(x, "("),
-              stringi::stri_count_fixed(x, ")"))) / result[["WC"]] * 100
+        pmin(stringi::stri_count_fixed(x, "("),
+             stringi::stri_count_fixed(x, ")")) / result[["WC"]] * 100
 
     # OtherP
     result[["OtherP"]] <-

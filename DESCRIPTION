@@ -1,7 +1,7 @@
 Package: quanteda.dictionaries
 Type: Package
 Title: Dictionaries for Text Analysis and Associated Utilities
-Version: 0.3
+Version: 0.31
 Authors@R: c(person("Kenneth", "Benoit", email = "kbenoit@lse.ac.uk", role =
     c("aut", "cre", "cph"), comment = c(ORCID = "0000-0002-0797-564X")),
     person("Stefan", "Müller", email = "mueller@ipz.uzh.ch", role = "aut",
@@ -33,4 +33,4 @@ Encoding: UTF-8
 LazyData: true
 Language: en-GB
 VignetteBuilder: knitr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2

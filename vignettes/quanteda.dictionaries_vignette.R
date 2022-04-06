@@ -38,3 +38,81 @@ ggplot(output_nrc, aes(x = sentiment, y = net_positive)) +
          y = "Net positive sentiment",
          main = "NRC Sentiment Dictionary")
 
+## ----fig.width=7, fig.height=6------------------------------------------------
+library("quanteda")
+library("quanteda.sentiment")
+output_geninq <- liwcalike(data_corpus_moviereviews, data_dictionary_geninqposneg)
+names(output_geninq)
+
+output_geninq$net_positive <- output_geninq$positive - output_geninq$negative
+output_geninq$sentiment <- docvars(data_corpus_moviereviews, "sentiment")
+
+ggplot(output_geninq, aes(x = sentiment, y = net_positive)) +
+    geom_boxplot() +
+    labs(x = "Classified sentiment", 
+         y = "Net positive sentiment", 
+         main = "General Inquirer Sentiment Association")
+
+## ----fig.width=7, fig.height=6------------------------------------------------
+cor.test(output_nrc$net_positive, output_geninq$net_positive)
+
+cor_dictionaries <- data.frame(
+    nrc = output_nrc$net_positive,
+    geninq = output_geninq$net_positive
+)
+
+ggplot(data = cor_dictionaries, aes(x = nrc, y = geninq)) + 
+    geom_point(alpha = 0.2) +
+    labs(x = "NRC Word-Emotion Association Lexicon",
+         y = "General Inquirer Net Positive Sentiment",
+         main = "Correlation for Net Positive Sentiment in Movie Reviews")
+
+## -----------------------------------------------------------------------------
+dict <- dictionary(list(positive = c("great", "phantastic", "wonderful"),
+                        negative = c("bad", "horrible", "terrible")))
+
+output_custom_dict <- liwcalike(data_corpus_moviereviews, dict)
+
+head(output_custom_dict)
+
+## -----------------------------------------------------------------------------
+ndoc(data_corpus_inaugural)
+
+## -----------------------------------------------------------------------------
+inaug_corpus_paragraphs <- corpus_reshape(data_corpus_inaugural, to = "paragraphs")
+ndoc(inaug_corpus_paragraphs)
+
+## -----------------------------------------------------------------------------
+output_paragraphs <- liwcalike(inaug_corpus_paragraphs, data_dictionary_NRC)
+head(output_custom_dict)
+
+## ---- eval=FALSE--------------------------------------------------------------
+#  # save as csv file
+#  write.csv(output_custom_dict, file = "output_dictionary.csv",
+#           fileEncoding = "utf-8")
+#  
+#  # save as Excel file (xlsx)
+#  library(rio)
+#  rio::export(output_custom_dict, file = "output_dictionary.xlsx")
+
+## -----------------------------------------------------------------------------
+txt <- c(uk = "endeavour to prioritise honour over esthetics",
+         us = "endeavor to prioritize honor over aesthetics")
+toks <- quanteda::tokens(txt)
+
+## -----------------------------------------------------------------------------
+quanteda::tokens_lookup(toks, data_dictionary_uk2us, 
+                        exclusive = FALSE, capkeys = FALSE)
+
+## -----------------------------------------------------------------------------
+quanteda::tokens_lookup(toks, data_dictionary_us2uk,
+                        exclusive = FALSE, capkeys = FALSE)
+
+## -----------------------------------------------------------------------------
+# original dfm
+quanteda::dfm(toks)
+
+# homogeni[zs]ed dfm
+quanteda::dfm(quanteda::tokens_lookup(toks, data_dictionary_uk2us,
+                                      exclusive = FALSE, capkeys = FALSE))
+

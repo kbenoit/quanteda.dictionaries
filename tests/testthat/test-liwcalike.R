@@ -92,3 +92,16 @@ test_that("works on all-punctuation documents (#26)", {
         )
     )
 })
+
+test_that("the number of parentheses is correctly counted (#36)", {
+    txt1 <- c("This is a (test)", "Second (time) test")
+    res1 <- liwcalike(txt1)
+    expect_equal(res1$Parenth, c(16.67, 20.00))
+    txt2 <- c("This is a test", "Second (time) test")
+    res2 <- liwcalike(txt2)
+    expect_equal(res2$Parenth, c(0, 20))
+
+    txt3 <- c("This is a (test", "Second (time) test")
+    res3 <- liwcalike(txt3)
+    expect_equal(res3$Parenth, c(0, 20))
+})
