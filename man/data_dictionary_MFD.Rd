@@ -30,11 +30,11 @@ Frimer, J. et. al. (2017).  Moral Foundations Dictionaries for
   Linguistic Analyses, 2.0. University of Winnipeg Manuscript.
   \url{http://www.jeremyfrimer.com/uploads/2/1/2/7/21278832/summary.pdf}.
 
-  Haidt, J., Graham, J., & Nosek, B.A. (2009). \href{http://dx.doi.org/10.1037/a0015141}{Liberals
+  Haidt, J., Graham, J., & Nosek, B.A. (2009). \doi{10.1037/a0015141}{Liberals
   and Conservatives Rely on Different Sets of Moral Foundations}.
   \emph{Journal of Personality and Social Inquiry}, 20(2--3), 110--119.
 
-  Graham, J., & Haidt, J. (2016). \href{http://moralfoundations.org/othermaterials}{Moral
-  Foundations Dictionary.}: \url{http://moralfoundations.org/othermaterials}.
+  Graham, J., & Haidt, J. (2016). \href{https://osf.io/ezn37/}{Moral
+  Foundations Dictionary.}: \url{https://osf.io/ezn37/}.
 }
 \keyword{data}

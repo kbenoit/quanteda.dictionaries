@@ -17,7 +17,7 @@ knitr::opts_chunk$set(collapse = TRUE,
 
 # 1. Introduction
 
-Built on the [**quanteda**](http://www.quanteda.io) package for text analysis, **quanteda.dictionaries** consists of dictionaries for text analysis and associated utilities. In this vignette, we show how to replicate the main features of the [LIWC software](https://liwc.wpengine.com/compare-versions/) with packages provided by the Quanteda Initiative. If you prefer to have a complete, stand-alone user interface, then you should purchase and use the [LIWC standalone software](http://liwc.wpengine.com). Moreover, the package contains dictionaries to homogenize (or homogenise!) the spellings of US and British English.
+Built on the [**quanteda**](https://quanteda.io) package for text analysis, **quanteda.dictionaries** consists of dictionaries for text analysis and associated utilities. In this vignette, we show how to replicate the main features of the [LIWC software](https://www.liwc.app) with packages provided by the Quanteda Initiative. If you prefer to have a complete, stand-alone user interface, then you should purchase and use the [LIWC standalone software](https://www.liwc.app). Moreover, the package contains dictionaries to homogenize (or homogenise!) the spellings of US and British English.
 
 # 2. Using dictionaries with quanteda
 
@@ -28,16 +28,16 @@ library("quanteda.dictionaries")
 
 ## 2.1 Accessing texts
 
-To access texts for scoring sentiment, we will use the movie reviews corpus from Pang, Lee, and Vaithyanathan (2002), found in the [**quanteda.textmodels**](http://github.com/quanteda/quanteda.textmodels) package. This requires that you have installed that package.  (If you want to use your own texts, we recommend the [**readtext**](https://github.com/quanteda/readtext) package for reading in your texts.)
+To access texts for scoring sentiment, we will use the movie reviews corpus from Pang, Lee, and Vaithyanathan (2002), found in the [**quanteda.textmodels**](https://github.com/quanteda/quanteda.textmodels) package. This requires that you have installed that package.  (If you want to use your own texts, we recommend the [**readtext**](https://github.com/quanteda/readtext) package for reading in your texts.)
 
 ```{r}
 data(data_corpus_moviereviews, package = "quanteda.textmodels")
 ```
 
 
-## 2.2 Analyze sentiment
+## 2.2 Analyse sentiment
 
-Next, we analyze sentiment of text.  If you have purchased the LIWC dictionary, you can load it as a **quanteda**-formatted dictionary in the following way. 
+Next, we analyse sentiment of text.  If you have purchased the LIWC dictionary, you can load it as a **quanteda**-formatted dictionary in the following way. 
 
 ```{r, eval=FALSE}
 liwc2007dict <- dictionary(file = "LIWC2007.cat", format = "wordstat")
@@ -52,7 +52,7 @@ tail(liwc2007dict, 1)
 #     - blah, idon'tknow, idontknow, imean, ohwell, oranything*, orsomething*, orwhatever*, rr*, yakn*, ykn*, youknow*
 ```
 
-While you can use the LIWC dictionary which you need to purchase, in this example we use the NRC sentiument dictionary object `data_dictionary_NRC`. The `liwcalike()` function from **quanteda.dictionaries** gives similar output to that from the LIWC stand-alone software.  We use a collection of 2000 movie reviews classified as "positive" or "negative", a corpus which comes with **quanteda.textmodels**.
+While you can use the LIWC dictionary which you need to purchase, in this example we use the NRC sentiment dictionary object `data_dictionary_NRC`. The `liwcalike()` function from **quanteda.dictionaries** gives similar output to that from the LIWC stand-alone software.  We use a collection of 2000 movie reviews classified as "positive" or "negative", a corpus which comes with **quanteda.textmodels**.
 
 ```{r}
 output_nrc <- liwcalike(data_corpus_moviereviews, data_dictionary_LSD2015)
@@ -80,6 +80,7 @@ We see that the median of the net positive sentiment from our dictionary analysi
 ```{r fig.width=7, fig.height=6}
 library("quanteda")
 library("quanteda.sentiment")
+data(data_corpus_moviereviews, package = "quanteda.textmodels")
 output_geninq <- liwcalike(data_corpus_moviereviews, data_dictionary_geninqposneg)
 names(output_geninq)
 
@@ -201,7 +202,7 @@ quanteda::dfm(quanteda::tokens_lookup(toks, data_dictionary_uk2us,
 
 Pang, Bo, Lillian Lee, and Shivakumar Vaithyanathan. 2002. Thumbs up?: sentiment classification using machine learning techniques. In _Proceedings of the ACL-02 conference on Empirical methods in natural language processing_, Vol. 10 (EMNLP '02), Vol. 10. Association for Computational Linguistics, Stroudsburg, PA, USA, 79-86. DOI: https://doi.org/10.3115/1118693.1118704
 
-Pennebaker, J.W., Chung, C.K., Ireland, M., Gonzales, A., & Booth, R.J. (2007). _The development and psychometric properties of LIWC2007_. [Software manual]. Austin, TX (http://www.liwc.net).
+Pennebaker, J.W., Chung, C.K., Ireland, M., Gonzales, A., & Booth, R.J. (2007). _The development and psychometric properties of LIWC2007_. [Software manual]. Austin, TX (https://www.liwc.app/).
 
 Saif Mohammad and Peter Turney (2013). "Crowdsourcing a Word-Emotion Association Lexicon." _Computational Intelligence_ 29(3), 436-465.
 

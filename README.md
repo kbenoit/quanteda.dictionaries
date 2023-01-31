@@ -1,18 +1,18 @@
 quanteda.dictionaries
 ================
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/quanteda.dictionaries)](https://cran.r-project.org/package=quanteda.dictionaries)
-[![Travis-CI Build
-Status](https://travis-ci.org/kbenoit/quanteda.dictionaries.svg?branch=master)](https://travis-ci.org/kbenoit/quanteda.dictionaries)
-[![AppVeyor Build
-status](https://ci.appveyor.com/api/projects/status/3uvg00bo4p7mr98s/branch/master?svg=true)](https://ci.appveyor.com/project/kbenoit/quanteda-dictionaries/branch/master)
+<!-- badges: start -->
+
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/quanteda.dictionaries)](https://cran.r-project.org/package=quanteda.dictionaries)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/kbenoit/quanteda.dictionaries/master.svg)](https://codecov.io/github/kbenoit/quanteda.dictionaries?branch=master)
+[![R-CMD-check](https://github.com/kbenoit/quanteda.dictionaries/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/kbenoit/quanteda.dictionaries/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
 
 An R package consisting of dictionaries for text analysis and associated
 utilities. Designed to be used with [**quanteda**](http://quanteda.io)
-but can be used more generally with any text analytic package (e.g.
-**tidytext**, **tm**, etc.).
+but can be used more generally with any text analytic package
+(e.g. **tidytext**, **tm**, etc.).
 
 ## Installing
 
@@ -24,43 +24,54 @@ devtools::install_github("kbenoit/quanteda.dictionaries")
 ## Demonstration
 
 With the `liwcalike()` function from the **quanteda.dictionaries**
-package, you can easily analyze text corpora using exising or custom
-dictionaries. Here we show how to apply the Lexicoder Sentiment
-Dictionary (Young and Soroka 2012) to a corpus consting of 2000 movie
-reviews (from the
-[**quanteda.corpora**](https://github.com/quanteda/quanteda.corpora)
-package).
+package, you can easily analyse text corpora using exising or custom
+dictionaries. Here we show how to apply the Moral Foundations Dictionary
+to the US Presidential Inaugural speech corpus distributed with
+[**quanteda**](https://github.com/quanteda/quanteda).
 
 ``` r
+library("quanteda")
 library("quanteda.dictionaries")
 
-output_lsd <- liwcalike(quanteda.corpora::data_corpus_movies, 
-                        dictionary = data_dictionary_NRC)
+output_lsd <- liwcalike(data_corpus_inaugural, dictionary = data_dictionary_MFD)
 
 head(output_lsd)
 ```
 
-    ##           docname Segment  WC       WPS Sixltr   Dic anger anticipation
-    ## 1 neg_cv000_29416       1 847  78.88889  13.11 19.36  0.71         2.95
-    ## 2 neg_cv001_19502       2 278 240.00000  10.79 24.46  3.24         3.24
-    ## 3 neg_cv002_17424       3 559 162.66667  16.46 21.29  1.07         2.86
-    ## 4 neg_cv003_12683       4 594 239.50000  16.67 22.73  1.35         3.03
-    ## 5 neg_cv004_12641       5 872 366.50000  19.04 19.38  1.26         1.49
-    ## 6 neg_cv005_29357       6 753 671.00000  18.33 27.49  3.32         1.59
-    ##   disgust fear  joy negative positive sadness surprise trust AllPunc
-    ## 1    0.83 1.42 2.36     2.24     4.01    1.42     1.30  2.13   18.06
-    ## 2    2.16 1.80 1.44     4.32     2.88    1.44     1.08  2.88   18.35
-    ## 3    0.72 2.68 1.43     3.40     4.11    1.79     0.54  2.68   14.67
-    ## 4    1.18 1.85 1.52     4.21     5.05    1.85     1.18  1.52   22.90
-    ## 5    0.69 2.06 1.49     3.90     3.33    1.72     1.38  2.06   17.66
-    ## 6    2.39 4.25 0.80     5.98     3.45    1.99     1.86  1.86   11.02
-    ##   Period Comma Colon SemiC QMark Exclam Dash Quote Apostro Parenth OtherP
-    ## 1   4.01  5.19  0.35  0.00  0.71   0.35 1.18  3.07    1.89       0  14.76
-    ## 2   5.04  6.47  0.00  0.00  0.00   0.00 0.00  5.40    4.68       0  16.91
-    ## 3   3.94  5.55  0.00  0.00  0.54   0.00 0.54  2.68    2.68       0  12.70
-    ## 4   3.37  4.38  0.00  0.00  0.51   0.00 4.71  7.58    4.21       0  15.82
-    ## 5   4.24  6.19  0.69  0.23  0.11   0.00 1.95  2.18    1.72       0  13.65
-    ## 6   4.65  3.98  0.13  0.00  0.00   0.00 0.53  0.93    0.40       0   9.69
+    ##           docname Segment      WPS   WC Sixltr  Dic care.virtue care.vice
+    ## 1 1789-Washington       1 66.91304 1539  24.37 4.42        0.58      0.06
+    ## 2 1793-Washington       2 36.75000  147  25.17 5.44        0.00      0.00
+    ## 3      1797-Adams       3 69.81081 2583  24.62 5.23        0.39      0.15
+    ## 4  1801-Jefferson       4 47.09756 1931  20.40 4.40        0.62      0.26
+    ## 5  1805-Jefferson       5 52.88889 2380  22.98 3.95        0.25      0.17
+    ## 6    1809-Madison       6 60.23810 1265  24.82 4.90        0.32      0.16
+    ##   fairness.virtue fairness.vice loyalty.virtue loyalty.vice authority.virtue
+    ## 1            0.39          0.19           1.23         0.00             1.04
+    ## 2            0.00          0.00           2.04         0.00             3.40
+    ## 3            0.81          0.08           1.47         0.12             1.32
+    ## 4            1.04          0.05           0.93         0.00             0.73
+    ## 5            0.84          0.08           1.01         0.04             1.13
+    ## 6            0.95          0.08           1.50         0.00             1.19
+    ##   authority.vice sanctity.virtue sanctity.vice AllPunc Period Comma Colon SemiC
+    ## 1           0.00            0.84          0.06    7.02   1.49  4.55  0.06  0.52
+    ## 2           0.00            0.00          0.00    8.16   2.72  3.40  0.68  0.00
+    ## 3           0.08            0.66          0.15   10.18   1.28  7.78  0.00  0.70
+    ## 4           0.00            0.78          0.00   10.51   1.92  6.63  0.05  1.19
+    ## 5           0.00            0.42          0.00    9.08   1.72  5.97  0.00  1.09
+    ## 6           0.00            0.55          0.16    6.96   1.66  3.72  0.00  1.26
+    ##   QMark Exclam Dash Quote Apostro Parenth OtherP
+    ## 1  0.00      0 0.13  0.13    0.00    0.06   6.76
+    ## 2  0.00      0 0.00  0.00    0.00    0.68   6.80
+    ## 3  0.15      0 0.15  0.04    0.04    0.04   9.95
+    ## 4  0.21      0 0.41  0.10    0.10    0.00  10.10
+    ## 5  0.17      0 0.04  0.08    0.08    0.00   9.03
+    ## 6  0.00      0 0.32  0.00    0.00    0.00   6.64
+
+## More dictionaries
+
+More dictionaries are supplied with the
+[**quanteda.sentiment**](https://github.com/quanteda/quanteda.sentiment)
+package.
 
 ## Code of Conduct
 

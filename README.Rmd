@@ -7,10 +7,11 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+<!-- badges: start -->
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/quanteda.dictionaries)](https://cran.r-project.org/package=quanteda.dictionaries)
-[![Travis-CI Build Status](https://travis-ci.org/kbenoit/quanteda.dictionaries.svg?branch=master)](https://travis-ci.org/kbenoit/quanteda.dictionaries)
-[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/3uvg00bo4p7mr98s/branch/master?svg=true)](https://ci.appveyor.com/project/kbenoit/quanteda-dictionaries/branch/master)
 [![Coverage Status](https://img.shields.io/codecov/c/github/kbenoit/quanteda.dictionaries/master.svg)](https://codecov.io/github/kbenoit/quanteda.dictionaries?branch=master)
+[![R-CMD-check](https://github.com/kbenoit/quanteda.dictionaries/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/kbenoit/quanteda.dictionaries/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
 
 An R package consisting of dictionaries for text analysis and associated utilities. Designed to be used with [**quanteda**](http://quanteda.io) but can be used more generally with any text analytic package (e.g. **tidytext**, **tm**, etc.).
 
@@ -23,16 +24,19 @@ devtools::install_github("kbenoit/quanteda.dictionaries")
 
 ## Demonstration
 
-With the `liwcalike()` function from the **quanteda.dictionaries** package, you can easily analyze text corpora using exising or custom dictionaries. Here we show how to apply the Lexicoder Sentiment Dictionary (Young and Soroka 2012) to a corpus consting of 2000 movie reviews (from the [**quanteda.corpora**](https://github.com/quanteda/quanteda.corpora) package).
+With the `liwcalike()` function from the **quanteda.dictionaries** package, you can easily analyse text corpora using exising or custom dictionaries. Here we show how to apply the Moral Foundations Dictionary to the US Presidential Inaugural speech corpus distributed with [**quanteda**](https://github.com/quanteda/quanteda).
 
 ```{r, warning=FALSE, message=FALSE}
+library("quanteda")
 library("quanteda.dictionaries")
 
-output_lsd <- liwcalike(quanteda.corpora::data_corpus_movies, 
-                        dictionary = data_dictionary_NRC)
+output_lsd <- liwcalike(data_corpus_inaugural, dictionary = data_dictionary_MFD)
 
 head(output_lsd)
 ```
+## More dictionaries
+
+More dictionaries are supplied with the [**quanteda.sentiment**](https://github.com/quanteda/quanteda.sentiment) package.
 
 ## Code of Conduct
 

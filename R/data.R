@@ -65,12 +65,12 @@
 #'   Linguistic Analyses, 2.0. University of Winnipeg Manuscript.
 #'   \url{http://www.jeremyfrimer.com/uploads/2/1/2/7/21278832/summary.pdf}.
 #'
-#'   Haidt, J., Graham, J., & Nosek, B.A. (2009). \href{http://dx.doi.org/10.1037/a0015141}{Liberals
+#'   Haidt, J., Graham, J., & Nosek, B.A. (2009). \doi{10.1037/a0015141}{Liberals
 #'   and Conservatives Rely on Different Sets of Moral Foundations}.
 #'   \emph{Journal of Personality and Social Inquiry}, 20(2--3), 110--119.
 #'
-#'   Graham, J., & Haidt, J. (2016). \href{http://moralfoundations.org/othermaterials}{Moral
-#'   Foundations Dictionary.}: \url{http://moralfoundations.org/othermaterials}.
+#'   Graham, J., & Haidt, J. (2016). \href{https://osf.io/ezn37/}{Moral
+#'   Foundations Dictionary.}: \url{https://osf.io/ezn37/}.
 #' @keywords data
 "data_dictionary_MFD"
 
@@ -85,7 +85,7 @@
 #' sub-categories (level 2).
 #' @source \url{https://provalisresearch.com/products/content-analysis-software/wordstat-dictionary/laver-garry-dictionary-of-policy-position/}
 #' @references
-#'   Laver. M. & Garry, J. (2000). \href{https://doi.org/10.2307/2669268}{Estimating Policy Positions
+#'   Laver. M. & Garry, J. (2000). \doi{10.2307/2669268}{Estimating Policy Positions
 #'   from Political Texts}. \emph{American Journal of Political Science}, 44(3), 619--634.
 #' @keywords data
 "data_dictionary_LaverGarry"

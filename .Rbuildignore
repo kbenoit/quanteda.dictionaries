@@ -10,3 +10,4 @@ sources/
 ^CONDUCT\.md$
 tests/data/
 inst/extdata/
+^\.github$

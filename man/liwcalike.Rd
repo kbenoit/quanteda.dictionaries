@@ -3,7 +3,7 @@
 \name{liwcalike}
 \alias{liwcalike}
 \alias{liwcalike.character}
-\title{Analyze text in a LIWC-alike fashion}
+\title{Analyse text in a LIWC-alike fashion}
 \usage{
 liwcalike(x, ...)
 
@@ -37,10 +37,10 @@ a data.frame object containing the analytic results, one row per
   document supplied
 }
 \description{
-Analyze a set of texts to produce a dataset of percentages and other
+Analyse a set of texts to produce a dataset of percentages and other
 quantities describing the text, similar to the functionality supplied by the
 Linguistic Inquiry and Word Count standalone software distributed at
-\url{http://liwc.wpengine.com}.
+\url{https://www.liwc.app}.
 }
 \section{Segmentation}{
  The LIWC standalone software has many options for

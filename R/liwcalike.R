@@ -1,9 +1,9 @@
-#' Analyze text in a LIWC-alike fashion
+#' Analyse text in a LIWC-alike fashion
 #'
-#' Analyze a set of texts to produce a dataset of percentages and other
+#' Analyse a set of texts to produce a dataset of percentages and other
 #' quantities describing the text, similar to the functionality supplied by the
 #' Linguistic Inquiry and Word Count standalone software distributed at
-#' \url{http://liwc.wpengine.com}.
+#' \url{https://www.liwc.app}.
 #' @param x input object, a \pkg{quanteda} \link[quanteda]{corpus} or character
 #'   vector for analysis
 #' @param dictionary a \pkg{quanteda} \link[quanteda]{dictionary} object
