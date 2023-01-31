@@ -22,50 +22,21 @@ data(data_corpus_moviereviews, package = "quanteda.textmodels")
 #  #     - blah, idon'tknow, idontknow, imean, ohwell, oranything*, orsomething*, orwhatever*, rr*, yakn*, ykn*, youknow*
 
 ## -----------------------------------------------------------------------------
-output_nrc <- liwcalike(data_corpus_moviereviews, data_dictionary_LSD2015)
-head(output_nrc)
+output_lsd <- liwcalike(data_corpus_moviereviews, data_dictionary_LSD2015)
+head(output_lsd)
 
 ## ----fig.width=7, fig.height=6------------------------------------------------
-output_nrc$net_positive <- output_nrc$positive - output_nrc$negative
-output_nrc$sentiment <- docvars(data_corpus_moviereviews, "sentiment")
+output_lsd$net_positive <- output_lsd$positive - output_lsd$negative
+output_lsd$sentiment <- docvars(data_corpus_moviereviews, "sentiment")
 
 library("ggplot2")
 # set ggplot2 theme
 theme_set(theme_minimal())
-ggplot(output_nrc, aes(x = sentiment, y = net_positive)) +
+ggplot(output_lsd, aes(x = sentiment, y = net_positive)) +
     geom_boxplot() +
     labs(x = "Classified sentiment", 
          y = "Net positive sentiment",
-         main = "NRC Sentiment Dictionary")
-
-## ----fig.width=7, fig.height=6------------------------------------------------
-library("quanteda")
-library("quanteda.sentiment")
-output_geninq <- liwcalike(data_corpus_moviereviews, data_dictionary_geninqposneg)
-names(output_geninq)
-
-output_geninq$net_positive <- output_geninq$positive - output_geninq$negative
-output_geninq$sentiment <- docvars(data_corpus_moviereviews, "sentiment")
-
-ggplot(output_geninq, aes(x = sentiment, y = net_positive)) +
-    geom_boxplot() +
-    labs(x = "Classified sentiment", 
-         y = "Net positive sentiment", 
-         main = "General Inquirer Sentiment Association")
-
-## ----fig.width=7, fig.height=6------------------------------------------------
-cor.test(output_nrc$net_positive, output_geninq$net_positive)
-
-cor_dictionaries <- data.frame(
-    nrc = output_nrc$net_positive,
-    geninq = output_geninq$net_positive
-)
-
-ggplot(data = cor_dictionaries, aes(x = nrc, y = geninq)) + 
-    geom_point(alpha = 0.2) +
-    labs(x = "NRC Word-Emotion Association Lexicon",
-         y = "General Inquirer Net Positive Sentiment",
-         main = "Correlation for Net Positive Sentiment in Movie Reviews")
+         main = "`Lexicoder 2015 Sentiment Dictionary")
 
 ## -----------------------------------------------------------------------------
 dict <- dictionary(list(positive = c("great", "phantastic", "wonderful"),
@@ -83,7 +54,7 @@ inaug_corpus_paragraphs <- corpus_reshape(data_corpus_inaugural, to = "paragraph
 ndoc(inaug_corpus_paragraphs)
 
 ## -----------------------------------------------------------------------------
-output_paragraphs <- liwcalike(inaug_corpus_paragraphs, data_dictionary_NRC)
+output_paragraphs <- liwcalike(inaug_corpus_paragraphs, data_dictionary_LSD2015)
 head(output_custom_dict)
 
 ## ---- eval=FALSE--------------------------------------------------------------

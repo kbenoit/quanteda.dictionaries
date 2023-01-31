@@ -52,64 +52,35 @@ tail(liwc2007dict, 1)
 #     - blah, idon'tknow, idontknow, imean, ohwell, oranything*, orsomething*, orwhatever*, rr*, yakn*, ykn*, youknow*
 ```
 
-While you can use the LIWC dictionary which you need to purchase, in this example we use the NRC sentiment dictionary object `data_dictionary_NRC`. The `liwcalike()` function from **quanteda.dictionaries** gives similar output to that from the LIWC stand-alone software.  We use a collection of 2000 movie reviews classified as "positive" or "negative", a corpus which comes with **quanteda.textmodels**.
+While you can use the LIWC dictionary which you need to purchase, in this example we use the Lexicoder 2015 political sentiment dictionary from Young and Soroka (2015).  The `liwcalike()` function from **quanteda.dictionaries** gives similar output to that from the LIWC stand-alone software.  We use a collection of 2,000 movie reviews classified as "positive" or "negative", a corpus which comes with **quanteda.textmodels**.
 
 ```{r}
-output_nrc <- liwcalike(data_corpus_moviereviews, data_dictionary_LSD2015)
-head(output_nrc)
+output_lsd <- liwcalike(data_corpus_moviereviews, data_dictionary_LSD2015)
+head(output_lsd)
 ```
 
 Next, we can use the `negative` and `positive` columns to estimate the net sentiment for each text by subtracting negative from positive words.
 
 ```{r fig.width=7, fig.height=6}
-output_nrc$net_positive <- output_nrc$positive - output_nrc$negative
-output_nrc$sentiment <- docvars(data_corpus_moviereviews, "sentiment")
+output_lsd$net_positive <- output_lsd$positive - output_lsd$negative
+output_lsd$sentiment <- docvars(data_corpus_moviereviews, "sentiment")
 
 library("ggplot2")
 # set ggplot2 theme
 theme_set(theme_minimal())
-ggplot(output_nrc, aes(x = sentiment, y = net_positive)) +
+ggplot(output_lsd, aes(x = sentiment, y = net_positive)) +
     geom_boxplot() +
     labs(x = "Classified sentiment", 
          y = "Net positive sentiment",
-         main = "NRC Sentiment Dictionary")
+         main = "`Lexicoder 2015 Sentiment Dictionary")
 ```
+This is only meant as an example, since the Lexicoder 2015 dictionary was
+developed for classifying political language, not for the purpose of more
+general sentiment analysis.  To access more nuanced sentiment dictionaries, see
+the [**quanteda.sentiment**](https://github.com/quanteda/quanteda.sentiment)
+package, which also includes functions for computing polarity- and valence-based
+net sentiment scores.
 
-We see that the median of the net positive sentiment from our dictionary analysis is higher for reviews that have been classified as being positive. To check whether the choice of dictionary had an impact on this result, we can rerun the analysis with a the General Inquirer _Positive_ and _Negative_ dictionary, an alternative sentiment dictionary provided in **quanteda.dictionaries**.
-
-```{r fig.width=7, fig.height=6}
-library("quanteda")
-library("quanteda.sentiment")
-data(data_corpus_moviereviews, package = "quanteda.textmodels")
-output_geninq <- liwcalike(data_corpus_moviereviews, data_dictionary_geninqposneg)
-names(output_geninq)
-
-output_geninq$net_positive <- output_geninq$positive - output_geninq$negative
-output_geninq$sentiment <- docvars(data_corpus_moviereviews, "sentiment")
-
-ggplot(output_geninq, aes(x = sentiment, y = net_positive)) +
-    geom_boxplot() +
-    labs(x = "Classified sentiment", 
-         y = "Net positive sentiment", 
-         main = "General Inquirer Sentiment Association")
-```
-
-We can also check the correlation of the estimated net positive sentiment for both the NRC Word-Emotion Association Lexicon and the General Inquirer Sentiment Association. 
-
-```{r fig.width=7, fig.height=6}
-cor.test(output_nrc$net_positive, output_geninq$net_positive)
-
-cor_dictionaries <- data.frame(
-    nrc = output_nrc$net_positive,
-    geninq = output_geninq$net_positive
-)
-
-ggplot(data = cor_dictionaries, aes(x = nrc, y = geninq)) + 
-    geom_point(alpha = 0.2) +
-    labs(x = "NRC Word-Emotion Association Lexicon",
-         y = "General Inquirer Net Positive Sentiment",
-         main = "Correlation for Net Positive Sentiment in Movie Reviews")
-```
 
 ## 2.3 User-created dictionaries
 
@@ -139,10 +110,10 @@ inaug_corpus_paragraphs <- corpus_reshape(data_corpus_inaugural, to = "paragraph
 ndoc(inaug_corpus_paragraphs)
 ```
 
-When we divide the corpus into paragraphs, the number of documents increases to 1513. Next, we can apply the `liwcalike()` function to the reshaped corpus using the NRC Word-Emotion Association Lexicon. 
+When we divide the corpus into paragraphs, the number of documents increases to 1513. Next, we can apply the `liwcalike()` function to the reshaped corpus using the LSD2015 dictionary. 
 
 ```{r}
-output_paragraphs <- liwcalike(inaug_corpus_paragraphs, data_dictionary_NRC)
+output_paragraphs <- liwcalike(inaug_corpus_paragraphs, data_dictionary_LSD2015)
 head(output_custom_dict)
 ```
 
@@ -163,7 +134,7 @@ rio::export(output_custom_dict, file = "output_dictionary.xlsx")
 
 # 3. Homogeni[zs]e British and US English
 
-**quanteda.dictionaries** contains a English UK-US spelling conversion dictionary which provide the ability to homogeni[zs]e the spellings of English by converting the spelling variants of one language to the other. The dictionary contains 1,800 roots and derivitives which are accessible [online](http://www.tysto.com/uk-us-spelling-list.html).
+**quanteda.dictionaries** contains a English UK-US spelling conversion dictionary which provide the ability to homogeni[zs]e the spellings of English by converting the spelling variants of one language to the other. The dictionary contains 1,800 roots and derivatives which are accessible [online](http://www.tysto.com/uk-us-spelling-list.html).
 
 
 ```{r}
@@ -207,3 +178,7 @@ Pennebaker, J.W., Chung, C.K., Ireland, M., Gonzales, A., & Booth, R.J. (2007). 
 Saif Mohammad and Peter Turney (2013). "Crowdsourcing a Word-Emotion Association Lexicon." _Computational Intelligence_ 29(3), 436-465.
 
 Stone, Philip J., Dexter C. Dunphy, and Marshall S. Smith. 1966. _The General Inquirer: A computer approach to content analysis._ Cambridge, MA: MIT Press.
+
+Young, L. & Soroka, S. (2012). Affective News: The Automated Coding of Sentiment in Political Texts. _Political Communication_, 29(2), 205–231.  DOI: https://doi.org/10.1080/10584609.2012.671234
+
+

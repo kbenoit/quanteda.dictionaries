@@ -24,7 +24,7 @@ devtools::install_github("kbenoit/quanteda.dictionaries")
 ## Demonstration
 
 With the `liwcalike()` function from the **quanteda.dictionaries**
-package, you can easily analyse text corpora using exising or custom
+package, you can easily analyse text corpora using existing or custom
 dictionaries. Here we show how to apply the Moral Foundations Dictionary
 to the US Presidential Inaugural speech corpus distributed with
 [**quanteda**](https://github.com/quanteda/quanteda).
@@ -76,5 +76,5 @@ package.
 ## Code of Conduct
 
 Please note that this project is released with a [Contributor Code of
-Conduct](CONDUCT.md). By participating in this project you agree to
-abide by its terms.
+Conduct](https://github.com/kbenoit/quanteda.dictionaries/blob/master/CONDUCT.md).
+By participating in this project you agree to abide by its terms.

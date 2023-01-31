@@ -20,12 +20,9 @@ Suggests:
     ggplot2,
     knitr,
     mgcv,
-    quanteda.sentiment,
     quanteda.textmodels,
     rmarkdown,
     testthat
-Remotes:
-    quanteda.sentiment
 BugReports: https://github.com/kbenoit/quanteda.dictionaries/issues
 Encoding: UTF-8
 LazyData: true

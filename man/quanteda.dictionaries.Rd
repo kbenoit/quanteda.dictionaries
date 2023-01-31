@@ -15,7 +15,7 @@ British and American English. These lists can be used to adjust text corpora and
 double-counting the same word with different spellings in the same corpus.
 
 The second main purpose of \pkg{quanteda.dictionaries} is the function \link{liwcalike}. It allows
-analyzing text corpora in a LIWC-alike fashion. LIWC (Linguistic Inquiry and Word Count) is a
+analysing text corpora in a LIWC-alike fashion. LIWC (Linguistic Inquiry and Word Count) is a
 standalone software distributed at https://www.liwc.app. \link{liwcalike} takes a \pkg{quanteda}
 \link[quanteda]{corpus} as an input and allows to easily apply dictionaries to the text corpus.
 The output returns a data.frame consisting of percentages and other quantities, as well as the count

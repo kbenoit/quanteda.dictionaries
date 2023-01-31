@@ -9,7 +9,7 @@ An object of class \code{dictionary2} of length 10.
 }
 \source{
 http://www.jeremyfrimer.com/research-downloads.html; a previous
-  version is available at \url{http://moralfoundations.org/othermaterials}
+  version is available at \url{https://moralfoundations.org/other-materials/}
 }
 \usage{
 data_dictionary_MFD
@@ -34,7 +34,7 @@ Frimer, J. et. al. (2017).  Moral Foundations Dictionaries for
   and Conservatives Rely on Different Sets of Moral Foundations}.
   \emph{Journal of Personality and Social Inquiry}, 20(2--3), 110--119.
 
-  Graham, J., & Haidt, J. (2016). \href{https://osf.io/ezn37/}{Moral
+  Graham, J., & Haidt, J. (2016). \href{https://moralfoundations.org/other-materials/}{Moral
   Foundations Dictionary.}: \url{https://osf.io/ezn37/}.
 }
 \keyword{data}

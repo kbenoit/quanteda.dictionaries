@@ -59,7 +59,7 @@
 #'   \href{http://www.jeremyfrimer.com/uploads/2/1/2/7/21278832/summary.pdf}{recommended}
 #'   over the first version of the MDF by its authors.
 #' @source http://www.jeremyfrimer.com/research-downloads.html; a previous
-#'   version is available at \url{http://moralfoundations.org/othermaterials}
+#'   version is available at \url{https://moralfoundations.org/other-materials/}
 #' @references
 #'   Frimer, J. et. al. (2017).  Moral Foundations Dictionaries for
 #'   Linguistic Analyses, 2.0. University of Winnipeg Manuscript.
@@ -69,7 +69,7 @@
 #'   and Conservatives Rely on Different Sets of Moral Foundations}.
 #'   \emph{Journal of Personality and Social Inquiry}, 20(2--3), 110--119.
 #'
-#'   Graham, J., & Haidt, J. (2016). \href{https://osf.io/ezn37/}{Moral
+#'   Graham, J., & Haidt, J. (2016). \href{https://moralfoundations.org/other-materials/}{Moral
 #'   Foundations Dictionary.}: \url{https://osf.io/ezn37/}.
 #' @keywords data
 "data_dictionary_MFD"
