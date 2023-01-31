@@ -3,7 +3,8 @@ quanteda.dictionaries
 
 <!-- badges: start -->
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/quanteda.dictionaries)](https://cran.r-project.org/package=quanteda.dictionaries)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/quanteda.dictionaries)](https://CRAN.R-project.org/package=quanteda.dictionaries)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/kbenoit/quanteda.dictionaries/master.svg)](https://codecov.io/github/kbenoit/quanteda.dictionaries?branch=master)
 [![R-CMD-check](https://github.com/kbenoit/quanteda.dictionaries/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/kbenoit/quanteda.dictionaries/actions/workflows/R-CMD-check.yaml)
